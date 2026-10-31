@@ -123,18 +123,18 @@ th:hover .rmf{display:inline}
 <body>
 <header class="topbar noprint">
   <div class="brand"><button class="btn sm" id="btnBack" data-act="goEq" style="display:none">← টেবিলে ফিরুন</button></div>
-  <span style="position:relative"><button class="btn sm primary" data-act="toggleEdit" id="btnEdit"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4H8a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4v-2.5"/><path d="M9 15.2 10 11.6 17.4 4.2a1.7 1.7 0 0 1 2.4 0l.4.4a1.7 1.7 0 0 1 0 2.4L12.8 14.4Z"/><path d="m15.3 6.3 2.4 2.4"/></svg>এডিট</button>
+  <span style="position:relative"><button class="btn sm primary" data-act="toggleEdit" id="btnEdit"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4H8a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4v-2.5"/><path d="M9 15.2 10 11.6 17.4 4.2a1.7 1.7 0 0 1 2.4 0l.4.4a1.7 1.7 0 0 1 0 2.4L12.8 14.4Z"/><path d="m15.3 6.3 2.4 2.4"/></svg>Edit</button>
     <div id="editMenu" class="emenu" hidden>
       <button data-act="newEntry">＋ সারি</button>
       <button data-act="rmRow">－ সারি</button>
-      <button data-act="addCol" data-t="asset">＋ কলাম – সম্পদ</button>
-      <button data-act="rmCol" data-t="asset">－ কলাম – সম্পদ</button>
-      <button data-act="addCol" data-t="liability">＋ কলাম – দায়</button>
-      <button data-act="rmCol" data-t="liability">－ কলাম – দায়</button>
+      <button data-act="addCol" data-t="asset">＋A</button>
+      <button data-act="rmCol" data-t="asset">－A</button>
+      <button data-act="addCol" data-t="liability">＋L</button>
+      <button data-act="rmCol" data-t="liability">－L</button>
     </div></span>
-  <button class="btn sm" data-act="undo" id="btnUndo" title="পূর্বাবস্থা">↶ আনডু</button>
-  <button class="btn sm" data-act="redo" id="btnRedo" title="আবার করুন">↷ রিডু</button>
-  <button class="btn sm" data-act="logout" id="btnLogout" hidden>লগআউট</button>
+  <button class="btn sm" data-act="undo" id="btnUndo" title="পূর্বাবস্থা">Undo</button>
+  <button class="btn sm" data-act="redo" id="btnRedo" title="আবার করুন">Redo</button>
+  <button class="btn sm" data-act="logout" id="btnLogout" hidden>Logout</button>
 </header>
 <main id="main"></main>
 <div id="toast"></div>
@@ -156,8 +156,8 @@ const TABLE = CFG.table || "", RPC_SAVE = TABLE + "_save_entry", RPC_RESTORE = T
    SUBTITLE-এ যা লিখবেন হুবহু তাই দেখাবে। চাইলে সময়কাল অনুযায়ী নিজে বদলানোর জন্য
    {বছর}  {মাস}  {থেকে}  {পর্যন্ত} চিহ্ন বসাতে পারেন। খালি "" রাখলে কিছুই দেখাবে না।
    ===================================================================== */
-const PAGE_TITLE = "Accounting Equation";
-const SUBTITLE = "Made BY INYT444";
+const PAGE_TITLE = "Accounting-Equation";
+const SUBTITLE = "INYT 444";
 const SDK_URL = CFG.sdkUrl || "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js";
 const LS_DATA = "hisab_eq_v1", LS_SNAP = "hisab_eq_presnap";
 const APP = "hisab-eq", APP_VERSION = 1;
@@ -534,7 +534,7 @@ function eqHTML(m, ed) {
 }
 function viewEq() {
   const m = buildModel(), T = m.tot, ig = integrity(), oe = oeBreakdown(m.closing, m.am), s = S.settings;
-  const sample = S.entries.length === 0 ? `<div class="card noprint empty"><p>এখনও কোনো লেনদেন নেই।</p><button class="btn primary" data-act="newEntry">＋ প্রথম লেনদেন যোগ করুন</button> <button class="btn" data-act="sample">রেফারেন্স ছবির নমুনা ডেটা লোড করুন</button></div>` : "";
+  const sample = S.entries.length === 0 ? `<div class="card noprint empty"><p>এখনও কোনো লেনদেন নেই।</p><button class="btn primary" data-act="newEntry">＋ প্রথম লেনদেন যোগ করুন</button></div>` : "";
   return periodBar() + sample + `<div class="card eqcard"><div class="paper">
    <h1>${esc(PAGE_TITLE)}</h1>${subtitleText().trim() ? `<h2 class="sub">${esc(subtitleText())}</h2>` : ""}
    <div class="scroll tblwrap">${eqHTML(m, true)}</div>
@@ -638,7 +638,7 @@ function viewSettings() {
   const s = S.settings, isSb = store.mode === "supabase";
   return `<div class="card"><h3>প্রতিষ্ঠান ও প্রদর্শন</h3><div class="row"><p class="muted grow" style="font-size:.85rem;margin:0">শিরোনাম ও উপশিরোনাম বদলাতে <code>index.html</code>-এর শুরুতে <code>PAGE_TITLE</code> ও <code>SUBTITLE</code> বদলান।</p>
    <label>সংখ্যা<select data-s="digits"><option value="bn" ${s.digits === "bn" ? "selected" : ""}>বাংলা (১২৩)</option><option value="en" ${s.digits === "en" ? "selected" : ""}>English (123)</option></select></label></div></div>
-  <div class="card"><h3>ব্যাকআপ ও রিস্টোর</h3><div class="row"><button class="btn primary" data-act="backup">⬇ JSON ব্যাকআপ</button><label class="btn" style="cursor:pointer">⬆ JSON রিস্টোর<input type="file" accept="application/json,.json" data-act-change="restoreFile" hidden></label><button class="btn" data-act="csvJ">CSV জাবেদা</button><button class="btn" data-act="csvEq">CSV সমীকরণ</button><button class="btn" data-act="sample">নমুনা ডেটা (ছবির উদাহরণ)</button></div>
+  <div class="card"><h3>ব্যাকআপ ও রিস্টোর</h3><div class="row"><button class="btn primary" data-act="backup">⬇ JSON ব্যাকআপ</button><label class="btn" style="cursor:pointer">⬆ JSON রিস্টোর<input type="file" accept="application/json,.json" data-act-change="restoreFile" hidden></label><button class="btn" data-act="csvJ">CSV জাবেদা</button><button class="btn" data-act="csvEq">CSV সমীকরণ</button></div>
    <p class="muted" style="font-size:.85rem">ব্যাকআপে সব হিসাব, লেনদেন (বাতিলসহ), সেটিংস ও অডিট ট্রেইল এবং SHA-256 চেকসাম থাকে। রিস্টোরের আগে ডেটা যাচাই হয় ও বর্তমান ডেটার স্ন্যাপশট রাখা হয়।</p></div>
   <div class="card"><h3>ডেটা সংরক্ষণ</h3>${isSb ? `<p class="ok">✓ Supabase সংযুক্ত — ${esc(USER)}</p><div class="row"><button class="btn" data-act="signout">সাইন আউট</button><button class="btn" data-act="uploadLocal">স্থানীয় ডেটা ক্লাউডে পাঠান (বর্তমান ক্লাউড ডেটা প্রতিস্থাপিত হবে)</button></div>` : `<p class="bad"><b>সীমিত মোড:</b> ডেটা শুধু এই ব্রাউজারে (localStorage) আছে। ব্রাউজার ডেটা মুছলে বা অন্য ডিভাইসে গেলে হারাবে। নিয়মিত JSON ব্যাকআপ নিন বা Supabase সংযুক্ত করুন।</p>`}
    ${isSb ? "" : `<p class="muted" style="font-size:.85rem">Supabase সংযোগ করতে <code>config.js</code> ফাইলে URL ও anon/publishable key দিন (প্রথমে SQL.sql চালিয়ে নিন)।</p>`}</div>
@@ -715,21 +715,9 @@ async function restoreFromObj(o, fileName) {
     const st = { ...data, audit: [ent, ...data.audit] }; await store.restore(st); S = st; UNDO = []; REDO = []; toast("রিস্টোর সম্পন্ন"); render();
   } catch (e) { alert("রিস্টোর ব্যর্থ: " + e.message); }
 }
-async function loadSample() {
-  if (S.entries.length && !confirm("বর্তমান ডেটার সাথে ৮টি নমুনা লেনদেন যোগ হবে। এগিয়ে যাবেন?")) return;
-  const g = k => S.accounts.find(a => a.kind === k && a.active) || S.accounts.find(a => a.kind === k), byName = n => S.accounts.find(a => a.name === n);
-  const cash = g("cash"), rec = g("receivable"), eqp = g("equipment"), loan = g("loan"), pay = g("payable"), cap = g("capital"), rent = byName("ভাড়া খরচ"), sal = byName("বেতন খরচ"), svc = byName("সেবা আয়");
-  if ([cash, rec, eqp, loan, pay, cap, rent, sal, svc].some(x => !x)) return toast("নমুনা লোডের জন্য ডিফল্ট হিসাবগুলো দরকার");
-  const E = (date, tpl, desc, dr, cr, amt) => ({ id: uuid(), date, tpl, desc, status: "active", voidReason: "", lines: [{ acc: dr.id, dr: amt * 100, cr: 0 }, { acc: cr.id, dr: 0, cr: amt * 100 }] });
-  const list = [E("2017-01-01", "capital_in", "মূলধন আনয়ন", cash, cap, 50000), E("2017-01-02", "expense_cash", "ভাড়া খরচ", rent, cash, 3000), E("2017-01-07", "buy_credit", "", eqp, pay, 15000), E("2017-01-10", "income_cash", "সেবা আয়", cash, svc, 6000),
-    E("2017-01-15", "expense_cash", "বেতন খরচ", sal, cash, 2000), E("2017-01-20", "loan_in", "", cash, loan, 20000), E("2017-01-24", "income_credit", "সেবা আয়", rec, svc, 7000), E("2017-01-29", "pay_creditor", "", pay, cash, 10000)];
-  try { for (const e of list) await commitEntry(e, "create", "নমুনা লেনদেন: " + (e.desc || tplLabel(e.tpl)), { noUndo: true }); await saveSettings({ periodType: "month", year: 2017, month: 1 }); toast("নমুনা ডেটা লোড হয়েছে"); view = "eq"; render(); } catch (e) { toast(e.message); }
-}
-
 /* ---------------- Supabase connection ---------------- */
 function keyProblem(k) { if (/^sb_secret_/.test(k)) return "এটি secret কী — ফ্রন্টএন্ডে ব্যবহার নিষিদ্ধ"; try { const p = JSON.parse(atob(k.split(".")[1].replace(/-/g, "+").replace(/_/g, "/"))); if (p.role === "service_role") return "এটি service_role কী — ফ্রন্টএন্ডে ব্যবহার নিষিদ্ধ"; } catch (e) { } return ""; }
 function loadSdk() { return new Promise((res, rej) => { if (window.supabase) return res(); const s = document.createElement("script"); s.src = SDK_URL; s.onload = res; s.onerror = () => rej(new Error("Supabase SDK লোড হয়নি (ইন্টারনেট/CDN)")); document.head.appendChild(s); }); }
-const ALLOWED = (Array.isArray(CFG.allowedUserIds) ? CFG.allowedUserIds : []).map(u => String(u).trim().toLowerCase()).filter(u => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(u));
 const ALLOW_SIGNUP = !(CFG.auth && CFG.auth.allowSignUp === false);
 let SBC = null;
 function lockScreen(title, msg, btn) { // blocking screen: app stays hidden, boot never continues
@@ -739,19 +727,19 @@ function lockScreen(title, msg, btn) { // blocking screen: app stays hidden, boo
   return new Promise(() => { });
 }
 async function logout() { try { if (SBC) await SBC.auth.signOut(); } catch (e) { } location.reload(); }
-function denyScreen(sb, user) {
-  return sb.auth.signOut().catch(() => { }).then(() => lockScreen("অ্যাক্সেস নেই", `এই অ্যাকাউন্ট (${esc(user.email || "")}) অনুমোদিত তালিকায় নেই।<br>আপনার User UID: <code>${esc(user.id)}</code><br>অ্যাডমিনকে এই UID দিন।`, ["অন্য অ্যাকাউন্টে লগইন করুন", () => location.reload()]));
+function denyScreen(sb) {
+  return sb.auth.signOut().catch(() => { }).then(() => lockScreen("Access Denied", "You do not have permission to use this application.", ["Sign in with another account", () => location.reload()]));
 }
 async function connectSupabase() {
-  if (!SB.url || !SB.anonKey) return lockScreen("লগইন সংযোগ নেই", "লগইন ছাড়া অ্যাপ ব্যবহার করা যায় না। config.js-এ Supabase <b>url</b> ও <b>anonKey</b> দিন (সাথে table ও allowedUserIds)।");
+  if (!SB.url || !SB.anonKey) return lockScreen("লগইন সংযোগ নেই", "লগইন ছাড়া অ্যাপ ব্যবহার করা যায় না। config.js-এ Supabase <b>url</b> ও <b>anonKey</b> দিন।");
   if (!/^[a-z_][a-z0-9_]{0,40}$/.test(TABLE) || TABLE === "ENTER_YOUR_TABLE_NAME") return lockScreen("কনফিগারেশন ত্রুটি", "config.js-এ <b>table</b>-এর নাম দিন (SQL.sql-এর নামের সাথে হুবহু এক)।");
-  if (!ALLOWED.length) return lockScreen("কনফিগারেশন ত্রুটি", "config.js-এর <b>allowedUserIds</b>-এ কমপক্ষে একটি সঠিক User UID দিন। তালিকা খালি থাকলে কেউ ঢুকতে পারবে না।");
   const kp = keyProblem(SB.anonKey); if (kp) return lockScreen("নিরাপত্তা ত্রুটি", esc(kp));
   try { await loadSdk(); } catch (e) { return lockScreen("সংযোগ ব্যর্থ", esc(e.message), ["আবার চেষ্টা করুন", () => location.reload()]); }
   const sb = SBC = window.supabase.createClient(SB.url, SB.anonKey, { auth: { persistSession: true, autoRefreshToken: true } });
   const { data } = await sb.auth.getSession(); let user = data.session && data.session.user;
   if (!user) user = await authDialog(sb);
-  if (!ALLOWED.includes(String(user.id).toLowerCase())) return denyScreen(sb, user);
+  let ok = false; try { const r = await sb.rpc(TABLE + "_allowed"); ok = !r.error && r.data === true; } catch (e) { }
+  if (!ok) return denyScreen(sb);
   USER = user.email; document.body.classList.remove("locked"); $("#lock").hidden = true; $("#btnLogout").hidden = false;
   return SupaStore(sb);
 }
@@ -804,7 +792,6 @@ const ACT = {
   closeDlg: () => $("#dlg").close(), saveEntry: saveDraft,
   toLines: ev => { const d = DR, e = draftToEntry(d); d.mode = "lines"; d.lines = e.lines.map(l => ({ acc: l.acc, dr: l.dr ? String(l.dr / 100) : "", cr: l.cr ? String(l.cr / 100) : "" })); entryModal(); },
   addLine: () => { DR.lines.push({ acc: "", dr: "", cr: "" }); entryModal(); }, rmLine: t => { DR.lines.splice(+t.dataset.i, 1); entryModal(); },
-  sample: loadSample,
   csvEq, csvJ: csvJournal, csvR: t => csvReport(t.dataset.r), rsub: t => { RSUB = t.dataset.r; render(); },
   sortJ: () => { JSORT = JSORT === "asc" ? "desc" : "asc"; render(); }, clearJ: () => { JF = { q: "", from: "", to: "", acc: "", tpl: "" }; render(); }, moreJ: () => { JSHOW += 50; render(); },
   newAcc: () => accModal(), editAcc: t => accModal(t.dataset.id),
@@ -993,7 +980,7 @@ document.addEventListener("pointerdown", async ev => {
   const hv = location.hash.slice(1); if (VIEWS.some(v => v[0] === hv)) view = hv;
   window.addEventListener("hashchange", () => { const h = location.hash.slice(1); view = VIEWS.some(v => v[0] === h) ? h : "eq"; render(); window.scrollTo(0, 0); });
   render();
-  window.HisabApp = { get S() { return S; }, validateEntry, buildModel, integrity, parseAmt, fmt, validateBackup, commitEntry, amap, doUndo, doRedo, restoreFromObj, voidEntry, restoreEntry, trialBalance, incomeStmt, balanceSheet, loadSample, exportData, saveSettings, render, setView: v => { view = v; render(); } };
+  window.HisabApp = { get S() { return S; }, validateEntry, buildModel, integrity, parseAmt, fmt, validateBackup, commitEntry, amap, doUndo, doRedo, restoreFromObj, voidEntry, restoreEntry, trialBalance, incomeStmt, balanceSheet, exportData, saveSettings, render, setView: v => { view = v; render(); } };
 })();
 </script>
 </body>
