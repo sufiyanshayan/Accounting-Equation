@@ -19,16 +19,6 @@ window.APP_CONFIG = {
      SQL.sql-এর ENTER YOUR TABLE NAME লাইনে যে নাম দেবেন, এখানেও ঠিক সেই নাম দিন (ছোট হাতের অক্ষর)। */
   table: "equation",   // ENTER YOUR TABLE NAME : SQL.sql-এ যে নাম দিয়েছেন ঠিক সেটি
 
-  /* ---------- অনুমোদিত User UID ----------
-     শুধু এই UID-গুলোর ব্যবহারকারী ঢুকতে পারবে; অন্য কেউ লগইন করলেও ঢুকতে পারবে না।
-     UID পাবেন: Supabase → Authentication → Users → ব্যবহারকারীর "User UID"।
-     SQL.sql-এর ALLOWED USER UIDs লাইনেও একই UID দিন (ডেটাবেস নিজেই এটি জোর করে মানায়)।
-     তালিকা খালি থাকলে কেউই ঢুকতে পারবে না। */
-  allowedUserIds: [
-    "b8567c3a-067c-42c6-bbde-d0be6b1b2b84",
-    "ENTER_USER_UID_2"
-  ],
-
   /* ---------- লগইন ----------
      allowSignUp: false দিলে অ্যাপে "সাইন আপ" বোতাম থাকবে না
      (Supabase Dashboard → Authentication → Sign In / Providers-এ নতুন সাইন-আপও বন্ধ রাখুন)। */
