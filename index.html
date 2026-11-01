@@ -3,134 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Accounting-Equation</title>
+<title>Accounting Equation</title>
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="Your_Favicon_Link">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-.ic{width:1.15em;height:1.15em;vertical-align:-.2em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-right:4px}
-:root{
-  --bg:#eef0f3; --panel:#fff; --ink:#111; --muted:#5b6470; --line:#c9ced6; --accent:#1f4e79; --accent-ink:#fff;
-  --ok:#0a7a3c; --bad:#b3261e; --warn:#8a5a00; --paper:#fff; --paper-ink:#111; --paper-line:#444;
-  --font:"Noto Sans Bengali","Kalpurush","SolaimanLipi","Siyam Rupali","Nirmala UI",system-ui,sans-serif;
-}
-@media (prefers-color-scheme:dark){
-  :root{--bg:#14171b;--panel:#1d2127;--ink:#e8eaed;--muted:#9aa3ad;--line:#38404a;--accent:#7fb2e5;--accent-ink:#0c1b2b;--ok:#4cc38a;--bad:#ff8a80;--warn:#e0b050}
-}
-*{box-sizing:border-box}
-html,body{margin:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;padding-bottom:20px}
-button,input,select,textarea{font:inherit;color:inherit}
-button{cursor:pointer}
-#lock{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:16px}
-#lock[hidden]{display:none}
-.lbox{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px;width:100%;max-width:380px;display:flex;flex-direction:column;gap:12px}
-.lbox h2{font-size:1.15rem}.lbox label{display:flex;flex-direction:column;gap:4px;font-size:.9rem}.lbox input{padding:8px;border:1px solid var(--line);border-radius:6px;font:inherit}
-.lbrand{font-weight:700;color:var(--muted,#667);font-size:.9rem}.lsub{color:var(--muted,#667);font-size:.9rem;margin-top:-6px}.pw{display:flex;gap:6px}.pw input{flex:1;min-width:0}.lbox .errs{min-height:1.2em;color:#b00020;font-size:.85rem}.lbox code{word-break:break-all;font-size:.8rem}.lbtns{display:flex;gap:8px;justify-content:flex-end}
-body.locked .topbar,body.locked main{display:none}
-.topbar{position:sticky;top:0;z-index:20;background:var(--panel);border-bottom:1px solid var(--line);padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.brand{font-weight:700;font-size:1.05rem;margin-right:auto}
-.badge.ok{color:var(--ok);border-color:var(--ok)}
-.btn{border:1px solid var(--line);background:var(--panel);padding:8px 14px;border-radius:8px;min-height:40px}
-.btn:hover{border-color:var(--accent)}
-.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
-.btn.danger{color:var(--bad);border-color:var(--bad)}
-.btn.sm{padding:3px 9px;min-height:30px;font-size:.85rem}
-.btn:disabled{opacity:.45;cursor:not-allowed}
-nav.tabs button.on{color:var(--accent);border-top-color:var(--accent);font-weight:700}
-main{max-width:1280px;margin:0 auto;padding:16px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px}
-.card h2,.card h3{margin:0 0 10px}
-.row{display:flex;flex-wrap:wrap;gap:10px;align-items:end}
-.row>label{display:flex;flex-direction:column;gap:2px;font-size:.82rem;color:var(--muted)}
-input,select,textarea{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-height:40px;max-width:100%}
-textarea{width:100%;min-height:70px}
-.grow{flex:1;min-width:140px}
-.muted{color:var(--muted)} .ok{color:var(--ok)} .bad{color:var(--bad)}
-.num{text-align:right;font-variant-numeric:tabular-nums}
-.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
-table.plain{border-collapse:collapse;width:100%}
-table.plain th,table.plain td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
-table.plain th{font-size:.82rem;color:var(--muted);white-space:nowrap}
-/* ---- the reference-faithful statement ---- */
-.paper{background:var(--paper);color:var(--paper-ink);padding:18px 14px;border:1px solid var(--line);border-radius:6px}
-.paper h1{font-size:1.25rem;text-align:center;margin:4px 0;font-weight:700}
-.paper h2.sub{font-size:1.1rem;text-align:center;margin:6px 0 16px;font-weight:400}
-table.eq{border-collapse:collapse;width:100%;min-width:900px;font-size:.98rem;color:var(--paper-ink)}
-table.eq th,table.eq td{border:1px solid var(--paper-line);padding:3px 8px;text-align:center;vertical-align:middle;font-variant-numeric:tabular-nums}
-table.eq thead th{font-weight:500;background:var(--paper)}
-table.eq td.sym{width:28px;padding:0 2px}
-table.eq td.dt{text-align:left;vertical-align:bottom;white-space:nowrap;min-width:92px}
-table.eq td.lab{white-space:nowrap}
-table.eq td.cm{text-align:center;min-width:120px}
-table.eq tr.top td{border-bottom:0} table.eq tr.bot td{border-top:0}
-table.eq tr.top td.sym,table.eq tr.bot td.sym{border-top:0}
-table.eq tr.tot td{font-weight:700;font-size:1.05rem}
-table.eq .acts button{border:1px solid #999;background:#fff;color:#111;border-radius:6px;padding:1px 7px;font-size:.78rem;margin:0 2px}
-.check{padding:10px 14px;border-radius:8px;margin-top:14px;border:1px solid var(--line);font-weight:600}
-.check.good{border-color:var(--ok);color:var(--ok)} .check.fail{border-color:var(--bad);color:var(--bad);background:rgba(179,38,30,.08)}
-.empty{text-align:center;padding:36px 12px;color:var(--muted)}
-dialog{border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--ink);padding:0;width:min(720px,96vw);max-height:92vh}
-dialog::backdrop{background:rgba(0,0,0,.5)}
-dialog .hd{padding:14px 16px;border-bottom:1px solid var(--line);font-weight:700;display:flex;justify-content:space-between}
-dialog .bd{padding:16px;overflow:auto;max-height:68vh}
-dialog .ft{padding:12px 16px;border-top:1px solid var(--line);display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
-.errs{color:var(--bad);font-size:.9rem;margin:8px 0;padding-left:18px}
-.lines td{padding:4px}
-.lines input,.lines select{width:100%}
-#toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#222;color:#fff;padding:10px 16px;border-radius:10px;z-index:99;display:none;max-width:92vw;gap:12px;align-items:center}
-#toast button{background:none;border:1px solid #fff;color:#fff;border-radius:6px;padding:2px 10px;margin-left:10px}
-.tag{display:inline-block;font-size:.72rem;border:1px solid var(--line);border-radius:6px;padding:0 6px;color:var(--muted)}
-.void{opacity:.6;text-decoration:line-through}
-pre.json{white-space:pre-wrap;word-break:break-all;font-size:.76rem;background:var(--bg);padding:8px;border-radius:8px;max-height:220px;overflow:auto}
-.subtabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
-.subtabs button.on{background:var(--accent);color:var(--accent-ink)}
-body.v-eq{background:#fff}
-body.v-eq .topbar{background:#fff}
-body.v-eq .card.eqcard{background:none;border:0;padding:0;margin:0}
-body.v-eq .paper{border:0;padding:8px 0}
-table.eq tr[data-id]:hover td{background:#f4f8fc}
-.ce{display:block;min-height:1.6em;min-width:1.5em;padding:2px 4px;outline:none;cursor:text;border-radius:3px;white-space:pre-wrap;word-break:break-word}
-.ce:focus{background:#fff8d6;box-shadow:inset 0 0 0 2px #1f4e79}
-h1 .ce,h2 .ce{display:inline-block;min-width:8em}
-table.eq tr.pend td{background:#fff3f0}
-.emenu{position:fixed;right:8px;top:56px;max-width:calc(100vw - 16px);z-index:40;background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.25);min-width:230px;padding:4px}
-.emenu button{display:block;width:100%;text-align:left;border:0;background:none;padding:10px 12px;border-radius:8px;font-size:.95rem}
-.emenu button:hover{background:var(--bg)}
-.rmf{display:none;margin-left:4px;color:#b3261e;cursor:pointer;font-size:.9rem}
-th:hover .rmf{display:inline}
-.perr-row{color:#b3261e;font-size:.85rem;text-align:left!important;background:#fff3f0}
-@media (max-width:700px){
-  main{padding:10px}
-  .brand{font-size:.95rem}
-}
-@media print{
-  @page{size:A4 landscape;margin:10mm}
-  body{background:#fff;padding:0;color:#000}
-  .topbar,nav.tabs,.fab,.noprint,#toast,dialog{display:none!important}
-  main{max-width:none;padding:0}
-  .card{border:0;padding:0;margin:0}
-  .paper{border:0;padding:0}
-  .notebox{border:1px solid #000;resize:none}
-  .scroll{overflow:visible}
-  table.eq{min-width:0;font-size:11pt}
-  .paper table.eq,.paper .scroll.tblwrap{display:table!important}
-  .perr,.rmf{display:none!important}
-  .ce:focus{background:none;box-shadow:none}
-  .view{display:none} .view.printing{display:block!important}
-}
-</style>
+<style>.ic{width:1.15em;height:1.15em;vertical-align:-.2em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-right:4px}:root{--bg:#eef0f3;--panel:#fff;--ink:#111;--muted:#5b6470;--line:#c9ced6;--accent:#1f4e79;--accent-ink:#fff;--ok:#0a7a3c;--bad:#b3261e;--warn:#8a5a00;--paper:#fff;--paper-ink:#111;--paper-line:#444;--font:"Noto Sans Bengali","Kalpurush","SolaimanLipi","Siyam Rupali","Nirmala UI",system-ui,sans-serif}@media(prefers-color-scheme:dark){:root{--bg:#14171b;--panel:#1d2127;--ink:#e8eaed;--muted:#9aa3ad;--line:#38404a;--accent:#7fb2e5;--accent-ink:#0c1b2b;--ok:#4cc38a;--bad:#ff8a80;--warn:#e0b050}}*{box-sizing:border-box}html,body{margin:0}body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;padding-bottom:20px}button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}#lock{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:16px}#lock[hidden]{display:none}#lock{background:#f4f6f9;color:#333;font-family:"Noto Serif Bengali",serif;overflow:auto;align-items:flex-start}#lock *{box-sizing:border-box}.lbox{margin:auto;background:#fff;border-radius:24px;padding:2rem;box-shadow:0 10px 25px #0000000d;width:100%;max-width:500px}.lbox h2{text-align:center;margin-bottom:1.5rem;font-size:1.5rem}.lbox p{text-align:center;margin-bottom:1rem}.lbox .btn-login{width:100%;padding:14px;border:none;border-radius:12px;background:#000;color:#fff;font-weight:700;cursor:pointer;font-size:1rem;margin-top:10px;transition:.3s;font-family:inherit}.lbox .btn-login:hover{background:#222}.lbox .btn-login:disabled{background:#999;cursor:not-allowed}.lbox .input-group{margin-bottom:1.2rem;text-align:left}.lbox label{font-size:.75rem;font-weight:700;display:flex;align-items:center;gap:6px;margin-bottom:6px;color:#555;text-transform:uppercase}.lbox input{width:100%;padding:12px 15px;border-radius:12px;border:1px solid #ddd;outline:none;font-size:.9rem;font-family:inherit;transition:.3s;background:#fff;color:#333}.lbox input:focus{border-color:#000;box-shadow:0 0 0 3px #0000000d}.lbox input.error{border-color:#c00;background:#fff5f5}.password-wrapper{position:relative;display:flex;align-items:center}.password-wrapper input{padding-right:44px}.eye-btn{position:absolute;right:15px;cursor:pointer;color:#888;font-size:1.1rem;z-index:10;padding:5px;background:none;border:0}.status{margin-top:15px;padding:12px;border-radius:12px;font-size:.85rem;text-align:center;display:none}.status-error{display:block;background:#fee2e2;color:#b91c1c;border:1px solid #fecaca}.status-success{display:block;background:#dcfce7;color:#15803d;border:1px solid #bbf7d0}.status-warning{display:block;background:#dbeafe;color:#1e40af;border:1px solid #bfdbfe}.spinner{display:inline-block;width:16px;height:16px;border:2px solid #fff;border-top:2px solid transparent;border-radius:50%;animation:spin .8s linear infinite;margin-right:8px;vertical-align:middle}@keyframes spin{to{transform:rotate(360deg)}}.validation-error{color:#c00;font-size:.7rem;margin-top:4px;display:none}.validation-error.show{display:block}.lbox .btn.primary{width:100%;padding:12px;border-radius:12px;background:#000;color:#fff;border:0;font-family:inherit}body.locked .topbar,body.locked main{display:none}.topbar{position:sticky;top:0;z-index:20;background:var(--panel);border-bottom:1px solid var(--line);padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}.brand{font-weight:700;font-size:1.05rem;margin-right:auto}.badge.ok{color:var(--ok);border-color:var(--ok)}.btn{border:1px solid var(--line);background:var(--panel);padding:8px 14px;border-radius:8px;min-height:40px}.btn:hover{border-color:var(--accent)}.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}.btn.danger{color:var(--bad);border-color:var(--bad)}.btn.sm{padding:3px 9px;min-height:30px;font-size:.85rem}.btn:disabled{opacity:.45;cursor:not-allowed}nav.tabs button.on{color:var(--accent);border-top-color:var(--accent);font-weight:700}main{max-width:1280px;margin:0 auto;padding:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px}.card h2,.card h3{margin:0 0 10px}.row{display:flex;flex-wrap:wrap;gap:10px;align-items:end}.row>label{display:flex;flex-direction:column;gap:2px;font-size:.82rem;color:var(--muted)}input,select,textarea{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-height:40px;max-width:100%}textarea{width:100%;min-height:70px}.grow{flex:1;min-width:140px}.muted{color:var(--muted)}.ok{color:var(--ok)}.bad{color:var(--bad)}.num{text-align:right;font-variant-numeric:tabular-nums}.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}table.plain{border-collapse:collapse;width:100%}table.plain th,table.plain td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}table.plain th{font-size:.82rem;color:var(--muted);white-space:nowrap}.paper{background:var(--paper);color:var(--paper-ink);padding:18px 14px;border:1px solid var(--line);border-radius:6px}.paper h1{font-size:1.25rem;text-align:center;margin:4px 0;font-weight:700}.paper h2.sub{font-size:1.1rem;text-align:center;margin:6px 0 16px;font-weight:400}table.eq{border-collapse:collapse;width:100%;min-width:900px;font-size:.98rem;color:var(--paper-ink)}table.eq th,table.eq td{border:1px solid var(--paper-line);padding:3px 8px;text-align:center;vertical-align:middle;font-variant-numeric:tabular-nums}table.eq thead th{font-weight:500;background:var(--paper)}table.eq td.sym{width:28px;padding:0 2px}table.eq td.dt{text-align:left;vertical-align:bottom;white-space:nowrap;min-width:92px}table.eq td.lab{white-space:nowrap}table.eq td.cm{text-align:center;min-width:120px}table.eq tr.top td{border-bottom:0}table.eq tr.bot td,table.eq tr.top td.sym,table.eq tr.bot td.sym{border-top:0}table.eq tr.tot td{font-weight:700;font-size:1.05rem}table.eq .acts button{border:1px solid #999;background:#fff;color:#111;border-radius:6px;padding:1px 7px;font-size:.78rem;margin:0 2px}.check{padding:10px 14px;border-radius:8px;margin-top:14px;border:1px solid var(--line);font-weight:600}.check.good{border-color:var(--ok);color:var(--ok)}.check.fail{border-color:var(--bad);color:var(--bad);background:#b3261e14}.empty{text-align:center;padding:36px 12px;color:var(--muted)}dialog{border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--ink);padding:0;width:min(720px,96vw);max-height:92vh}dialog::backdrop{background:#00000080}dialog .hd{padding:14px 16px;border-bottom:1px solid var(--line);font-weight:700;display:flex;justify-content:space-between}dialog .bd{padding:16px;overflow:auto;max-height:68vh}dialog .ft{padding:12px 16px;border-top:1px solid var(--line);display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}.errs{color:var(--bad);font-size:.9rem;margin:8px 0;padding-left:18px}.lines td{padding:4px}.lines input,.lines select{width:100%}#toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%);background:#222;color:#fff;padding:10px 16px;border-radius:10px;z-index:99;display:none;max-width:92vw;gap:12px;align-items:center}#toast button{background:none;border:1px solid #fff;color:#fff;border-radius:6px;padding:2px 10px;margin-left:10px}.tag{display:inline-block;font-size:.72rem;border:1px solid var(--line);border-radius:6px;padding:0 6px;color:var(--muted)}.void{opacity:.6;text-decoration:line-through}pre.json{white-space:pre-wrap;word-break:break-all;font-size:.76rem;background:var(--bg);padding:8px;border-radius:8px;max-height:220px;overflow:auto}.subtabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}.subtabs button.on{background:var(--accent);color:var(--accent-ink)}body.v-eq,body.v-eq .topbar{background:#fff}body.v-eq .card.eqcard{background:none;border:0;padding:0;margin:0}body.v-eq .paper{border:0;padding:8px 0}table.eq tr[data-id]:hover td{background:#f4f8fc}.ce{display:block;min-height:1.6em;min-width:1.5em;padding:2px 4px;outline:none;cursor:text;border-radius:3px;white-space:pre-wrap;word-break:break-word}.ce:focus{background:#fff8d6;box-shadow:inset 0 0 0 2px #1f4e79}h1 .ce,h2 .ce{display:inline-block;min-width:8em}table.eq tr.pend td{background:#fff3f0}.emenu{position:fixed;right:8px;top:56px;max-width:calc(100vw - 16px);z-index:40;background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:0 6px 20px #00000040;min-width:230px;padding:4px}.emenu button{display:block;width:100%;text-align:left;border:0;background:none;padding:10px 12px;border-radius:8px;font-size:.95rem}.emenu button:hover{background:var(--bg)}.rmf{display:none;margin-left:4px;color:#b3261e;cursor:pointer;font-size:.9rem}th:hover .rmf{display:inline}.perr-row{color:#b3261e;font-size:.85rem;text-align:left!important;background:#fff3f0}@media(max-width:700px){main{padding:10px}.brand{font-size:.95rem}}@media print{@page{size:A4 landscape;margin:10mm}body{background:#fff;padding:0;color:#000}.topbar,nav.tabs,.fab,.noprint,#toast,dialog{display:none!important}main{max-width:none;padding:0}.card{border:0;padding:0;margin:0}.paper{border:0;padding:0}.notebox{border:1px solid #000;resize:none}.scroll{overflow:visible}table.eq{min-width:0;font-size:11pt}.paper table.eq,.paper .scroll.tblwrap{display:table!important}.perr,.rmf{display:none!important}.ce:focus{background:none;box-shadow:none}.view{display:none}.view.printing{display:block!important}}</style>
 </head>
 <body>
 <header class="topbar noprint">
   <div class="brand"><button class="btn sm" id="btnBack" data-act="goEq" style="display:none">← টেবিলে ফিরুন</button></div>
-  <span style="position:relative"><button class="btn sm primary" data-act="toggleEdit" id="btnEdit"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4H8a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4v-2.5"/><path d="M9 15.2 10 11.6 17.4 4.2a1.7 1.7 0 0 1 2.4 0l.4.4a1.7 1.7 0 0 1 0 2.4L12.8 14.4Z"/><path d="m15.3 6.3 2.4 2.4"/></svg>Edit</button>
+  <span style="position:relative"><button class="btn sm primary" data-act="toggleEdit" id="btnEdit"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4H8a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4v-2.5"/><path d="M9 15.2 10 11.6 17.4 4.2a1.7 1.7 0 0 1 2.4 0l.4.4a1.7 1.7 0 0 1 0 2.4L12.8 14.4Z"/><path d="m15.3 6.3 2.4 2.4"/></svg>এডিট</button>
     <div id="editMenu" class="emenu" hidden>
-      <button data-act="newEntry">＋ সারি</button>
-      <button data-act="rmRow">－ সারি</button>
-      <button data-act="addCol" data-t="asset">＋A</button>
-      <button data-act="rmCol" data-t="asset">－A</button>
-      <button data-act="addCol" data-t="liability">＋L</button>
-      <button data-act="rmCol" data-t="liability">－L</button>
+      <button data-act="newEntry">＋ Column</button>
+      <button data-act="rmRow">- Column</button>
+      <button data-act="addCol" data-t="asset">＋ A</button>
+      <button data-act="rmCol" data-t="asset">－ A</button>
+      <button data-act="addCol" data-t="liability">＋ L</button>
+      <button data-act="rmCol" data-t="liability">－ L</button>
     </div></span>
   <button class="btn sm" data-act="undo" id="btnUndo" title="পূর্বাবস্থা">Undo</button>
   <button class="btn sm" data-act="redo" id="btnRedo" title="আবার করুন">Redo</button>
@@ -140,848 +32,86 @@ th:hover .rmf{display:inline}
 <div id="toast"></div>
 <div id="lock" hidden></div>
 <dialog id="dlg"></dialog>
-
 <script src="config.js"></script>
 <script>
-"use strict";
-const ICON_EDIT = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4H8a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4v-2.5"/><path d="M9 15.2 10 11.6 17.4 4.2a1.7 1.7 0 0 1 2.4 0l.4.4a1.7 1.7 0 0 1 0 2.4L12.8 14.4Z"/><path d="m15.3 6.3 2.4 2.4"/></svg>';
-const ICON_TRASH = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"/><path d="M9 7V4.8A.8.8 0 0 1 9.8 4h4.4a.8.8 0 0 1 .8.8V7"/><path d="M6.2 7l.8 11.4A2 2 0 0 0 9 20.2h6a2 2 0 0 0 2-1.8L17.8 7"/><path d="M10 11v5.5M14 11v5.5"/></svg>';
-
-/* সংযোগ ও টেবিলের নাম config.js ফাইল থেকে আসে */
-const CFG = window.APP_CONFIG || {}, SB = CFG.supabase || {};
-const TABLE = CFG.table || "", RPC_SAVE = TABLE + "_save_entry", RPC_RESTORE = TABLE + "_restore_backup";
-
 /* =====================================================================
    শিরোনাম ও উপশিরোনাম — এখানে বদলান (পাতায় চাপ দিয়ে বদলানো যায় না)।
    SUBTITLE-এ যা লিখবেন হুবহু তাই দেখাবে। চাইলে সময়কাল অনুযায়ী নিজে বদলানোর জন্য
    {বছর}  {মাস}  {থেকে}  {পর্যন্ত} চিহ্ন বসাতে পারেন। খালি "" রাখলে কিছুই দেখাবে না।
    ===================================================================== */
-const PAGE_TITLE = "Accounting-Equation";
-const SUBTITLE = "INYT 444";
-const SDK_URL = CFG.sdkUrl || "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js";
-const LS_DATA = "hisab_eq_v1", LS_SNAP = "hisab_eq_presnap";
-const APP = "hisab-eq", APP_VERSION = 1;
-
-/* ---------------- utils ---------------- */
-const $ = (s, r = document) => r.querySelector(s);
-const clone = o => JSON.parse(JSON.stringify(o));
-const uuid = () => (crypto.randomUUID ? crypto.randomUUID() : "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, c => { const r = Math.random() * 16 | 0; return (c === "x" ? r : (r & 3 | 8)).toString(16); }));
-const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const nowIso = () => new Date().toISOString();
-const BN = "০১২৩৪৫৬৭৮৯";
-const MONTHS = ["জানুয়ারি", "ফেব্রুয়ারি", "মার্চ", "এপ্রিল", "মে", "জুন", "জুলাই", "আগস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"];
-const MSHORT = ["জানু", "ফেব্রু", "মার্চ", "এপ্রিল", "মে", "জুন", "জুলাই", "আগস্ট", "সেপ্টে", "অক্টো", "নভে", "ডিসে"];
-const TYPE_BN = { asset: "সম্পদ", liability: "দায়", equity: "মালিকানা স্বত্ব", revenue: "আয়", expense: "ব্যয়" };
-const KIND_BN = { cash: "নগদ", bank: "ব্যাংক", receivable: "প্রাপ্য", inventory: "মজুদ", equipment: "যন্ত্রপাতি/স্থায়ী", loan: "ঋণ", payable: "প্রদেয়", capital: "মূলধন", drawings: "উত্তোলন", other: "অন্যান্য" };
-
-function D(str) { str = String(str); return S.settings.digits === "bn" ? str.replace(/[0-9]/g, d => BN[d]) : str; }
-function groupInt(s) { if (s.length <= 3) return s; const l = s.slice(-3); return s.slice(0, -3).replace(/\B(?=(\d{2})+(?!\d))/g, ",") + "," + l; }
-function fmt(p, o = {}) { // p: integer paisa
-  const neg = p < 0, a = Math.abs(p), t = Math.floor(a / 100), f = a % 100;
-  let s = groupInt(String(t)); if (f) s += "." + String(f).padStart(2, "0");
-  s = D(s); return (neg ? "−" : (o.plus && p > 0 ? "+" : "")) + (o.cur ? "৳" : "") + s;
-}
-function fmtAbs(p) { return fmt(Math.abs(p)); }
-function parseAmt(str) {
-  if (str == null) return NaN; let s = String(str).trim(); if (s === "") return 0;
-  s = s.replace(/[০-৯]/g, c => BN.indexOf(c)).replace(/[,\s৳]/g, "").replace("।", ".");
-  if (!/^\d+(\.\d{1,2})?$/.test(s)) return NaN;
-  const [i, f = ""] = s.split("."); const p = parseInt(i, 10) * 100 + parseInt((f + "00").slice(0, 2), 10);
-  return p > 99999999999999 ? NaN : p;
-}
-function validDate(s) { return /^\d{4}-\d{2}-\d{2}$/.test(s) && new Date(s + "T00:00:00Z").toISOString().slice(0, 10) === s; }
-function ymd(s) { return s.split("-").map(Number); }
-function dShort(s, withYear) { const [y, m, d] = ymd(s); return (withYear ? D(y) + " " : "") + MSHORT[m - 1] + ":" + (withYear ? "" : " ") + D(d); }
-function dLong(s) { const [y, m, d] = ymd(s); return D(d) + " " + MONTHS[m - 1] + " " + D(y); }
-function lastDay(y, m) { return new Date(Date.UTC(y, m, 0)).getUTCDate(); }
-function pad(n) { return String(n).padStart(2, "0"); }
-function toast(msg, action) {
-  const t = $("#toast"); t.innerHTML = esc(msg) + (action ? `<button data-act="${action.act}">${esc(action.label)}</button>` : ""); t.style.display = "flex";
-  clearTimeout(toast._t); toast._t = setTimeout(() => t.style.display = "none", action ? 8000 : 4500);
-}
-
-/* ---------------- state ---------------- */
-function defaultAccounts() {
-  const A = (code, name, type, kind, showCol, sort) => ({ id: uuid(), code, name, type, kind, showCol, active: true, sort });
-  return [
-    A("1010", "নগদ", "asset", "cash", true, 10), A("1020", "ব্যাংক", "asset", "bank", false, 20),
-    A("1030", "দেনাদার/প্রাপ্য হিসাব", "asset", "receivable", true, 30), A("1040", "মজুদ পণ্য", "asset", "inventory", false, 40),
-    A("1050", "যন্ত্রপাতি", "asset", "equipment", true, 50),
-    A("2010", "ব্যাংক ঋণ", "liability", "loan", true, 60), A("2020", "পাওনাদার/প্রদেয় হিসাব", "liability", "payable", true, 70),
-    A("3010", "মূলধন", "equity", "capital", false, 80), A("3020", "মালিকের উত্তোলন", "equity", "drawings", false, 90),
-    A("4010", "সেবা আয়", "revenue", "other", false, 100), A("4020", "বিক্রয় আয়", "revenue", "other", false, 110),
-    A("5010", "ভাড়া খরচ", "expense", "other", false, 120), A("5020", "বেতন খরচ", "expense", "other", false, 130),
-    A("5030", "বিদ্যুৎ ও ইউটিলিটি খরচ", "expense", "other", false, 140), A("5040", "বিক্রীত পণ্যের ব্যয়", "expense", "other", false, 150),
-    A("5050", "অন্যান্য খরচ", "expense", "other", false, 160)
-  ];
-}
-function defaultSettings() {
-  const n = new Date();
-  return { title: "", subtitle: "", digits: "bn", periodType: "month", year: n.getFullYear(), month: n.getMonth() + 1, from: "", to: "", note: "" };
-}
-let S = { settings: defaultSettings(), accounts: defaultAccounts(), entries: [], audit: [] };
-let store = null, USER = "স্থানীয় ব্যবহারকারী", view = "eq", UNDO = [], REDO = [], JSHOW = 50, JSORT = "asc", RSUB = "tb", RACC = "";
-let JF = { q: "", from: "", to: "", acc: "", tpl: "" }, AUDQ = "";
-
-const amap = () => Object.fromEntries(S.accounts.map(a => [a.id, a]));
-const cmpE = (a, b) => a.date < b.date ? -1 : a.date > b.date ? 1 : ((a.seq || 0) - (b.seq || 0)) || (a.id < b.id ? -1 : 1);
-const activeEntries = () => S.entries.filter(e => e.status === "active").sort(cmpE);
-
-/* ---------------- templates ---------------- */
-const isCash = a => a.type === "asset" && (a.kind === "cash" || a.kind === "bank");
-const SPEC = {
-  cash: isCash, receivable: a => a.kind === "receivable", payable: a => a.kind === "payable", loan: a => a.kind === "loan",
-  capital: a => a.kind === "capital", drawings: a => a.kind === "drawings", revenue: a => a.type === "revenue", expense: a => a.type === "expense",
-  buy: a => a.type === "asset" && (a.kind === "equipment" || a.kind === "inventory" || a.kind === "other"), any: () => true
-};
-const TPL = {
-  capital_in: { l: "মূলধন আনয়ন", dr: "cash", cr: "capital", d: "মূলধন আনয়ন" },
-  income_cash: { l: "আয় (নগদে/ব্যাংকে)", dr: "cash", cr: "revenue", d: "" },
-  income_credit: { l: "আয় (বাকিতে)", dr: "receivable", cr: "revenue", d: "" },
-  expense_cash: { l: "খরচ (নগদে/ব্যাংকে)", dr: "expense", cr: "cash", d: "" },
-  expense_credit: { l: "খরচ (বাকিতে)", dr: "expense", cr: "payable", d: "" },
-  buy_cash: { l: "সম্পদ/মালামাল ক্রয় (নগদে)", dr: "buy", cr: "cash", d: "ক্রয়" },
-  buy_credit: { l: "সম্পদ/মালামাল ক্রয় (বাকিতে)", dr: "buy", cr: "payable", d: "বাকিতে ক্রয়" },
-  loan_in: { l: "ব্যাংক ঋণ গ্রহণ", dr: "cash", cr: "loan", d: "ঋণ গ্রহণ" },
-  loan_repay: { l: "ঋণ পরিশোধ", dr: "loan", cr: "cash", d: "ঋণ পরিশোধ" },
-  pay_creditor: { l: "পাওনাদারকে পরিশোধ", dr: "payable", cr: "cash", d: "পাওনাদার পরিশোধ" },
-  collect_debtor: { l: "দেনাদারের কাছ থেকে আদায়", dr: "cash", cr: "receivable", d: "দেনাদার আদায়" },
-  drawings: { l: "মালিকের উত্তোলন", dr: "drawings", cr: "cash", d: "মালিকের উত্তোলন" },
-  transfer: { l: "নগদ ↔ ব্যাংক স্থানান্তর", dr: "cash", cr: "cash", d: "স্থানান্তর" },
-  custom: { l: "কাস্টম জাবেদা (একাধিক লাইন)", dr: "any", cr: "any", d: "" }
-};
-const tplLabel = k => (TPL[k] || TPL.custom).l;
-
-/* ---------------- accounting engine ---------------- */
-function colSign(a, dr, cr) { return a.type === "asset" ? dr - cr : cr - dr; }   // asset: Dr+, all others: Cr+
-function applyEntry(bal, e, am) { for (const l of e.lines) { const a = am[l.acc]; if (a) bal[a.id] = (bal[a.id] || 0) + colSign(a, l.dr, l.cr); } }
-function entryDelta(e, am) { const d = {}; applyEntry(d, e, am); return d; }
-function sumType(bal, am, f) { let t = 0; for (const id in bal) if (am[id] && f(am[id])) t += bal[id]; return t; }
-function totalsOf(bal, am) {
-  const A = sumType(bal, am, a => a.type === "asset"), L = sumType(bal, am, a => a.type === "liability");
-  const OE = sumType(bal, am, a => a.type === "equity" || a.type === "revenue" || a.type === "expense");
-  return { A, L, OE, diff: A - (L + OE) };
-}
-function validateEntry(e, o = {}) {
-  const er = [], am = amap();
-  if (!validDate(e.date)) er.push("তারিখ সঠিক নয়");
-  if ((e.desc || "").length > 300) er.push("বিবরণ ৩০০ অক্ষরের বেশি হতে পারবে না");
-  if (!Array.isArray(e.lines) || e.lines.length < 2) { er.push("কমপক্ষে দুইটি লাইন (ডেবিট ও ক্রেডিট) প্রয়োজন"); return er; }
-  let dr = 0, cr = 0;
-  e.lines.forEach((l, i) => {
-    const n = "লাইন " + D(i + 1) + ": ", a = am[l.acc];
-    if (!a) er.push(n + "হিসাব নির্বাচন করুন");
-    else if (o.checkActive && !a.active) er.push(n + "“" + a.name + "” নিষ্ক্রিয় হিসাব");
-    if (!Number.isInteger(l.dr) || !Number.isInteger(l.cr) || l.dr < 0 || l.cr < 0) { er.push(n + "পরিমাণ সঠিক নয়"); return; }
-    if (l.dr > 0 && l.cr > 0) er.push(n + "একই লাইনে ডেবিট ও ক্রেডিট একসাথে দেওয়া যাবে না");
-    if (l.dr === 0 && l.cr === 0) er.push(n + "পরিমাণ শূন্য");
-    dr += l.dr; cr += l.cr;
-  });
-  if (dr !== cr) er.push("ডেবিট (" + fmt(dr, { cur: 1 }) + ") ও ক্রেডিট (" + fmt(cr, { cur: 1 }) + ") সমান নয়; পার্থক্য " + fmt(Math.abs(dr - cr), { cur: 1 }));
-  const ids = new Set(e.lines.map(l => l.acc)); if (ids.size < 2 && er.length === 0) er.push("ডেবিট ও ক্রেডিট হিসাব আলাদা হতে হবে");
-  return er;
-}
-function negativeAccounts(entries) { // accounts that go negative (asset or liability) at any point, replaying chronologically
-  const am = amap(), bal = {}, bad = new Set();
-  for (const e of entries.slice().sort(cmpE)) { applyEntry(bal, e, am); for (const id in bal) { const a = am[id]; if (a && (a.type === "asset" || a.type === "liability") && bal[id] < 0) bad.add(id); } }
-  return bad;
-}
-function period() {
-  const s = S.settings; let from, to, t = s.periodType;
-  if (t === "month") { from = `${s.year}-${pad(s.month)}-01`; to = `${s.year}-${pad(s.month)}-${pad(lastDay(s.year, s.month))}`; }
-  else if (t === "year") { from = `${s.year}-01-01`; to = `${s.year}-12-31`; }
-  else if (t === "custom" && validDate(s.from) && validDate(s.to) && s.from <= s.to) { from = s.from; to = s.to; }
-  else { from = "0000-01-01"; to = "9999-12-31"; t = t === "custom" ? "all" : t; }
-  return { from, to, type: t };
-}
-function subtitleText() {
-  const s = S.settings, p = period();
-  return String(SUBTITLE).replace("{বছর}", D(s.year)).replace("{মাস}", MONTHS[s.month - 1]).replace("{থেকে}", dLong(p.from)).replace("{পর্যন্ত}", dLong(p.to));
-}
-function periodLabel() {
-  const s = S.settings, p = period();
-  return p.type === "month" ? MONTHS[s.month - 1] + " " + D(s.year) : p.type === "year" ? D(s.year) + " সাল" : p.type === "custom" ? dLong(p.from) + " – " + dLong(p.to) : "সকল সময়";
-}
-function buildModel() {
-  const am = amap(), p = period(), act = activeEntries();
-  const used = new Set(); act.forEach(e => e.lines.forEach(l => used.add(l.acc)));
-  const vis = t => S.accounts.filter(a => a.type === t && (a.showCol || used.has(a.id))).sort((x, y) => x.sort - y.sort);
-  const assets = vis("asset"), liabs = vis("liability");
-  const bal = {}; act.filter(e => e.date < p.from).forEach(e => applyEntry(bal, e, am));
-  const opening = clone(bal), rows = [];
-  for (const e of act.filter(e => e.date >= p.from && e.date <= p.to)) {
-    const before = clone(bal), delta = entryDelta(e, am); applyEntry(bal, e, am);
-    rows.push({ e, before, delta, after: clone(bal), tb: totalsOf(before, am), ta: totalsOf(bal, am) });
-  }
-  return { am, p, assets, liabs, opening, rows, closing: clone(bal), tot: totalsOf(bal, am) };
-}
-function oeBreakdown(bal, am) {
-  return {
-    capital: sumType(bal, am, a => a.type === "equity" && a.kind !== "drawings"), revenue: sumType(bal, am, a => a.type === "revenue"),
-    expense: -sumType(bal, am, a => a.type === "expense"), drawings: -sumType(bal, am, a => a.type === "equity" && a.kind === "drawings")
-  };
-}
-function integrity() { // independent honesty checks on the whole ledger
-  const am = amap(), act = activeEntries(), bad = [], unk = [];
-  let tdr = 0, tcr = 0;
-  for (const e of act) { const er = validateEntry(e); if (er.length) bad.push({ e, er }); e.lines.forEach(l => { if (!am[l.acc]) unk.push(e.id); tdr += l.dr; tcr += l.cr; }); }
-  const bal = {}; act.forEach(e => applyEntry(bal, e, am));
-  return { ...totalsOf(bal, am), tdr, tcr, bad, unk, ok: bad.length === 0 && tdr === tcr && totalsOf(bal, am).diff === 0 && unk.length === 0 };
-}
-
-/* ---------------- stores ---------------- */
-function normState(raw) {
-  const st = { settings: { ...defaultSettings(), ...(raw.settings || {}) }, accounts: raw.accounts || [], entries: raw.entries || [], audit: raw.audit || [] };
-  return st;
-}
-const LocalStore = {
-  mode: "local",
-  async load() { let raw = null; try { raw = JSON.parse(localStorage.getItem(LS_DATA) || "null"); } catch (e) { throw new Error("স্থানীয় ডেটা পড়া যায়নি (ব্রাউজার স্টোরেজ নষ্ট/অবরুদ্ধ)"); } return raw ? normState(raw) : null; },
-  write(st) { try { localStorage.setItem(LS_DATA, JSON.stringify({ app: APP, v: APP_VERSION, ...st })); } catch (e) { throw new Error("সংরক্ষণ ব্যর্থ — ব্রাউজারের স্টোরেজ পূর্ণ বা অবরুদ্ধ। ডেটা সংরক্ষিত হয়নি; JSON ব্যাকআপ নিন।"); } },
-  async saveEntry(e, exp) {
-    const cur = S.entries.find(x => x.id === e.id);
-    if (cur && cur.version !== exp) throw new Error("সংঘাত: লেনদেনটি অন্যত্র পরিবর্তিত হয়েছে। পাতা রিলোড করুন।");
-    const seq = cur ? cur.seq : Math.max(0, ...S.entries.map(x => x.seq || 0)) + 1, t = nowIso();
-    const saved = { ...e, seq, version: (cur ? cur.version : 0) + 1, createdAt: cur ? cur.createdAt : t, updatedAt: t };
-    this.write({ ...S, entries: cur ? S.entries.map(x => x.id === e.id ? saved : x) : [...S.entries, saved] });
-    return saved;
-  },
-  async saveAccount(a) { const ex = S.accounts.some(x => x.id === a.id); this.write({ ...S, accounts: ex ? S.accounts.map(x => x.id === a.id ? a : x) : [...S.accounts, a] }); },
-  async deleteAccount(id) { this.write({ ...S, accounts: S.accounts.filter(x => x.id !== id) }); },
-  async saveSettings(s) { this.write({ ...S, settings: s }); },
-  async addAudit(a) { this.write({ ...S, audit: [a, ...S.audit].slice(0, 5000) }); },
-  async restore(st) { this.write(st); }
-};
-function SupaStore(sb) {
-  const all = async (build) => { let out = [], from = 0; for (; ;) { const { data, error } = await build().range(from, from + 999); if (error) throw error; out = out.concat(data); if (data.length < 1000) break; from += 1000; } return out; };
-  const T = e => e && e.message ? new Error(e.code === "40001" ? "সংঘাত: লেনদেনটি অন্যত্র পরিবর্তিত হয়েছে। রিলোড করুন।" : e.code === "23514" ? "ডেটাবেস অসমান/অবৈধ লেনদেন প্রত্যাখ্যান করেছে: " + e.message : e.code === "23503" ? "এই হিসাব লেনদেনে ব্যবহৃত হয়েছে — মোছা যাবে না" : e.message) : e;
-  let UID; const uid = async () => UID || (UID = (await sb.auth.getUser()).data.user.id);
-  const put = async (id, kind, data, version) => { const { error } = await sb.from(TABLE).upsert({ user_id: await uid(), id, kind, data, ...(version ? { version } : {}) }, { onConflict: "user_id,id" }); if (error) throw T(error); };
-  return {
-    mode: "supabase", sb,
-    async load() {
-      const [rows, au] = await Promise.all([
-        all(() => sb.from(TABLE).select("*").neq("kind", "audit").order("id")),
-        sb.from(TABLE).select("data").eq("kind", "audit").order("created_at", { ascending: false }).limit(1000)]);
-      if (au.error) throw au.error;
-      const of = k => rows.filter(r => r.kind === k).map(r => r.data);
-      if (!rows.length) return null;
-      return normState({ settings: of("settings")[0] || {}, accounts: of("account"), entries: of("entry"), audit: au.data.map(r => r.data) });
-    },
-    async saveEntry(e, exp) { const { data, error } = await sb.rpc(RPC_SAVE, { p: { ...e, expected_version: exp } }); if (error) throw T(error); return { ...e, seq: Number(data.seq), version: data.version, updatedAt: data.updated_at, createdAt: e.createdAt || data.updated_at }; },
-    async saveAccount(a) { await put(a.id, "account", a); },
-    async deleteAccount(id) { const { error } = await sb.from(TABLE).delete().eq("id", id).eq("kind", "account"); if (error) throw T(error); },
-    async saveSettings(s) { await put(await uid(), "settings", s); },
-    async addAudit(a) { await put(a.id, "audit", a); },
-    async restore(st) { const { error } = await sb.rpc(RPC_RESTORE, { p: { settings: st.settings, accounts: st.accounts, entries: st.entries, actor: USER } }); if (error) throw T(error); }
-  };
-}
-
-/* ---------------- audit & mutations ---------------- */
-async function audit(action, entity, entityId, summary, before, after) {
-  const a = { id: uuid(), ts: nowIso(), actor: USER, action, entity, entityId: entityId || "", summary, before: before || null, after: after || null };
-  try { await store.addAudit(a); S.audit = [a, ...S.audit]; } catch (e) { toast("সতর্কতা: অডিট লগ সংরক্ষণ হয়নি — " + e.message); }
-}
-const snap = e => e ? { date: e.date, desc: e.desc, tpl: e.tpl, status: e.status, lines: e.lines.map(l => ({ acc: (amap()[l.acc] || {}).name || l.acc, dr: l.dr / 100, cr: l.cr / 100 })) } : null;
-async function commitEntry(ent, action, summary, o = {}) {
-  const cur = S.entries.find(x => x.id === ent.id) || null;
-  const er = validateEntry(ent, { checkActive: o.checkActive }); if (er.length) throw new Error(er.join("; "));
-  const saved = await store.saveEntry(ent, cur ? cur.version : null);
-  S.entries = cur ? S.entries.map(x => x.id === ent.id ? saved : x) : [...S.entries, saved];
-  await audit(action, "entry", ent.id, summary, snap(cur), snap(saved));
-  if (!o.noUndo) { UNDO.push({ id: ent.id, before: cur ? clone(cur) : null, after: clone(saved) }); if (UNDO.length > 50) UNDO.shift(); REDO = []; }
-  return saved;
-}
-async function voidEntry(id, reason) { const cur = S.entries.find(e => e.id === id); await commitEntry({ ...clone(cur), status: "void", voidReason: reason || "মুছে ফেলা হয়েছে" }, "void", "লেনদেন #" + cur.seq + " বাতিল/রিসাইকেল বিনে"); }
-async function restoreEntry(id) { const cur = S.entries.find(e => e.id === id); await commitEntry({ ...clone(cur), status: "active", voidReason: "" }, "unvoid", "লেনদেন #" + cur.seq + " পুনরুদ্ধার"); }
-async function doUndo() {
-  const u = UNDO.pop(); if (!u) return toast("আনডু করার কিছু নেই");
-  try { const cur = S.entries.find(e => e.id === u.id); const tgt = u.before ? { ...clone(u.before), version: cur.version } : { ...clone(cur), status: "void", voidReason: "আনডু" };
-    const saved = await commitEntry(tgt, "undo", "আনডু: লেনদেন #" + cur.seq, { noUndo: true }); REDO.push(u); toast("আনডু হয়েছে"); render(); }
-  catch (e) { UNDO.push(u); toast(e.message); }
-}
-async function doRedo() {
-  const u = REDO.pop(); if (!u) return toast("রিডু করার কিছু নেই");
-  try { const cur = S.entries.find(e => e.id === u.id); await commitEntry({ ...clone(u.after), version: cur.version }, "redo", "রিডু: লেনদেন #" + cur.seq, { noUndo: true }); UNDO.push(u); toast("রিডু হয়েছে"); render(); }
-  catch (e) { REDO.push(u); toast(e.message); }
-}
-async function saveSettings(patch, quiet) {
-  const next = { ...S.settings, ...patch };
-  try { await store.saveSettings(next); S.settings = next; } catch (e) { toast("সেটিংস সংরক্ষণ ব্যর্থ: " + e.message); }
-}
-
-/* ---------------- entry modal ---------------- */
-let DR = null; // draft
-function accOpts(spec, sel, includeInactive) {
-  const f = SPEC[spec] || SPEC.any; const list = S.accounts.filter(a => (a.active || a.id === sel) && f(a)).sort((x, y) => x.sort - y.sort);
-  return `<option value="">— নির্বাচন —</option>` + list.map(a => `<option value="${a.id}" ${a.id === sel ? "selected" : ""}>${esc(a.code)} · ${esc(a.name)}${a.active ? "" : " (নিষ্ক্রিয়)"}</option>`).join("");
-}
-function firstAcc(spec, prefKind) { const f = SPEC[spec] || SPEC.any; const l = S.accounts.filter(a => a.active && f(a)).sort((x, y) => x.sort - y.sort); return (l.find(a => a.kind === prefKind) || l[0] || {}).id || ""; }
-function newDraft() {
-  const t = new Date(), p = period(); let date = `${t.getFullYear()}-${pad(t.getMonth() + 1)}-${pad(t.getDate())}`;
-  if (p.type !== "all" && (date < p.from || date > p.to)) date = p.to < "9999" ? p.to : date;
-  return { id: uuid(), isNew: true, date, tpl: "expense_cash", desc: "", dirty: false, mode: "simple", dr: "", cr: "", amt: "", lines: [{ acc: "", dr: "", cr: "" }, { acc: "", dr: "", cr: "" }] };
-}
-function applyTpl(d) {
-  const t = TPL[d.tpl]; if (d.tpl === "custom") { d.mode = "lines"; return; } d.mode = "simple";
-  d.dr = firstAcc(t.dr, t.dr === "cash" && d.tpl === "transfer" ? "bank" : "cash"); d.cr = firstAcc(t.cr, "cash");
-  if (!d.dirty) d.desc = t.d;
-}
-function draftFromEntry(e) {
-  const d = { id: e.id, isNew: false, date: e.date, tpl: e.tpl || "custom", desc: e.desc, dirty: true, version: e.version, mode: "lines", dr: "", cr: "", amt: "", lines: e.lines.map(l => ({ acc: l.acc, dr: l.dr ? String(l.dr / 100) : "", cr: l.cr ? String(l.cr / 100) : "" })) };
-  if (e.lines.length === 2 && e.lines[0].dr && e.lines[1].cr && e.lines[0].dr === e.lines[1].cr && TPL[d.tpl] && d.tpl !== "custom") { d.mode = "simple"; d.dr = e.lines[0].acc; d.cr = e.lines[1].acc; d.amt = String(e.lines[0].dr / 100); }
-  else if (e.lines.length === 2 && e.lines[0].cr && e.lines[1].dr && e.lines[0].dr === e.lines[1].cr) { /* order swapped: stay in lines mode */ }
-  return d;
-}
-function draftToEntry(d) {
-  let lines;
-  if (d.mode === "simple") { const a = parseAmt(d.amt); lines = [{ acc: d.dr, dr: a, cr: 0 }, { acc: d.cr, dr: 0, cr: a }]; }
-  else lines = d.lines.map(l => ({ acc: l.acc, dr: parseAmt(l.dr), cr: parseAmt(l.cr) }));
-  return { id: d.id, date: d.date, desc: d.desc.trim(), tpl: d.tpl, status: "active", voidReason: "", lines };
-}
-function entryErrors(d) {
-  const e = draftToEntry(d), er = validateEntry(e, { checkActive: true });
-  if (d.mode === "simple" && !(e.lines[0].dr > 0)) { const i = er.indexOf("লাইন ১: পরিমাণ শূন্য"); }
-  return { e, er: [...new Set(er)] };
-}
-function entryModal() {
-  const d = DR, t = TPL[d.tpl]; const dlg = $("#dlg");
-  let body = `<div class="row"><label>তারিখ<input type="date" data-f="date" value="${esc(d.date)}"></label>
-   <label class="grow">লেনদেনের ধরন<select data-f="tpl">${Object.keys(TPL).map(k => `<option value="${k}" ${k === d.tpl ? "selected" : ""}>${esc(TPL[k].l)}</option>`).join("")}</select></label></div>
-   <div class="row" style="margin-top:10px"><label class="grow">মন্তব্য / বিবরণ<input data-f="desc" value="${esc(d.desc)}" maxlength="300" placeholder="যেমন: ভাড়া খরচ"></label></div>`;
-  if (d.mode === "simple") {
-    body += `<div class="row" style="margin-top:10px"><label class="grow">ডেবিট হিসাব (Dr)<select data-f="dr">${accOpts(t.dr, d.dr)}</select></label>
-     <label class="grow">ক্রেডিট হিসাব (Cr)<select data-f="cr">${accOpts(t.cr, d.cr)}</select></label>
-     <label>পরিমাণ (৳)<input data-f="amt" inputmode="decimal" value="${esc(d.amt)}" placeholder="০" style="width:140px"></label></div>
-     <p class="muted" style="font-size:.85rem">একাধিক লাইন লাগলে <a href="#" data-act="toLines">উন্নত জাবেদা মোড</a> ব্যবহার করুন।</p>`;
-  } else {
-    body += `<div class="scroll"><table class="lines" style="width:100%;margin-top:10px"><thead><tr><th>হিসাব</th><th>ডেবিট (৳)</th><th>ক্রেডিট (৳)</th><th></th></tr></thead><tbody>
-    ${d.lines.map((l, i) => `<tr><td style="min-width:200px"><select data-f="l.acc" data-i="${i}">${accOpts("any", l.acc)}</select></td>
-     <td><input data-f="l.dr" data-i="${i}" inputmode="decimal" value="${esc(l.dr)}" style="min-width:90px"></td>
-     <td><input data-f="l.cr" data-i="${i}" inputmode="decimal" value="${esc(l.cr)}" style="min-width:90px"></td>
-     <td><button class="btn sm" data-act="rmLine" data-i="${i}" ${d.lines.length <= 2 ? "disabled" : ""}>✕</button></td></tr>`).join("")}</tbody></table></div>
+const PAGE_TITLE = "Accounting Equation";
+const SUBTITLE = "INYT444";
+</script>
+<script>"use strict";const ICON_EDIT='<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4H8a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4v-2.5"/><path d="M9 15.2 10 11.6 17.4 4.2a1.7 1.7 0 0 1 2.4 0l.4.4a1.7 1.7 0 0 1 0 2.4L12.8 14.4Z"/><path d="m15.3 6.3 2.4 2.4"/></svg>',ICON_TRASH='<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"/><path d="M9 7V4.8A.8.8 0 0 1 9.8 4h4.4a.8.8 0 0 1 .8.8V7"/><path d="M6.2 7l.8 11.4A2 2 0 0 0 9 20.2h6a2 2 0 0 0 2-1.8L17.8 7"/><path d="M10 11v5.5M14 11v5.5"/></svg>',CFG=window.APP_CONFIG||{},SB=CFG.supabase||{},TABLE=CFG.table||"",RPC_SAVE=TABLE+"_save_entry",RPC_RESTORE=TABLE+"_restore_backup",SDK_URL=CFG.sdkUrl||"https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js",LS_DATA="hisab_eq_v1",LS_SNAP="hisab_eq_presnap",APP="hisab-eq",APP_VERSION=1,$=(t,a=document)=>a.querySelector(t),clone=t=>JSON.parse(JSON.stringify(t)),uuid=()=>crypto.randomUUID?crypto.randomUUID():"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,t=>{const a=Math.random()*16|0;return(t==="x"?a:a&3|8).toString(16)}),esc=t=>String(t??"").replace(/[&<>"']/g,a=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[a]),nowIso=()=>new Date().toISOString(),BN="০১২৩৪৫৬৭৮৯",MONTHS=["জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল","মে","জুন","জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"],MSHORT=["জানু","ফেব্রু","মার্চ","এপ্রিল","মে","জুন","জুলাই","আগস্ট","সেপ্টে","অক্টো","নভে","ডিসে"],TYPE_BN={asset:"সম্পদ",liability:"দায়",equity:"মালিকানা স্বত্ব",revenue:"আয়",expense:"ব্যয়"},KIND_BN={cash:"নগদ",bank:"ব্যাংক",receivable:"প্রাপ্য",inventory:"মজুদ",equipment:"যন্ত্রপাতি/স্থায়ী",loan:"ঋণ",payable:"প্রদেয়",capital:"মূলধন",drawings:"উত্তোলন",other:"অন্যান্য"};function D(t){return t=String(t),S.settings.digits==="bn"?t.replace(/[0-9]/g,a=>BN[a]):t}function groupInt(t){if(t.length<=3)return t;const a=t.slice(-3);return t.slice(0,-3).replace(/\B(?=(\d{2})+(?!\d))/g,",")+","+a}function fmt(t,a={}){const e=t<0,s=Math.abs(t),n=Math.floor(s/100),i=s%100;let c=groupInt(String(n));return i&&(c+="."+String(i).padStart(2,"0")),c=D(c),(e?"−":a.plus&&t>0?"+":"")+(a.cur?"৳":"")+c}function fmtAbs(t){return fmt(Math.abs(t))}function parseAmt(t){if(t==null)return NaN;let a=String(t).trim();if(a==="")return 0;if(a=a.replace(/[০-৯]/g,i=>BN.indexOf(i)).replace(/[,\s৳]/g,"").replace("।","."),!/^\d+(\.\d{1,2})?$/.test(a))return NaN;const[e,s=""]=a.split("."),n=parseInt(e,10)*100+parseInt((s+"00").slice(0,2),10);return n>99999999999999?NaN:n}function validDate(t){return/^\d{4}-\d{2}-\d{2}$/.test(t)&&new Date(t+"T00:00:00Z").toISOString().slice(0,10)===t}function ymd(t){return t.split("-").map(Number)}function dShort(t,a){const[e,s,n]=ymd(t);return(a?D(e)+" ":"")+MSHORT[s-1]+":"+(a?"":" ")+D(n)}function dLong(t){const[a,e,s]=ymd(t);return D(s)+" "+MONTHS[e-1]+" "+D(a)}function lastDay(t,a){return new Date(Date.UTC(t,a,0)).getUTCDate()}function pad(t){return String(t).padStart(2,"0")}function toast(t,a){const e=$("#toast");e.innerHTML=esc(t)+(a?`<button data-act="${a.act}">${esc(a.label)}</button>`:""),e.style.display="flex",clearTimeout(toast._t),toast._t=setTimeout(()=>e.style.display="none",a?8e3:4500)}function defaultAccounts(){const t=(a,e,s,n,i,c)=>({id:uuid(),code:a,name:e,type:s,kind:n,showCol:i,active:!0,sort:c});return[t("1010","নগদ","asset","cash",!0,10),t("1020","ব্যাংক","asset","bank",!1,20),t("1030","দেনাদার/প্রাপ্য হিসাব","asset","receivable",!0,30),t("1040","মজুদ পণ্য","asset","inventory",!1,40),t("1050","যন্ত্রপাতি","asset","equipment",!0,50),t("2010","ব্যাংক ঋণ","liability","loan",!0,60),t("2020","পাওনাদার/প্রদেয় হিসাব","liability","payable",!0,70),t("3010","মূলধন","equity","capital",!1,80),t("3020","মালিকের উত্তোলন","equity","drawings",!1,90),t("4010","সেবা আয়","revenue","other",!1,100),t("4020","বিক্রয় আয়","revenue","other",!1,110),t("5010","ভাড়া খরচ","expense","other",!1,120),t("5020","বেতন খরচ","expense","other",!1,130),t("5030","বিদ্যুৎ ও ইউটিলিটি খরচ","expense","other",!1,140),t("5040","বিক্রীত পণ্যের ব্যয়","expense","other",!1,150),t("5050","অন্যান্য খরচ","expense","other",!1,160)]}function defaultSettings(){const t=new Date;return{title:"",subtitle:"",digits:"bn",periodType:"month",year:t.getFullYear(),month:t.getMonth()+1,from:"",to:"",note:""}}let S={settings:defaultSettings(),accounts:defaultAccounts(),entries:[],audit:[]},store=null,USER="স্থানীয় ব্যবহারকারী",view="eq",UNDO=[],REDO=[],JSHOW=50,JSORT="asc",RSUB="tb",RACC="",JF={q:"",from:"",to:"",acc:"",tpl:""},AUDQ="";const amap=()=>Object.fromEntries(S.accounts.map(t=>[t.id,t])),cmpE=(t,a)=>t.date<a.date?-1:t.date>a.date?1:(t.seq||0)-(a.seq||0)||(t.id<a.id?-1:1),activeEntries=()=>S.entries.filter(t=>t.status==="active").sort(cmpE),isCash=t=>t.type==="asset"&&(t.kind==="cash"||t.kind==="bank"),SPEC={cash:isCash,receivable:t=>t.kind==="receivable",payable:t=>t.kind==="payable",loan:t=>t.kind==="loan",capital:t=>t.kind==="capital",drawings:t=>t.kind==="drawings",revenue:t=>t.type==="revenue",expense:t=>t.type==="expense",buy:t=>t.type==="asset"&&(t.kind==="equipment"||t.kind==="inventory"||t.kind==="other"),any:()=>!0},TPL={capital_in:{l:"মূলধন আনয়ন",dr:"cash",cr:"capital",d:"মূলধন আনয়ন"},income_cash:{l:"আয় (নগদে/ব্যাংকে)",dr:"cash",cr:"revenue",d:""},income_credit:{l:"আয় (বাকিতে)",dr:"receivable",cr:"revenue",d:""},expense_cash:{l:"খরচ (নগদে/ব্যাংকে)",dr:"expense",cr:"cash",d:""},expense_credit:{l:"খরচ (বাকিতে)",dr:"expense",cr:"payable",d:""},buy_cash:{l:"সম্পদ/মালামাল ক্রয় (নগদে)",dr:"buy",cr:"cash",d:"ক্রয়"},buy_credit:{l:"সম্পদ/মালামাল ক্রয় (বাকিতে)",dr:"buy",cr:"payable",d:"বাকিতে ক্রয়"},loan_in:{l:"ব্যাংক ঋণ গ্রহণ",dr:"cash",cr:"loan",d:"ঋণ গ্রহণ"},loan_repay:{l:"ঋণ পরিশোধ",dr:"loan",cr:"cash",d:"ঋণ পরিশোধ"},pay_creditor:{l:"পাওনাদারকে পরিশোধ",dr:"payable",cr:"cash",d:"পাওনাদার পরিশোধ"},collect_debtor:{l:"দেনাদারের কাছ থেকে আদায়",dr:"cash",cr:"receivable",d:"দেনাদার আদায়"},drawings:{l:"মালিকের উত্তোলন",dr:"drawings",cr:"cash",d:"মালিকের উত্তোলন"},transfer:{l:"নগদ ↔ ব্যাংক স্থানান্তর",dr:"cash",cr:"cash",d:"স্থানান্তর"},custom:{l:"কাস্টম জাবেদা (একাধিক লাইন)",dr:"any",cr:"any",d:""}},tplLabel=t=>(TPL[t]||TPL.custom).l;function colSign(t,a,e){return t.type==="asset"?a-e:e-a}function applyEntry(t,a,e){for(const s of a.lines){const n=e[s.acc];n&&(t[n.id]=(t[n.id]||0)+colSign(n,s.dr,s.cr))}}function entryDelta(t,a){const e={};return applyEntry(e,t,a),e}function sumType(t,a,e){let s=0;for(const n in t)a[n]&&e(a[n])&&(s+=t[n]);return s}function totalsOf(t,a){const e=sumType(t,a,i=>i.type==="asset"),s=sumType(t,a,i=>i.type==="liability"),n=sumType(t,a,i=>i.type==="equity"||i.type==="revenue"||i.type==="expense");return{A:e,L:s,OE:n,diff:e-(s+n)}}function validateEntry(t,a={}){const e=[],s=amap();if(validDate(t.date)||e.push("তারিখ সঠিক নয়"),(t.desc||"").length>300&&e.push("বিবরণ ৩০০ অক্ষরের বেশি হতে পারবে না"),!Array.isArray(t.lines)||t.lines.length<2)return e.push("কমপক্ষে দুইটি লাইন (ডেবিট ও ক্রেডিট) প্রয়োজন"),e;let n=0,i=0;return t.lines.forEach((r,o)=>{const d="লাইন "+D(o+1)+": ",u=s[r.acc];if(u?a.checkActive&&!u.active&&e.push(d+"“"+u.name+"” নিষ্ক্রিয় হিসাব"):e.push(d+"হিসাব নির্বাচন করুন"),!Number.isInteger(r.dr)||!Number.isInteger(r.cr)||r.dr<0||r.cr<0){e.push(d+"পরিমাণ সঠিক নয়");return}r.dr>0&&r.cr>0&&e.push(d+"একই লাইনে ডেবিট ও ক্রেডিট একসাথে দেওয়া যাবে না"),r.dr===0&&r.cr===0&&e.push(d+"পরিমাণ শূন্য"),n+=r.dr,i+=r.cr}),n!==i&&e.push("ডেবিট ("+fmt(n,{cur:1})+") ও ক্রেডিট ("+fmt(i,{cur:1})+") সমান নয়; পার্থক্য "+fmt(Math.abs(n-i),{cur:1})),new Set(t.lines.map(r=>r.acc)).size<2&&e.length===0&&e.push("ডেবিট ও ক্রেডিট হিসাব আলাদা হতে হবে"),e}function negativeAccounts(t){const a=amap(),e={},s=new Set;for(const n of t.slice().sort(cmpE)){applyEntry(e,n,a);for(const i in e){const c=a[i];c&&(c.type==="asset"||c.type==="liability")&&e[i]<0&&s.add(i)}}return s}function period(){const t=S.settings;let a,e,s=t.periodType;return s==="month"?(a=`${t.year}-${pad(t.month)}-01`,e=`${t.year}-${pad(t.month)}-${pad(lastDay(t.year,t.month))}`):s==="year"?(a=`${t.year}-01-01`,e=`${t.year}-12-31`):s==="custom"&&validDate(t.from)&&validDate(t.to)&&t.from<=t.to?(a=t.from,e=t.to):(a="0000-01-01",e="9999-12-31",s=s==="custom"?"all":s),{from:a,to:e,type:s}}function subtitleText(){const t=S.settings,a=period();return String(SUBTITLE).replace("{বছর}",D(t.year)).replace("{মাস}",MONTHS[t.month-1]).replace("{থেকে}",dLong(a.from)).replace("{পর্যন্ত}",dLong(a.to))}function periodLabel(){const t=S.settings,a=period();return a.type==="month"?MONTHS[t.month-1]+" "+D(t.year):a.type==="year"?D(t.year)+" সাল":a.type==="custom"?dLong(a.from)+" – "+dLong(a.to):"সকল সময়"}function buildModel(){const t=amap(),a=period(),e=activeEntries(),s=new Set;e.forEach(u=>u.lines.forEach(f=>s.add(f.acc)));const n=u=>S.accounts.filter(f=>f.type===u&&(f.showCol||s.has(f.id))).sort((f,g)=>f.sort-g.sort),i=n("asset"),c=n("liability"),r={};e.filter(u=>u.date<a.from).forEach(u=>applyEntry(r,u,t));const o=clone(r),d=[];for(const u of e.filter(f=>f.date>=a.from&&f.date<=a.to)){const f=clone(r),g=entryDelta(u,t);applyEntry(r,u,t),d.push({e:u,before:f,delta:g,after:clone(r),tb:totalsOf(f,t),ta:totalsOf(r,t)})}return{am:t,p:a,assets:i,liabs:c,opening:o,rows:d,closing:clone(r),tot:totalsOf(r,t)}}function oeBreakdown(t,a){return{capital:sumType(t,a,e=>e.type==="equity"&&e.kind!=="drawings"),revenue:sumType(t,a,e=>e.type==="revenue"),expense:-sumType(t,a,e=>e.type==="expense"),drawings:-sumType(t,a,e=>e.type==="equity"&&e.kind==="drawings")}}function integrity(){const t=amap(),a=activeEntries(),e=[],s=[];let n=0,i=0;for(const r of a){const o=validateEntry(r);o.length&&e.push({e:r,er:o}),r.lines.forEach(d=>{t[d.acc]||s.push(r.id),n+=d.dr,i+=d.cr})}const c={};return a.forEach(r=>applyEntry(c,r,t)),{...totalsOf(c,t),tdr:n,tcr:i,bad:e,unk:s,ok:e.length===0&&n===i&&totalsOf(c,t).diff===0&&s.length===0}}function normState(t){return{settings:{...defaultSettings(),...t.settings||{}},accounts:t.accounts||[],entries:t.entries||[],audit:t.audit||[]}}const LocalStore={mode:"local",async load(){let t=null;try{t=JSON.parse(localStorage.getItem(LS_DATA)||"null")}catch{throw new Error("স্থানীয় ডেটা পড়া যায়নি (ব্রাউজার স্টোরেজ নষ্ট/অবরুদ্ধ)")}return t?normState(t):null},write(t){try{localStorage.setItem(LS_DATA,JSON.stringify({app:APP,v:APP_VERSION,...t}))}catch{throw new Error("সংরক্ষণ ব্যর্থ — ব্রাউজারের স্টোরেজ পূর্ণ বা অবরুদ্ধ। ডেটা সংরক্ষিত হয়নি; JSON ব্যাকআপ নিন।")}},async saveEntry(t,a){const e=S.entries.find(c=>c.id===t.id);if(e&&e.version!==a)throw new Error("সংঘাত: লেনদেনটি অন্যত্র পরিবর্তিত হয়েছে। পাতা রিলোড করুন।");const s=e?e.seq:Math.max(0,...S.entries.map(c=>c.seq||0))+1,n=nowIso(),i={...t,seq:s,version:(e?e.version:0)+1,createdAt:e?e.createdAt:n,updatedAt:n};return this.write({...S,entries:e?S.entries.map(c=>c.id===t.id?i:c):[...S.entries,i]}),i},async saveAccount(t){const a=S.accounts.some(e=>e.id===t.id);this.write({...S,accounts:a?S.accounts.map(e=>e.id===t.id?t:e):[...S.accounts,t]})},async deleteAccount(t){this.write({...S,accounts:S.accounts.filter(a=>a.id!==t)})},async saveSettings(t){this.write({...S,settings:t})},async addAudit(t){this.write({...S,audit:[t,...S.audit].slice(0,5e3)})},async restore(t){this.write(t)}};function SupaStore(t){const a=async c=>{let r=[],o=0;for(;;){const{data:d,error:u}=await c().range(o,o+999);if(u)throw u;if(r=r.concat(d),d.length<1e3)break;o+=1e3}return r},e=c=>c&&c.message?new Error(c.code==="40001"?"সংঘাত: লেনদেনটি অন্যত্র পরিবর্তিত হয়েছে। রিলোড করুন।":c.code==="23514"?"ডেটাবেস অসমান/অবৈধ লেনদেন প্রত্যাখ্যান করেছে: "+c.message:c.code==="23503"?"এই হিসাব লেনদেনে ব্যবহৃত হয়েছে — মোছা যাবে না":c.message):c;let s;const n=async()=>s||(s=(await t.auth.getUser()).data.user.id),i=async(c,r,o,d)=>{const{error:u}=await t.from(TABLE).upsert({user_id:await n(),id:c,kind:r,data:o,...d?{version:d}:{}},{onConflict:"user_id,id"});if(u)throw e(u)};return{mode:"supabase",sb:t,async load(){const[c,r]=await Promise.all([a(()=>t.from(TABLE).select("*").neq("kind","audit").order("id")),t.from(TABLE).select("data").eq("kind","audit").order("created_at",{ascending:!1}).limit(1e3)]);if(r.error)throw r.error;const o=d=>c.filter(u=>u.kind===d).map(u=>u.data);return c.length?normState({settings:o("settings")[0]||{},accounts:o("account"),entries:o("entry"),audit:r.data.map(d=>d.data)}):null},async saveEntry(c,r){const{data:o,error:d}=await t.rpc(RPC_SAVE,{p:{...c,expected_version:r}});if(d)throw e(d);return{...c,seq:Number(o.seq),version:o.version,updatedAt:o.updated_at,createdAt:c.createdAt||o.updated_at}},async saveAccount(c){await i(c.id,"account",c)},async deleteAccount(c){const{error:r}=await t.from(TABLE).delete().eq("id",c).eq("kind","account");if(r)throw e(r)},async saveSettings(c){await i(await n(),"settings",c)},async addAudit(c){await i(c.id,"audit",c)},async restore(c){const{error:r}=await t.rpc(RPC_RESTORE,{p:{settings:c.settings,accounts:c.accounts,entries:c.entries,actor:USER}});if(r)throw e(r)}}}async function audit(t,a,e,s,n,i){const c={id:uuid(),ts:nowIso(),actor:USER,action:t,entity:a,entityId:e||"",summary:s,before:n||null,after:i||null};try{await store.addAudit(c),S.audit=[c,...S.audit]}catch(r){toast("সতর্কতা: অডিট লগ সংরক্ষণ হয়নি — "+r.message)}}const snap=t=>t?{date:t.date,desc:t.desc,tpl:t.tpl,status:t.status,lines:t.lines.map(a=>({acc:(amap()[a.acc]||{}).name||a.acc,dr:a.dr/100,cr:a.cr/100}))}:null;async function commitEntry(t,a,e,s={}){const n=S.entries.find(r=>r.id===t.id)||null,i=validateEntry(t,{checkActive:s.checkActive});if(i.length)throw new Error(i.join("; "));const c=await store.saveEntry(t,n?n.version:null);return S.entries=n?S.entries.map(r=>r.id===t.id?c:r):[...S.entries,c],await audit(a,"entry",t.id,e,snap(n),snap(c)),s.noUndo||(UNDO.push({id:t.id,before:n?clone(n):null,after:clone(c)}),UNDO.length>50&&UNDO.shift(),REDO=[]),c}async function voidEntry(t,a){const e=S.entries.find(s=>s.id===t);await commitEntry({...clone(e),status:"void",voidReason:a||"মুছে ফেলা হয়েছে"},"void","লেনদেন #"+e.seq+" বাতিল/রিসাইকেল বিনে")}async function restoreEntry(t){const a=S.entries.find(e=>e.id===t);await commitEntry({...clone(a),status:"active",voidReason:""},"unvoid","লেনদেন #"+a.seq+" পুনরুদ্ধার")}async function doUndo(){const t=UNDO.pop();if(!t)return toast("আনডু করার কিছু নেই");try{const a=S.entries.find(n=>n.id===t.id),e=t.before?{...clone(t.before),version:a.version}:{...clone(a),status:"void",voidReason:"আনডু"},s=await commitEntry(e,"undo","আনডু: লেনদেন #"+a.seq,{noUndo:!0});REDO.push(t),toast("আনডু হয়েছে"),render()}catch(a){UNDO.push(t),toast(a.message)}}async function doRedo(){const t=REDO.pop();if(!t)return toast("রিডু করার কিছু নেই");try{const a=S.entries.find(e=>e.id===t.id);await commitEntry({...clone(t.after),version:a.version},"redo","রিডু: লেনদেন #"+a.seq,{noUndo:!0}),UNDO.push(t),toast("রিডু হয়েছে"),render()}catch(a){REDO.push(t),toast(a.message)}}async function saveSettings(t,a){const e={...S.settings,...t};try{await store.saveSettings(e),S.settings=e}catch(s){toast("সেটিংস সংরক্ষণ ব্যর্থ: "+s.message)}}let DR=null;function accOpts(t,a,e){const s=SPEC[t]||SPEC.any;return'<option value="">— নির্বাচন —</option>'+S.accounts.filter(i=>(i.active||i.id===a)&&s(i)).sort((i,c)=>i.sort-c.sort).map(i=>`<option value="${i.id}" ${i.id===a?"selected":""}>${esc(i.code)} · ${esc(i.name)}${i.active?"":" (নিষ্ক্রিয়)"}</option>`).join("")}function firstAcc(t,a){const e=SPEC[t]||SPEC.any,s=S.accounts.filter(n=>n.active&&e(n)).sort((n,i)=>n.sort-i.sort);return(s.find(n=>n.kind===a)||s[0]||{}).id||""}function newDraft(){const t=new Date,a=period();let e=`${t.getFullYear()}-${pad(t.getMonth()+1)}-${pad(t.getDate())}`;return a.type!=="all"&&(e<a.from||e>a.to)&&(e=a.to<"9999"?a.to:e),{id:uuid(),isNew:!0,date:e,tpl:"expense_cash",desc:"",dirty:!1,mode:"simple",dr:"",cr:"",amt:"",lines:[{acc:"",dr:"",cr:""},{acc:"",dr:"",cr:""}]}}function applyTpl(t){const a=TPL[t.tpl];if(t.tpl==="custom"){t.mode="lines";return}t.mode="simple",t.dr=firstAcc(a.dr,a.dr==="cash"&&t.tpl==="transfer"?"bank":"cash"),t.cr=firstAcc(a.cr,"cash"),t.dirty||(t.desc=a.d)}function draftFromEntry(t){const a={id:t.id,isNew:!1,date:t.date,tpl:t.tpl||"custom",desc:t.desc,dirty:!0,version:t.version,mode:"lines",dr:"",cr:"",amt:"",lines:t.lines.map(e=>({acc:e.acc,dr:e.dr?String(e.dr/100):"",cr:e.cr?String(e.cr/100):""}))};return t.lines.length===2&&t.lines[0].dr&&t.lines[1].cr&&t.lines[0].dr===t.lines[1].cr&&TPL[a.tpl]&&a.tpl!=="custom"?(a.mode="simple",a.dr=t.lines[0].acc,a.cr=t.lines[1].acc,a.amt=String(t.lines[0].dr/100)):t.lines.length===2&&t.lines[0].cr&&t.lines[1].dr&&(t.lines[0].dr,t.lines[1].cr),a}function draftToEntry(t){let a;if(t.mode==="simple"){const e=parseAmt(t.amt);a=[{acc:t.dr,dr:e,cr:0},{acc:t.cr,dr:0,cr:e}]}else a=t.lines.map(e=>({acc:e.acc,dr:parseAmt(e.dr),cr:parseAmt(e.cr)}));return{id:t.id,date:t.date,desc:t.desc.trim(),tpl:t.tpl,status:"active",voidReason:"",lines:a}}function entryErrors(t){const a=draftToEntry(t),e=validateEntry(a,{checkActive:!0});if(t.mode==="simple"&&!(a.lines[0].dr>0)){const s=e.indexOf("লাইন ১: পরিমাণ শূন্য")}return{e:a,er:[...new Set(e)]}}function entryModal(){const t=DR,a=TPL[t.tpl],e=$("#dlg");let s=`<div class="row"><label>তারিখ<input type="date" data-f="date" value="${esc(t.date)}"></label>
+   <label class="grow">লেনদেনের ধরন<select data-f="tpl">${Object.keys(TPL).map(n=>`<option value="${n}" ${n===t.tpl?"selected":""}>${esc(TPL[n].l)}</option>`).join("")}</select></label></div>
+   <div class="row" style="margin-top:10px"><label class="grow">মন্তব্য / বিবরণ<input data-f="desc" value="${esc(t.desc)}" maxlength="300" placeholder="যেমন: ভাড়া খরচ"></label></div>`;t.mode==="simple"?s+=`<div class="row" style="margin-top:10px"><label class="grow">ডেবিট হিসাব (Dr)<select data-f="dr">${accOpts(a.dr,t.dr)}</select></label>
+     <label class="grow">ক্রেডিট হিসাব (Cr)<select data-f="cr">${accOpts(a.cr,t.cr)}</select></label>
+     <label>পরিমাণ (৳)<input data-f="amt" inputmode="decimal" value="${esc(t.amt)}" placeholder="০" style="width:140px"></label></div>
+     <p class="muted" style="font-size:.85rem">একাধিক লাইন লাগলে <a href="#" data-act="toLines">উন্নত জাবেদা মোড</a> ব্যবহার করুন।</p>`:s+=`<div class="scroll"><table class="lines" style="width:100%;margin-top:10px"><thead><tr><th>হিসাব</th><th>ডেবিট (৳)</th><th>ক্রেডিট (৳)</th><th></th></tr></thead><tbody>
+    ${t.lines.map((n,i)=>`<tr><td style="min-width:200px"><select data-f="l.acc" data-i="${i}">${accOpts("any",n.acc)}</select></td>
+     <td><input data-f="l.dr" data-i="${i}" inputmode="decimal" value="${esc(n.dr)}" style="min-width:90px"></td>
+     <td><input data-f="l.cr" data-i="${i}" inputmode="decimal" value="${esc(n.cr)}" style="min-width:90px"></td>
+     <td><button class="btn sm" data-act="rmLine" data-i="${i}" ${t.lines.length<=2?"disabled":""}>✕</button></td></tr>`).join("")}</tbody></table></div>
      <div style="margin-top:8px"><button class="btn sm" data-act="addLine">＋ লাইন যোগ</button>
-     ${d.tpl !== "custom" ? "" : ""}</div>`;
-  }
-  body += `<div id="entStatus" style="margin-top:10px"></div>`;
-  dlg.innerHTML = `<div class="hd"><span>${d.isNew ? "নতুন লেনদেন" : "লেনদেন সম্পাদনা"}</span><button class="btn sm" data-act="closeDlg">✕</button></div><div class="bd">${body}</div>
-   <div class="ft">${d.isNew ? "" : `<button class="btn danger" data-act="delFromModal" style="margin-right:auto">${ICON_TRASH}মুছুন</button>`}<button class="btn" data-act="closeDlg">বাতিল</button><button class="btn primary" data-act="saveEntry" id="btnSaveEnt">সংরক্ষণ</button></div>`;
-  if (!dlg.open) dlg.showModal(); entryStatus();
-}
-function entryStatus() {
-  const { e, er } = entryErrors(DR); const el = $("#entStatus"); if (!el) return;
-  let dr = 0, cr = 0; e.lines.forEach(l => { if (Number.isInteger(l.dr)) dr += l.dr; if (Number.isInteger(l.cr)) cr += l.cr; });
-  el.innerHTML = `<div class="${dr === cr && dr > 0 ? "ok" : "muted"}">ডেবিট মোট ${fmt(dr, { cur: 1 })} · ক্রেডিট মোট ${fmt(cr, { cur: 1 })} ${dr === cr && dr > 0 ? "✓ সমান" : dr !== cr ? "· পার্থক্য " + fmt(Math.abs(dr - cr), { cur: 1 }) : ""}</div>` +
-    (er.length ? `<ul class="errs">${er.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : "");
-  const b = $("#btnSaveEnt"); if (b) b.disabled = er.length > 0;
-}
-async function saveDraft() {
-  const { e, er } = entryErrors(DR); if (er.length) return;
-  const prev = S.entries.find(x => x.id === e.id);
-  if (prev && prev.status === "void") e.status = "void", e.voidReason = prev.voidReason;
-  const base = S.entries.filter(x => x.status === "active" && x.id !== e.id);
-  const before = negativeAccounts(base), after = negativeAccounts([...base, e]), am = amap();
-  const nw = [...after].filter(id => !before.has(id));
-  if (nw.length && !confirm("সতর্কতা: এই লেনদেনের ফলে নিচের হিসাবের ব্যালান্স ঋণাত্মক (মাইনাস) হয়ে যাবে:\n• " + nw.map(id => am[id].name).join("\n• ") + "\n\nতবুও সংরক্ষণ করবেন?")) return;
-  try {
-    const saved = await commitEntry({ ...e, version: prev ? prev.version : undefined }, DR.isNew ? "create" : "update", (DR.isNew ? "নতুন লেনদেন #" : "লেনদেন সম্পাদনা #") + "" + "" + (prev ? prev.seq : "") + " " + e.desc);
-    $("#dlg").close(); toast("সংরক্ষিত হয়েছে (#" + D(saved.seq) + ")", { act: "undo", label: "আনডু" }); render();
-  } catch (err) { toast(err.message); }
-}
-
-/* ---------------- views ---------------- */
-const VIEWS = [["eq", "সমীকরণ"], ["journal", "জাবেদা"], ["accounts", "হিসাব"], ["reports", "রিপোর্ট"], ["audit", "অডিট/বিন"], ["settings", "সেটিংস"]];
-function periodBar() {
-  const s = S.settings, p = period();
-  return `<div class="card noprint"><div class="row">
-   <label>সময়কাল<select data-s="periodType"><option value="month" ${s.periodType === "month" ? "selected" : ""}>মাস</option><option value="year" ${s.periodType === "year" ? "selected" : ""}>বছর</option><option value="custom" ${s.periodType === "custom" ? "selected" : ""}>নির্দিষ্ট সময়</option><option value="all" ${s.periodType === "all" ? "selected" : ""}>সব</option></select></label>
-   ${s.periodType === "month" ? `<label>মাস<select data-s="month">${MONTHS.map((m, i) => `<option value="${i + 1}" ${s.month === i + 1 ? "selected" : ""}>${m}</option>`).join("")}</select></label>` : ""}
-   ${s.periodType === "month" || s.periodType === "year" ? `<label>বছর<input type="number" min="1900" max="2200" data-s="year" value="${s.year}" style="width:100px"></label>` : ""}
-   ${s.periodType === "custom" ? `<label>থেকে<input type="date" data-s="from" value="${esc(s.from)}"></label><label>পর্যন্ত<input type="date" data-s="to" value="${esc(s.to)}"></label>` : ""}
-   ${s.periodType === "custom" && p.type === "all" ? `<span class="bad">তারিখ সঠিক নয় — “সব” দেখানো হচ্ছে</span>` : ""}
-  </div></div>`;
-}
-function ce(kind, id, col, text, cls) { return `<div class="ce ${cls || ""}" contenteditable="true" spellcheck="false" data-ed="${kind}" data-id="${id}" data-col="${col}" data-k="${kind}:${id}:${col}">${esc(text)}</div>`; }
-let PEND = {}, SEL = { id: "", col: "" };
-function eqHTML(m, ed) {
-  const C = (k, id, col, t, c) => ed ? ce(k, id, col, t, c) : esc(t);
-  const colsA = m.assets.length ? m.assets : [{ id: "", name: "—" }], colsL = m.liabs.length ? m.liabs : [{ id: "", name: "—" }], nA = colsA.length, nL = colsL.length;
-  const cell = v => v ? fmt(v) : "", usedAcc = new Set(S.entries.flatMap(e => e.lines.map(l => l.acc)));
-  let h = `<table class="eq"><thead><tr><th rowspan="2">তারিখ</th><th rowspan="2">উদ্বৃত্ত</th><th colspan="${nA}">সম্পদ</th><th rowspan="2" class="sym">=</th><th colspan="${nL}">দায়</th><th rowspan="2" class="sym">+</th><th rowspan="2">মালিকানা<br>স্বত্ব</th></tr>
-   <tr>${colsA.concat(colsL).map(a => `<th>${a.id ? C("acc", "", a.id, a.name) : "—"}${ed && a.id && !usedAcc.has(a.id) && a.showCol ? `<span class="rmf noprint" data-rmf="${a.id}" title="এই ফিল্ড সরান">×</span>` : ""}</th>`).join("")}</tr></thead><tbody>`;
-  const bal = (b, tb, cls, rid, dt, label, extra) => `<tr class="${cls}"${rid}>${dt}<td class="lab">${label}</td>${colsA.map(a => `<td>${cell(b[a.id] || 0)}</td>`).join("")}<td class="sym">=</td>${colsL.map(a => `<td>${cell(b[a.id] || 0)}</td>`).join("")}<td class="sym">+</td><td>${cell(tb.OE)}</td>${extra || ""}</tr>`;
-  const dRow = (cls, rid, dt, dv, id, cm) => `<tr class="${cls}"${rid}>${dt}<td class="lab"></td>${colsA.map(a => `<td>${a.id ? C("cell", id, a.id, cell(dv(a.id))) : ""}</td>`).join("")}<td class="sym">=</td>${colsL.map(a => `<td>${a.id ? C("cell", id, a.id, cell(dv(a.id))) : ""}</td>`).join("")}<td class="sym">+</td><td>${C("cell", id, "OE", cell(dv("OE")))}</td>${cm || ""}</tr>`;
-  const errRow = P => P && P.err ? `<tr class="pend"><td colspan="${nA + nL + 5}" class="perr-row noprint">${esc(P.err)}</td></tr>` : "";
-  if (!m.rows.length && !PEND.new) h += `<tr><td colspan="${nA + nL + 5}" class="empty" style="color:#555">এই সময়কালে কোনো লেনদেন নেই। ওপরের “＋ লেনদেন” চাপুন।</td></tr>`;
-  let prevYear = null;
-  m.rows.forEach((r, i) => {
-    const e = r.e, P = PEND[e.id], y = ymd(P ? P.date : e.date)[0], withYear = i === 0 || y !== prevYear; prevYear = y;
-    const zero = Object.values(r.before).every(v => v === 0), pc = P ? " pend" : "", rid = ` data-id="${e.id}"`, rs = zero ? 1 : 2;
-    const dv = id => P ? (id === "OE" ? P.oe : (P.delta[id] || 0)) : (id === "OE" ? r.ta.OE - r.tb.OE : (r.delta[id] || 0));
-    const dt = `<td class="dt" rowspan="${rs}">${C("date", e.id, "", dShort(P ? P.date : e.date, withYear))}</td>`, cm = "";
-    if (zero) h += dRow("bot" + pc, rid, dt, dv, e.id, cm);
-    else { h += bal(r.before, r.tb, "top" + pc, rid, dt, "উদ্বৃত্ত", cm); h += dRow("bot" + pc, rid, "", dv, e.id, ""); }
-    h += errRow(P);
-  });
-  if (PEND.new) { const P = PEND.new, dv = id => id === "OE" ? P.oe : (P.delta[id] || 0);
-    h += dRow("bot pend", ` data-id="${P.id}"`, `<td class="dt">${C("date", P.id, "", dShort(P.date, false))}</td>`, dv, P.id, "");
-    h += errRow(P); }
-  if (m.rows.length) h += bal(m.closing, m.tot, "", "", `<td class="dt"></td>`, "উদ্বৃত্ত", "");
-  else if (Object.values(m.opening).some(v => v)) h += bal(m.opening, totalsOf(m.opening, m.am), "", "", `<td class="dt"></td>`, "প্রারম্ভিক উদ্বৃত্ত", "");
-  const T = m.tot;
-  h += `<tr class="tot"><td></td><td>মোট</td><td colspan="${nA}">${fmtAbs(T.A)}</td><td class="sym">=</td><td colspan="${nL + 2}">${fmtAbs(T.L + T.OE)}</td></tr></tbody></table>`;
-  return h;
-}
-function viewEq() {
-  const m = buildModel(), T = m.tot, ig = integrity(), oe = oeBreakdown(m.closing, m.am), s = S.settings;
-  const sample = S.entries.length === 0 ? `<div class="card noprint empty"><p>এখনও কোনো লেনদেন নেই।</p><button class="btn primary" data-act="newEntry">＋ প্রথম লেনদেন যোগ করুন</button></div>` : "";
-  return periodBar() + sample + `<div class="card eqcard"><div class="paper">
-   <h1>${esc(PAGE_TITLE)}</h1>${subtitleText().trim() ? `<h2 class="sub">${esc(subtitleText())}</h2>` : ""}
-   <div class="scroll tblwrap">${eqHTML(m, true)}</div>
+     ${t.tpl!=="custom",""}</div>`,s+='<div id="entStatus" style="margin-top:10px"></div>',e.innerHTML=`<div class="hd"><span>${t.isNew?"নতুন লেনদেন":"লেনদেন সম্পাদনা"}</span><button class="btn sm" data-act="closeDlg">✕</button></div><div class="bd">${s}</div>
+   <div class="ft">${t.isNew?"":`<button class="btn danger" data-act="delFromModal" style="margin-right:auto">${ICON_TRASH}মুছুন</button>`}<button class="btn" data-act="closeDlg">বাতিল</button><button class="btn primary" data-act="saveEntry" id="btnSaveEnt">সংরক্ষণ</button></div>`,e.open||e.showModal(),entryStatus()}function entryStatus(){const{e:t,er:a}=entryErrors(DR),e=$("#entStatus");if(!e)return;let s=0,n=0;t.lines.forEach(c=>{Number.isInteger(c.dr)&&(s+=c.dr),Number.isInteger(c.cr)&&(n+=c.cr)}),e.innerHTML=`<div class="${s===n&&s>0?"ok":"muted"}">ডেবিট মোট ${fmt(s,{cur:1})} · ক্রেডিট মোট ${fmt(n,{cur:1})} ${s===n&&s>0?"✓ সমান":s!==n?"· পার্থক্য "+fmt(Math.abs(s-n),{cur:1}):""}</div>`+(a.length?`<ul class="errs">${a.map(c=>`<li>${esc(c)}</li>`).join("")}</ul>`:"");const i=$("#btnSaveEnt");i&&(i.disabled=a.length>0)}async function saveDraft(){const{e:t,er:a}=entryErrors(DR);if(a.length)return;const e=S.entries.find(o=>o.id===t.id);e&&e.status==="void"&&(t.status="void",t.voidReason=e.voidReason);const s=S.entries.filter(o=>o.status==="active"&&o.id!==t.id),n=negativeAccounts(s),i=negativeAccounts([...s,t]),c=amap(),r=[...i].filter(o=>!n.has(o));if(!(r.length&&!confirm(`সতর্কতা: এই লেনদেনের ফলে নিচের হিসাবের ব্যালান্স ঋণাত্মক (মাইনাস) হয়ে যাবে:
+• `+r.map(o=>c[o].name).join(`
+• `)+`
+তবুও সংরক্ষণ করবেন?`)))try{const o=await commitEntry({...t,version:e?e.version:void 0},DR.isNew?"create":"update",(DR.isNew?"নতুন লেনদেন #":"লেনদেন সম্পাদনা #")+(e?e.seq:"")+" "+t.desc);$("#dlg").close(),toast("সংরক্ষিত হয়েছে (#"+D(o.seq)+")",{act:"undo",label:"আনডু"}),render()}catch(o){toast(o.message)}}const VIEWS=[["eq","সমীকরণ"],["journal","জাবেদা"],["accounts","হিসাব"],["reports","রিপোর্ট"],["audit","অডিট/বিন"],["settings","সেটিংস"]];function periodBar(){const t=S.settings,a=period();return`<div class="card noprint"><div class="row">
+   <label>সময়কাল<select data-s="periodType"><option value="month" ${t.periodType==="month"?"selected":""}>মাস</option><option value="year" ${t.periodType==="year"?"selected":""}>বছর</option><option value="custom" ${t.periodType==="custom"?"selected":""}>নির্দিষ্ট সময়</option><option value="all" ${t.periodType==="all"?"selected":""}>সব</option></select></label>
+   ${t.periodType==="month"?`<label>মাস<select data-s="month">${MONTHS.map((e,s)=>`<option value="${s+1}" ${t.month===s+1?"selected":""}>${e}</option>`).join("")}</select></label>`:""}
+   ${t.periodType==="month"||t.periodType==="year"?`<label>বছর<input type="number" min="1900" max="2200" data-s="year" value="${t.year}" style="width:100px"></label>`:""}
+   ${t.periodType==="custom"?`<label>থেকে<input type="date" data-s="from" value="${esc(t.from)}"></label><label>পর্যন্ত<input type="date" data-s="to" value="${esc(t.to)}"></label>`:""}
+   ${t.periodType==="custom"&&a.type==="all"?'<span class="bad">তারিখ সঠিক নয় — “সব” দেখানো হচ্ছে</span>':""}
+  </div></div>`}function ce(t,a,e,s,n){return`<div class="ce ${n||""}" contenteditable="true" spellcheck="false" data-ed="${t}" data-id="${a}" data-col="${e}" data-k="${t}:${a}:${e}">${esc(s)}</div>`}let PEND={},SEL={id:"",col:""};function eqHTML(t,a){const e=(l,y,h,b,w)=>a?ce(l,y,h,b,w):esc(b),s=t.assets.length?t.assets:[{id:"",name:"—"}],n=t.liabs.length?t.liabs:[{id:"",name:"—"}],i=s.length,c=n.length,r=l=>l?fmt(l):"",o=new Set(S.entries.flatMap(l=>l.lines.map(y=>y.acc)));let d=`<table class="eq"><thead><tr><th rowspan="2">তারিখ</th><th rowspan="2">উদ্বৃত্ত</th><th colspan="${i}">সম্পদ</th><th rowspan="2" class="sym">=</th><th colspan="${c}">দায়</th><th rowspan="2" class="sym">+</th><th rowspan="2">মালিকানা<br>স্বত্ব</th></tr>
+   <tr>${s.concat(n).map(l=>`<th>${l.id?e("acc","",l.id,l.name):"—"}${a&&l.id&&!o.has(l.id)&&l.showCol?`<span class="rmf noprint" data-rmf="${l.id}" title="এই ফিল্ড সরান">×</span>`:""}</th>`).join("")}</tr></thead><tbody>`;const u=(l,y,h,b,w,x,v)=>`<tr class="${h}"${b}>${w}<td class="lab">${x}</td>${s.map(E=>`<td>${r(l[E.id]||0)}</td>`).join("")}<td class="sym">=</td>${n.map(E=>`<td>${r(l[E.id]||0)}</td>`).join("")}<td class="sym">+</td><td>${r(y.OE)}</td>${v||""}</tr>`,f=(l,y,h,b,w,x)=>`<tr class="${l}"${y}>${h}<td class="lab"></td>${s.map(v=>`<td>${v.id?e("cell",w,v.id,r(b(v.id))):""}</td>`).join("")}<td class="sym">=</td>${n.map(v=>`<td>${v.id?e("cell",w,v.id,r(b(v.id))):""}</td>`).join("")}<td class="sym">+</td><td>${e("cell",w,"OE",r(b("OE")))}</td>${x||""}</tr>`,g=l=>l&&l.err?`<tr class="pend"><td colspan="${i+c+5}" class="perr-row noprint">${esc(l.err)}</td></tr>`:"";!t.rows.length&&!PEND.new&&(d+=`<tr><td colspan="${i+c+5}" class="empty" style="color:#555">এই সময়কালে কোনো লেনদেন নেই। ওপরের “＋ লেনদেন” চাপুন।</td></tr>`);let m=null;if(t.rows.forEach((l,y)=>{const h=l.e,b=PEND[h.id],w=ymd(b?b.date:h.date)[0],x=y===0||w!==m;m=w;const v=Object.values(l.before).every(k=>k===0),E=b?" pend":"",A=` data-id="${h.id}"`,O=v?1:2,L=k=>b?k==="OE"?b.oe:b.delta[k]||0:k==="OE"?l.ta.OE-l.tb.OE:l.delta[k]||0,T=`<td class="dt" rowspan="${O}">${e("date",h.id,"",dShort(b?b.date:h.date,x))}</td>`,N="";v?d+=f("bot"+E,A,T,L,h.id,N):(d+=u(l.before,l.tb,"top"+E,A,T,"উদ্বৃত্ত",N),d+=f("bot"+E,A,"",L,h.id,"")),d+=g(b)}),PEND.new){const l=PEND.new,y=h=>h==="OE"?l.oe:l.delta[h]||0;d+=f("bot pend",` data-id="${l.id}"`,`<td class="dt">${e("date",l.id,"",dShort(l.date,!1))}</td>`,y,l.id,""),d+=g(l)}t.rows.length?d+=u(t.closing,t.tot,"","",'<td class="dt"></td>',"উদ্বৃত্ত",""):Object.values(t.opening).some(l=>l)&&(d+=u(t.opening,totalsOf(t.opening,t.am),"","",'<td class="dt"></td>',"প্রারম্ভিক উদ্বৃত্ত",""));const p=t.tot;return d+=`<tr class="tot"><td></td><td>মোট</td><td colspan="${i}">${fmtAbs(p.A)}</td><td class="sym">=</td><td colspan="${c+2}">${fmtAbs(p.L+p.OE)}</td></tr></tbody></table>`,d}function viewEq(){const t=buildModel(),a=t.tot,e=integrity(),s=oeBreakdown(t.closing,t.am),n=S.settings,i=S.entries.length===0?'<div class="card noprint empty"><p>এখনও কোনো লেনদেন নেই।</p><button class="btn primary" data-act="newEntry">＋ প্রথম লেনদেন যোগ করুন</button></div>':"";return periodBar()+i+`<div class="card eqcard"><div class="paper">
+   <h1>${esc(PAGE_TITLE)}</h1>${subtitleText().trim()?`<h2 class="sub">${esc(subtitleText())}</h2>`:""}
+   <div class="scroll tblwrap">${eqHTML(t,!0)}</div>
    </div>
-   <div class="check noprint ${ig.ok ? "good" : "fail"}" style="font-size:.9rem">${ig.ok ? "✓ সমীকরণ মিলেছে" : "✗ সমীকরণ মেলেনি"}: সম্পদ ${fmt(ig.A, { cur: 1 })} = দায় ${fmt(ig.L, { cur: 1 })} + মালিকানা স্বত্ব ${fmt(ig.OE, { cur: 1 })}
-    ${ig.ok ? "" : `<br>পার্থক্য: ${fmt(ig.diff, { cur: 1 })} · ডেবিট ${fmt(ig.tdr, { cur: 1 })} · ক্রেডিট ${fmt(ig.tcr, { cur: 1 })}${ig.bad.length ? " · ত্রুটিপূর্ণ: " + ig.bad.map(b => "#" + D(b.e.seq)).join(", ") : ""}`}</div>
-</div>`;
-}
-function entryLinesText(e) { const am = amap(); return e.lines.map(l => `<div>${l.dr ? "Dr" : "&nbsp;&nbsp;Cr"} ${esc((am[l.acc] || { name: "?" }).name)} <span class="muted">${fmtAbs(l.dr || l.cr)}</span></div>`).join(""); }
-function filteredEntries(status) {
-  const f = JF, q = f.q.trim().toLowerCase(), am = amap();
-  const qn = q ? parseAmt(q) : NaN;
-  return S.entries.filter(e => e.status === status).filter(e => {
-    if (f.from && e.date < f.from) return false; if (f.to && e.date > f.to) return false; if (f.tpl && e.tpl !== f.tpl) return false;
-    if (f.acc && !e.lines.some(l => l.acc === f.acc)) return false;
-    if (q) { const hay = (e.desc + " " + e.lines.map(l => (am[l.acc] || {}).name).join(" ") + " " + e.date + " #" + e.seq).toLowerCase(); const amt = e.lines.some(l => !isNaN(qn) && qn > 0 && (l.dr === qn || l.cr === qn)); if (!hay.includes(q) && !amt) return false; }
-    return true;
-  }).sort((a, b) => JSORT === "asc" ? cmpE(a, b) : cmpE(b, a));
-}
-function viewJournal() {
-  const list = filteredEntries("active"), shown = list.slice(0, JSHOW);
-  return `<div class="card noprint"><div class="row"><label class="grow">খুঁজুন<input data-j="q" value="${esc(JF.q)}" placeholder="বিবরণ / হিসাব / পরিমাণ / তারিখ"></label>
+   <div class="check noprint ${e.ok?"good":"fail"}" style="font-size:.9rem">${e.ok?"✓ সমীকরণ মিলেছে":"✗ সমীকরণ মেলেনি"}: সম্পদ ${fmt(e.A,{cur:1})} = দায় ${fmt(e.L,{cur:1})} + মালিকানা স্বত্ব ${fmt(e.OE,{cur:1})}
+    ${e.ok?"":`<br>পার্থক্য: ${fmt(e.diff,{cur:1})} · ডেবিট ${fmt(e.tdr,{cur:1})} · ক্রেডিট ${fmt(e.tcr,{cur:1})}${e.bad.length?" · ত্রুটিপূর্ণ: "+e.bad.map(c=>"#"+D(c.e.seq)).join(", "):""}`}</div>
+</div>`}function entryLinesText(t){const a=amap();return t.lines.map(e=>`<div>${e.dr?"Dr":"&nbsp;&nbsp;Cr"} ${esc((a[e.acc]||{name:"?"}).name)} <span class="muted">${fmtAbs(e.dr||e.cr)}</span></div>`).join("")}function filteredEntries(t){const a=JF,e=a.q.trim().toLowerCase(),s=amap(),n=e?parseAmt(e):NaN;return S.entries.filter(i=>i.status===t).filter(i=>{if(a.from&&i.date<a.from||a.to&&i.date>a.to||a.tpl&&i.tpl!==a.tpl||a.acc&&!i.lines.some(c=>c.acc===a.acc))return!1;if(e){const c=(i.desc+" "+i.lines.map(o=>(s[o.acc]||{}).name).join(" ")+" "+i.date+" #"+i.seq).toLowerCase(),r=i.lines.some(o=>!isNaN(n)&&n>0&&(o.dr===n||o.cr===n));if(!c.includes(e)&&!r)return!1}return!0}).sort((i,c)=>JSORT==="asc"?cmpE(i,c):cmpE(c,i))}function viewJournal(){const t=filteredEntries("active"),a=t.slice(0,JSHOW);return`<div class="card noprint"><div class="row"><label class="grow">খুঁজুন<input data-j="q" value="${esc(JF.q)}" placeholder="বিবরণ / হিসাব / পরিমাণ / তারিখ"></label>
    <label>থেকে<input type="date" data-j="from" value="${esc(JF.from)}"></label><label>পর্যন্ত<input type="date" data-j="to" value="${esc(JF.to)}"></label>
-   <label>হিসাব<select data-j="acc"><option value="">সব</option>${S.accounts.map(a => `<option value="${a.id}" ${JF.acc === a.id ? "selected" : ""}>${esc(a.name)}</option>`).join("")}</select></label>
-   <label>ধরন<select data-j="tpl"><option value="">সব</option>${Object.keys(TPL).map(k => `<option value="${k}" ${JF.tpl === k ? "selected" : ""}>${esc(TPL[k].l)}</option>`).join("")}</select></label>
-   <button class="btn" data-act="sortJ">${JSORT === "asc" ? "পুরনো আগে ↑" : "নতুন আগে ↓"}</button><button class="btn" data-act="clearJ">রিসেট</button><button class="btn" data-act="csvJ">CSV জাবেদা</button></div></div>
-   <div class="card"><h3>জাবেদা (${D(list.length)} টি লেনদেন)</h3>${list.length ? `<div class="scroll"><table class="plain"><thead><tr><th>#</th><th>তারিখ</th><th>বিবরণ</th><th>ধরন</th><th>ডেবিট / ক্রেডিট</th><th class="num">পরিমাণ</th><th class="noprint"></th></tr></thead><tbody>
-   ${shown.map(e => `<tr><td>${D(e.seq)}</td><td style="white-space:nowrap">${dLong(e.date)}</td><td>${esc(e.desc) || "—"}</td><td><span class="tag">${esc(tplLabel(e.tpl))}</span></td><td>${entryLinesText(e)}</td><td class="num">${fmtAbs(e.lines.reduce((s, l) => s + l.dr, 0))}</td>
+   <label>হিসাব<select data-j="acc"><option value="">সব</option>${S.accounts.map(e=>`<option value="${e.id}" ${JF.acc===e.id?"selected":""}>${esc(e.name)}</option>`).join("")}</select></label>
+   <label>ধরন<select data-j="tpl"><option value="">সব</option>${Object.keys(TPL).map(e=>`<option value="${e}" ${JF.tpl===e?"selected":""}>${esc(TPL[e].l)}</option>`).join("")}</select></label>
+   <button class="btn" data-act="sortJ">${JSORT==="asc"?"পুরনো আগে ↑":"নতুন আগে ↓"}</button><button class="btn" data-act="clearJ">রিসেট</button><button class="btn" data-act="csvJ">CSV জাবেদা</button></div></div>
+   <div class="card"><h3>জাবেদা (${D(t.length)} টি লেনদেন)</h3>${t.length?`<div class="scroll"><table class="plain"><thead><tr><th>#</th><th>তারিখ</th><th>বিবরণ</th><th>ধরন</th><th>ডেবিট / ক্রেডিট</th><th class="num">পরিমাণ</th><th class="noprint"></th></tr></thead><tbody>
+   ${a.map(e=>`<tr><td>${D(e.seq)}</td><td style="white-space:nowrap">${dLong(e.date)}</td><td>${esc(e.desc)||"—"}</td><td><span class="tag">${esc(tplLabel(e.tpl))}</span></td><td>${entryLinesText(e)}</td><td class="num">${fmtAbs(e.lines.reduce((s,n)=>s+n.dr,0))}</td>
    <td class="noprint" style="white-space:nowrap"><button class="btn sm" data-act="editEntry" data-id="${e.id}">${ICON_EDIT}</button> <button class="btn sm danger" data-act="delEntry" data-id="${e.id}">${ICON_TRASH}</button></td></tr>`).join("")}</tbody></table></div>
-   ${list.length > JSHOW ? `<button class="btn noprint" data-act="moreJ">আরও দেখান (${D(list.length - JSHOW)})</button>` : ""}` : `<div class="empty">কোনো লেনদেন পাওয়া যায়নি।</div>`}</div>`;
-}
-function accBalance(id, upto) { const am = amap(), a = am[id]; let b = 0; activeEntries().forEach(e => { if (!upto || e.date <= upto) e.lines.forEach(l => { if (l.acc === id) b += colSign(a, l.dr, l.cr); }); }); return b; }
-function viewAccounts() {
-  const rows = S.accounts.slice().sort((a, b) => a.sort - b.sort), usedSet = new Set(S.entries.flatMap(e => e.lines.map(l => l.acc)));
-  return `<div class="card"><div class="row" style="justify-content:space-between"><h3 style="margin:0">হিসাবের তালিকা</h3><button class="btn primary" data-act="newAcc">＋ নতুন হিসাব</button></div>
+   ${t.length>JSHOW?`<button class="btn noprint" data-act="moreJ">আরও দেখান (${D(t.length-JSHOW)})</button>`:""}`:'<div class="empty">কোনো লেনদেন পাওয়া যায়নি।</div>'}</div>`}function accBalance(t,a){const e=amap(),s=e[t];let n=0;return activeEntries().forEach(i=>{(!a||i.date<=a)&&i.lines.forEach(c=>{c.acc===t&&(n+=colSign(s,c.dr,c.cr))})}),n}function viewAccounts(){const t=S.accounts.slice().sort((e,s)=>e.sort-s.sort),a=new Set(S.entries.flatMap(e=>e.lines.map(s=>s.acc)));return`<div class="card"><div class="row" style="justify-content:space-between"><h3 style="margin:0">হিসাবের তালিকা</h3><button class="btn primary" data-act="newAcc">＋ নতুন হিসাব</button></div>
    <div class="scroll"><table class="plain"><thead><tr><th>কোড</th><th>নাম</th><th>ধরন</th><th>শ্রেণি</th><th>টেবিলে কলাম</th><th>অবস্থা</th><th class="num">ব্যালান্স</th><th></th></tr></thead><tbody>
-   ${rows.map(a => `<tr class="${a.active ? "" : "void"}"><td>${esc(a.code)}</td><td>${esc(a.name)}</td><td>${TYPE_BN[a.type]}</td><td>${KIND_BN[a.kind] || a.kind}</td><td>${a.type === "asset" || a.type === "liability" ? (a.showCol ? "সর্বদা" : "ব্যবহার হলে") : "—"}</td><td>${a.active ? "সক্রিয়" : "নিষ্ক্রিয়"}</td><td class="num">${fmt(accBalance(a.id), { cur: 1 })}</td>
-   <td style="white-space:nowrap"><button class="btn sm" data-act="editAcc" data-id="${a.id}">${ICON_EDIT}</button> <button class="btn sm danger" data-act="delAcc" data-id="${a.id}" ${usedSet.has(a.id) ? 'title="ব্যবহৃত হিসাব মোছা যাবে না — নিষ্ক্রিয় করুন"' : ""}>🗑</button></td></tr>`).join("")}</tbody></table></div>
-   <p class="muted" style="font-size:.85rem">ব্যবহৃত হিসাব মোছা যায় না (ইতিহাস রক্ষায়) — নিষ্ক্রিয় করুন। ব্যালান্স স্বাভাবিক দিকে: সম্পদ = ডেবিট−ক্রেডিট; অন্যগুলো = ক্রেডিট−ডেবিট (ব্যয়/উত্তোলন ঋণাত্মক দেখায়)।</p></div>`;
-}
-function accModal(id) {
-  const a = id ? S.accounts.find(x => x.id === id) : { id: uuid(), code: "", name: "", type: "asset", kind: "other", showCol: false, active: true, sort: Math.max(0, ...S.accounts.map(x => x.sort)) + 10 };
-  const used = S.entries.some(e => e.lines.some(l => l.acc === a.id)), dlg = $("#dlg"); dlg._acc = { ...a, isNew: !id };
-  dlg.innerHTML = `<div class="hd"><span>${id ? "হিসাব সম্পাদনা" : "নতুন হিসাব"}</span><button class="btn sm" data-act="closeDlg">✕</button></div><div class="bd"><div class="row">
+   ${t.map(e=>`<tr class="${e.active?"":"void"}"><td>${esc(e.code)}</td><td>${esc(e.name)}</td><td>${TYPE_BN[e.type]}</td><td>${KIND_BN[e.kind]||e.kind}</td><td>${e.type==="asset"||e.type==="liability"?e.showCol?"সর্বদা":"ব্যবহার হলে":"—"}</td><td>${e.active?"সক্রিয়":"নিষ্ক্রিয়"}</td><td class="num">${fmt(accBalance(e.id),{cur:1})}</td>
+   <td style="white-space:nowrap"><button class="btn sm" data-act="editAcc" data-id="${e.id}">${ICON_EDIT}</button> <button class="btn sm danger" data-act="delAcc" data-id="${e.id}" ${a.has(e.id)?'title="ব্যবহৃত হিসাব মোছা যাবে না — নিষ্ক্রিয় করুন"':""}>🗑</button></td></tr>`).join("")}</tbody></table></div>
+   <p class="muted" style="font-size:.85rem">ব্যবহৃত হিসাব মোছা যায় না (ইতিহাস রক্ষায়) — নিষ্ক্রিয় করুন। ব্যালান্স স্বাভাবিক দিকে: সম্পদ = ডেবিট−ক্রেডিট; অন্যগুলো = ক্রেডিট−ডেবিট (ব্যয়/উত্তোলন ঋণাত্মক দেখায়)।</p></div>`}function accModal(t){const a=t?S.accounts.find(n=>n.id===t):{id:uuid(),code:"",name:"",type:"asset",kind:"other",showCol:!1,active:!0,sort:Math.max(0,...S.accounts.map(n=>n.sort))+10},e=S.entries.some(n=>n.lines.some(i=>i.acc===a.id)),s=$("#dlg");s._acc={...a,isNew:!t},s.innerHTML=`<div class="hd"><span>${t?"হিসাব সম্পাদনা":"নতুন হিসাব"}</span><button class="btn sm" data-act="closeDlg">✕</button></div><div class="bd"><div class="row">
    <label>কোড<input data-a="code" value="${esc(a.code)}" style="width:100px"></label><label class="grow">নাম<input data-a="name" value="${esc(a.name)}"></label>
-   <label>ধরন<select data-a="type" ${used ? "disabled" : ""}>${Object.keys(TYPE_BN).map(k => `<option value="${k}" ${a.type === k ? "selected" : ""}>${TYPE_BN[k]}</option>`).join("")}</select></label>
-   <label>শ্রেণি<select data-a="kind" ${used ? "disabled" : ""}>${Object.keys(KIND_BN).map(k => `<option value="${k}" ${a.kind === k ? "selected" : ""}>${KIND_BN[k]}</option>`).join("")}</select></label></div>
-   ${used ? `<p class="muted">ব্যবহৃত হিসাবের ধরন ও শ্রেণি বদলানো যায় না।</p>` : ""}
-   <div class="row" style="margin-top:10px"><label style="flex-direction:row;gap:6px;align-items:center"><input type="checkbox" data-a="showCol" ${a.showCol ? "checked" : ""}> সমীকরণ টেবিলে সর্বদা কলাম দেখান</label>
-   <label style="flex-direction:row;gap:6px;align-items:center"><input type="checkbox" data-a="active" ${a.active ? "checked" : ""}> সক্রিয়</label></div><div id="accErr" class="errs"></div></div>
-   <div class="ft"><button class="btn" data-act="closeDlg">বাতিল</button><button class="btn primary" data-act="saveAcc">সংরক্ষণ</button></div>`; dlg.showModal();
-}
-function reportTools(name) { return `<div class="noprint" style="margin:8px 0"><button class="btn sm" data-act="csvR" data-r="${name}">CSV</button></div>`; }
-function trialBalance() {
-  const am = amap(), p = period(), bal = {}; let tdr = 0, tcr = 0; const rows = [];
-  activeEntries().filter(e => e.date <= p.to).forEach(e => e.lines.forEach(l => { const b = bal[l.acc] || (bal[l.acc] = { dr: 0, cr: 0 }); b.dr += l.dr; b.cr += l.cr; }));
-  S.accounts.slice().sort((a, b) => a.sort - b.sort).forEach(a => { const b = bal[a.id]; if (!b) return; const net = b.dr - b.cr; const r = { a, dr: net > 0 ? net : 0, cr: net < 0 ? -net : 0 }; tdr += r.dr; tcr += r.cr; rows.push(r); });
-  return { rows, tdr, tcr, p };
-}
-function incomeStmt() {
-  const p = period(), act = activeEntries().filter(e => e.date >= p.from && e.date <= p.to), am = amap(), t = {};
-  act.forEach(e => e.lines.forEach(l => { const a = am[l.acc]; if (a && (a.type === "revenue" || a.type === "expense")) t[a.id] = (t[a.id] || 0) + (a.type === "revenue" ? l.cr - l.dr : l.dr - l.cr); }));
-  const rev = S.accounts.filter(a => a.type === "revenue" && t[a.id]).map(a => [a, t[a.id]]), exp = S.accounts.filter(a => a.type === "expense" && t[a.id]).map(a => [a, t[a.id]]);
-  const R = rev.reduce((s, x) => s + x[1], 0), X = exp.reduce((s, x) => s + x[1], 0);
-  return { rev, exp, R, X, net: R - X, p };
-}
-function balanceSheet() {
-  const p = period(), am = amap(), bal = {}; activeEntries().filter(e => e.date <= p.to).forEach(e => applyEntry(bal, e, am));
-  const grp = f => S.accounts.filter(a => f(a) && bal[a.id]).sort((a, b) => a.sort - b.sort).map(a => [a, bal[a.id]]);
-  const T = totalsOf(bal, am), oe = oeBreakdown(bal, am);
-  return { A: grp(a => a.type === "asset"), L: grp(a => a.type === "liability"), T, oe, p };
-}
-function ledgerData(id) {
-  const p = period(), am = amap(), a = am[id]; if (!a) return null; let open = 0; const rows = [];
-  activeEntries().forEach(e => { const ls = e.lines.filter(l => l.acc === id); if (!ls.length) return; const dr = ls.reduce((s, l) => s + l.dr, 0), cr = ls.reduce((s, l) => s + l.cr, 0);
-    if (e.date < p.from) open += colSign(a, dr, cr); else if (e.date <= p.to) rows.push({ e, dr, cr }); });
-  let run = open; rows.forEach(r => { run += colSign(a, r.dr, r.cr); r.run = run; });
-  return { a, open, rows, close: run };
-}
-function viewReports() {
-  const subs = [["tb", "ট্রায়াল ব্যালান্স"], ["is", "আয় বিবরণী"], ["bs", "স্থিতি/সমীকরণ"], ["gl", "খতিয়ান"]];
-  let h = periodBar() + `<div class="subtabs noprint">${subs.map(s => `<button class="btn ${RSUB === s[0] ? "on" : ""}" data-act="rsub" data-r="${s[0]}">${s[1]}</button>`).join("")}</div><div class="card"><div class="paper"><h1>${esc(PAGE_TITLE)}</h1>`;
-  if (RSUB === "tb") { const t = trialBalance(); h += `<h2 class="sub">ট্রায়াল ব্যালান্স — ${t.p.to < "9999" ? dLong(t.p.to) + " পর্যন্ত" : "সকল লেনদেন"}</h2><div class="scroll"><table class="plain"><thead><tr><th>কোড</th><th>হিসাব</th><th class="num">ডেবিট</th><th class="num">ক্রেডিট</th></tr></thead><tbody>${t.rows.map(r => `<tr><td>${esc(r.a.code)}</td><td>${esc(r.a.name)}</td><td class="num">${r.dr ? fmtAbs(r.dr) : ""}</td><td class="num">${r.cr ? fmtAbs(r.cr) : ""}</td></tr>`).join("")}<tr><td></td><td><b>মোট</b></td><td class="num"><b>${fmtAbs(t.tdr)}</b></td><td class="num"><b>${fmtAbs(t.tcr)}</b></td></tr></tbody></table></div><div class="check ${t.tdr === t.tcr ? "good" : "fail"}">${t.tdr === t.tcr ? "✓ ডেবিট = ক্রেডিট" : "✗ অমিল: " + fmt(t.tdr - t.tcr, { cur: 1 })}</div>`; }
-  if (RSUB === "is") { const r = incomeStmt(); h += `<h2 class="sub">আয় বিবরণী — ${esc(periodLabel())}</h2><table class="plain"><tbody><tr><th colspan="2">আয়</th></tr>${r.rev.map(x => `<tr><td>${esc(x[0].name)}</td><td class="num">${fmt(x[1])}</td></tr>`).join("")}<tr><td><b>মোট আয়</b></td><td class="num"><b>${fmt(r.R)}</b></td></tr><tr><th colspan="2">ব্যয়</th></tr>${r.exp.map(x => `<tr><td>${esc(x[0].name)}</td><td class="num">${fmt(x[1])}</td></tr>`).join("")}<tr><td><b>মোট ব্যয়</b></td><td class="num"><b>${fmt(r.X)}</b></td></tr><tr><td><b>${r.net >= 0 ? "নিট মুনাফা" : "নিট ক্ষতি"}</b></td><td class="num ${r.net >= 0 ? "ok" : "bad"}"><b>${fmt(r.net)}</b></td></tr></tbody></table><p class="muted">মালিকের উত্তোলন ব্যয় নয়; এটি সরাসরি মালিকানা স্বত্ব কমায়।</p>`; }
-  if (RSUB === "bs") { const b = balanceSheet(); h += `<h2 class="sub">স্থিতি বিবরণী: সম্পদ = দায় + মালিকানা স্বত্ব — ${b.p.to < "9999" ? dLong(b.p.to) + " পর্যন্ত" : "সকল লেনদেন"}</h2><div class="scroll"><table class="plain"><tbody><tr><th colspan="2">সম্পদ</th></tr>${b.A.map(x => `<tr><td>${esc(x[0].name)}</td><td class="num">${fmt(x[1])}</td></tr>`).join("")}<tr><td><b>মোট সম্পদ</b></td><td class="num"><b>${fmt(b.T.A)}</b></td></tr>
-   <tr><th colspan="2">দায়</th></tr>${b.L.map(x => `<tr><td>${esc(x[0].name)}</td><td class="num">${fmt(x[1])}</td></tr>`).join("")}<tr><td><b>মোট দায়</b></td><td class="num"><b>${fmt(b.T.L)}</b></td></tr>
-   <tr><th colspan="2">মালিকানা স্বত্ব</th></tr><tr><td>মূলধন</td><td class="num">${fmt(b.oe.capital)}</td></tr><tr><td>(+) আয়</td><td class="num">${fmt(b.oe.revenue)}</td></tr><tr><td>(−) ব্যয়</td><td class="num">${fmt(b.oe.expense)}</td></tr><tr><td>(−) উত্তোলন</td><td class="num">${fmt(b.oe.drawings)}</td></tr><tr><td><b>মোট মালিকানা স্বত্ব</b></td><td class="num"><b>${fmt(b.T.OE)}</b></td></tr>
-   <tr><td><b>দায় + মালিকানা স্বত্ব</b></td><td class="num"><b>${fmt(b.T.L + b.T.OE)}</b></td></tr></tbody></table></div><div class="check ${b.T.diff === 0 ? "good" : "fail"}">${b.T.diff === 0 ? "✓ সম্পদ = দায় + মালিকানা স্বত্ব" : "✗ পার্থক্য " + fmt(b.T.diff, { cur: 1 })}</div>`; }
-  if (RSUB === "gl") { h += `<div class="noprint"><label class="muted">হিসাব নির্বাচন<br><select data-r="acc">${`<option value="">— নির্বাচন —</option>` + S.accounts.map(a => `<option value="${a.id}" ${RACC === a.id ? "selected" : ""}>${esc(a.code)} · ${esc(a.name)}</option>`).join("")}</select></label></div>`;
-    const g = ledgerData(RACC); if (g) h += `<h2 class="sub">খতিয়ান: ${esc(g.a.name)}</h2><div class="scroll"><table class="plain"><thead><tr><th>তারিখ</th><th>বিবরণ</th><th class="num">ডেবিট</th><th class="num">ক্রেডিট</th><th class="num">ব্যালান্স</th></tr></thead><tbody><tr><td colspan="4">প্রারম্ভিক ব্যালান্স</td><td class="num">${fmt(g.open)}</td></tr>${g.rows.map(r => `<tr><td>${dLong(r.e.date)}</td><td>${esc(r.e.desc)}</td><td class="num">${r.dr ? fmtAbs(r.dr) : ""}</td><td class="num">${r.cr ? fmtAbs(r.cr) : ""}</td><td class="num">${fmt(r.run)}</td></tr>`).join("")}<tr><td colspan="4"><b>সমাপনী ব্যালান্স</b></td><td class="num"><b>${fmt(g.close)}</b></td></tr></tbody></table></div>`; else h += `<div class="empty">একটি হিসাব নির্বাচন করুন।</div>`; }
-  return h + `</div>${reportTools(RSUB)}</div>`;
-}
-function viewAudit() {
-  const bin = S.entries.filter(e => e.status === "void").sort((a, b) => cmpE(b, a));
-  const q = AUDQ.trim().toLowerCase(), list = S.audit.filter(a => !q || (a.action + " " + a.summary + " " + a.actor).toLowerCase().includes(q)).slice(0, 300);
-  return `<div class="card"><h3>${ICON_TRASH}রিসাইকেল বিন (বাতিল লেনদেন)</h3>${bin.length ? `<table class="plain"><tbody>${bin.map(e => `<tr><td>#${D(e.seq)}</td><td>${dLong(e.date)}</td><td>${esc(e.desc) || "—"}</td><td class="num">${fmtAbs(e.lines.reduce((s, l) => s + l.dr, 0))}</td><td><button class="btn sm" data-act="unvoid" data-id="${e.id}">পুনরুদ্ধার</button></td></tr>`).join("")}</tbody></table>` : `<div class="muted">বিন খালি।</div>`}</div>
-  <div class="card"><h3>অডিট ট্রেইল</h3><p class="muted" style="font-size:.85rem">শুধু যোগ হয়; সম্পাদনা/মোছা যায় না। সর্বশেষ ${D(list.length)} টি দেখানো হচ্ছে।</p><input data-q="aud" value="${esc(AUDQ)}" placeholder="খুঁজুন…" style="width:100%;margin-bottom:8px">
-  ${list.map(a => `<details style="border-bottom:1px solid var(--line);padding:6px 0"><summary><span class="tag">${esc(a.action)}</span> ${esc(a.summary)} <span class="muted" style="font-size:.8rem">· ${esc(new Date(a.ts).toLocaleString("bn-BD"))} · ${esc(a.actor)}</span></summary>${a.before ? `<div>আগে:</div><pre class="json">${esc(JSON.stringify(a.before, null, 1))}</pre>` : ""}${a.after ? `<div>পরে:</div><pre class="json">${esc(JSON.stringify(a.after, null, 1))}</pre>` : ""}</details>`).join("") || `<div class="muted">কোনো রেকর্ড নেই।</div>`}</div>`;
-}
-function viewSettings() {
-  const s = S.settings, isSb = store.mode === "supabase";
-  return `<div class="card"><h3>প্রতিষ্ঠান ও প্রদর্শন</h3><div class="row"><p class="muted grow" style="font-size:.85rem;margin:0">শিরোনাম ও উপশিরোনাম বদলাতে <code>index.html</code>-এর শুরুতে <code>PAGE_TITLE</code> ও <code>SUBTITLE</code> বদলান।</p>
-   <label>সংখ্যা<select data-s="digits"><option value="bn" ${s.digits === "bn" ? "selected" : ""}>বাংলা (১২৩)</option><option value="en" ${s.digits === "en" ? "selected" : ""}>English (123)</option></select></label></div></div>
+   <label>ধরন<select data-a="type" ${e?"disabled":""}>${Object.keys(TYPE_BN).map(n=>`<option value="${n}" ${a.type===n?"selected":""}>${TYPE_BN[n]}</option>`).join("")}</select></label>
+   <label>শ্রেণি<select data-a="kind" ${e?"disabled":""}>${Object.keys(KIND_BN).map(n=>`<option value="${n}" ${a.kind===n?"selected":""}>${KIND_BN[n]}</option>`).join("")}</select></label></div>
+   ${e?'<p class="muted">ব্যবহৃত হিসাবের ধরন ও শ্রেণি বদলানো যায় না।</p>':""}
+   <div class="row" style="margin-top:10px"><label style="flex-direction:row;gap:6px;align-items:center"><input type="checkbox" data-a="showCol" ${a.showCol?"checked":""}> সমীকরণ টেবিলে সর্বদা কলাম দেখান</label>
+   <label style="flex-direction:row;gap:6px;align-items:center"><input type="checkbox" data-a="active" ${a.active?"checked":""}> সক্রিয়</label></div><div id="accErr" class="errs"></div></div>
+   <div class="ft"><button class="btn" data-act="closeDlg">বাতিল</button><button class="btn primary" data-act="saveAcc">সংরক্ষণ</button></div>`,s.showModal()}function reportTools(t){return`<div class="noprint" style="margin:8px 0"><button class="btn sm" data-act="csvR" data-r="${t}">CSV</button></div>`}function trialBalance(){const t=amap(),a=period(),e={};let s=0,n=0;const i=[];return activeEntries().filter(c=>c.date<=a.to).forEach(c=>c.lines.forEach(r=>{const o=e[r.acc]||(e[r.acc]={dr:0,cr:0});o.dr+=r.dr,o.cr+=r.cr})),S.accounts.slice().sort((c,r)=>c.sort-r.sort).forEach(c=>{const r=e[c.id];if(!r)return;const o=r.dr-r.cr,d={a:c,dr:o>0?o:0,cr:o<0?-o:0};s+=d.dr,n+=d.cr,i.push(d)}),{rows:i,tdr:s,tcr:n,p:a}}function incomeStmt(){const t=period(),a=activeEntries().filter(o=>o.date>=t.from&&o.date<=t.to),e=amap(),s={};a.forEach(o=>o.lines.forEach(d=>{const u=e[d.acc];u&&(u.type==="revenue"||u.type==="expense")&&(s[u.id]=(s[u.id]||0)+(u.type==="revenue"?d.cr-d.dr:d.dr-d.cr))}));const n=S.accounts.filter(o=>o.type==="revenue"&&s[o.id]).map(o=>[o,s[o.id]]),i=S.accounts.filter(o=>o.type==="expense"&&s[o.id]).map(o=>[o,s[o.id]]),c=n.reduce((o,d)=>o+d[1],0),r=i.reduce((o,d)=>o+d[1],0);return{rev:n,exp:i,R:c,X:r,net:c-r,p:t}}function balanceSheet(){const t=period(),a=amap(),e={};activeEntries().filter(c=>c.date<=t.to).forEach(c=>applyEntry(e,c,a));const s=c=>S.accounts.filter(r=>c(r)&&e[r.id]).sort((r,o)=>r.sort-o.sort).map(r=>[r,e[r.id]]),n=totalsOf(e,a),i=oeBreakdown(e,a);return{A:s(c=>c.type==="asset"),L:s(c=>c.type==="liability"),T:n,oe:i,p:t}}function ledgerData(t){const a=period(),e=amap(),s=e[t];if(!s)return null;let n=0;const i=[];activeEntries().forEach(r=>{const o=r.lines.filter(f=>f.acc===t);if(!o.length)return;const d=o.reduce((f,g)=>f+g.dr,0),u=o.reduce((f,g)=>f+g.cr,0);r.date<a.from?n+=colSign(s,d,u):r.date<=a.to&&i.push({e:r,dr:d,cr:u})});let c=n;return i.forEach(r=>{c+=colSign(s,r.dr,r.cr),r.run=c}),{a:s,open:n,rows:i,close:c}}function viewReports(){const t=[["tb","ট্রায়াল ব্যালান্স"],["is","আয় বিবরণী"],["bs","স্থিতি/সমীকরণ"],["gl","খতিয়ান"]];let a=periodBar()+`<div class="subtabs noprint">${t.map(e=>`<button class="btn ${RSUB===e[0]?"on":""}" data-act="rsub" data-r="${e[0]}">${e[1]}</button>`).join("")}</div><div class="card"><div class="paper"><h1>${esc(PAGE_TITLE)}</h1>`;if(RSUB==="tb"){const e=trialBalance();a+=`<h2 class="sub">ট্রায়াল ব্যালান্স — ${e.p.to<"9999"?dLong(e.p.to)+" পর্যন্ত":"সকল লেনদেন"}</h2><div class="scroll"><table class="plain"><thead><tr><th>কোড</th><th>হিসাব</th><th class="num">ডেবিট</th><th class="num">ক্রেডিট</th></tr></thead><tbody>${e.rows.map(s=>`<tr><td>${esc(s.a.code)}</td><td>${esc(s.a.name)}</td><td class="num">${s.dr?fmtAbs(s.dr):""}</td><td class="num">${s.cr?fmtAbs(s.cr):""}</td></tr>`).join("")}<tr><td></td><td><b>মোট</b></td><td class="num"><b>${fmtAbs(e.tdr)}</b></td><td class="num"><b>${fmtAbs(e.tcr)}</b></td></tr></tbody></table></div><div class="check ${e.tdr===e.tcr?"good":"fail"}">${e.tdr===e.tcr?"✓ ডেবিট = ক্রেডিট":"✗ অমিল: "+fmt(e.tdr-e.tcr,{cur:1})}</div>`}if(RSUB==="is"){const e=incomeStmt();a+=`<h2 class="sub">আয় বিবরণী — ${esc(periodLabel())}</h2><table class="plain"><tbody><tr><th colspan="2">আয়</th></tr>${e.rev.map(s=>`<tr><td>${esc(s[0].name)}</td><td class="num">${fmt(s[1])}</td></tr>`).join("")}<tr><td><b>মোট আয়</b></td><td class="num"><b>${fmt(e.R)}</b></td></tr><tr><th colspan="2">ব্যয়</th></tr>${e.exp.map(s=>`<tr><td>${esc(s[0].name)}</td><td class="num">${fmt(s[1])}</td></tr>`).join("")}<tr><td><b>মোট ব্যয়</b></td><td class="num"><b>${fmt(e.X)}</b></td></tr><tr><td><b>${e.net>=0?"নিট মুনাফা":"নিট ক্ষতি"}</b></td><td class="num ${e.net>=0?"ok":"bad"}"><b>${fmt(e.net)}</b></td></tr></tbody></table><p class="muted">মালিকের উত্তোলন ব্যয় নয়; এটি সরাসরি মালিকানা স্বত্ব কমায়।</p>`}if(RSUB==="bs"){const e=balanceSheet();a+=`<h2 class="sub">স্থিতি বিবরণী: সম্পদ = দায় + মালিকানা স্বত্ব — ${e.p.to<"9999"?dLong(e.p.to)+" পর্যন্ত":"সকল লেনদেন"}</h2><div class="scroll"><table class="plain"><tbody><tr><th colspan="2">সম্পদ</th></tr>${e.A.map(s=>`<tr><td>${esc(s[0].name)}</td><td class="num">${fmt(s[1])}</td></tr>`).join("")}<tr><td><b>মোট সম্পদ</b></td><td class="num"><b>${fmt(e.T.A)}</b></td></tr>
+   <tr><th colspan="2">দায়</th></tr>${e.L.map(s=>`<tr><td>${esc(s[0].name)}</td><td class="num">${fmt(s[1])}</td></tr>`).join("")}<tr><td><b>মোট দায়</b></td><td class="num"><b>${fmt(e.T.L)}</b></td></tr>
+   <tr><th colspan="2">মালিকানা স্বত্ব</th></tr><tr><td>মূলধন</td><td class="num">${fmt(e.oe.capital)}</td></tr><tr><td>(+) আয়</td><td class="num">${fmt(e.oe.revenue)}</td></tr><tr><td>(−) ব্যয়</td><td class="num">${fmt(e.oe.expense)}</td></tr><tr><td>(−) উত্তোলন</td><td class="num">${fmt(e.oe.drawings)}</td></tr><tr><td><b>মোট মালিকানা স্বত্ব</b></td><td class="num"><b>${fmt(e.T.OE)}</b></td></tr>
+   <tr><td><b>দায় + মালিকানা স্বত্ব</b></td><td class="num"><b>${fmt(e.T.L+e.T.OE)}</b></td></tr></tbody></table></div><div class="check ${e.T.diff===0?"good":"fail"}">${e.T.diff===0?"✓ সম্পদ = দায় + মালিকানা স্বত্ব":"✗ পার্থক্য "+fmt(e.T.diff,{cur:1})}</div>`}if(RSUB==="gl"){a+=`<div class="noprint"><label class="muted">হিসাব নির্বাচন<br><select data-r="acc">${'<option value="">— নির্বাচন —</option>'+S.accounts.map(s=>`<option value="${s.id}" ${RACC===s.id?"selected":""}>${esc(s.code)} · ${esc(s.name)}</option>`).join("")}</select></label></div>`;const e=ledgerData(RACC);e?a+=`<h2 class="sub">খতিয়ান: ${esc(e.a.name)}</h2><div class="scroll"><table class="plain"><thead><tr><th>তারিখ</th><th>বিবরণ</th><th class="num">ডেবিট</th><th class="num">ক্রেডিট</th><th class="num">ব্যালান্স</th></tr></thead><tbody><tr><td colspan="4">প্রারম্ভিক ব্যালান্স</td><td class="num">${fmt(e.open)}</td></tr>${e.rows.map(s=>`<tr><td>${dLong(s.e.date)}</td><td>${esc(s.e.desc)}</td><td class="num">${s.dr?fmtAbs(s.dr):""}</td><td class="num">${s.cr?fmtAbs(s.cr):""}</td><td class="num">${fmt(s.run)}</td></tr>`).join("")}<tr><td colspan="4"><b>সমাপনী ব্যালান্স</b></td><td class="num"><b>${fmt(e.close)}</b></td></tr></tbody></table></div>`:a+='<div class="empty">একটি হিসাব নির্বাচন করুন।</div>'}return a+`</div>${reportTools(RSUB)}</div>`}function viewAudit(){const t=S.entries.filter(s=>s.status==="void").sort((s,n)=>cmpE(n,s)),a=AUDQ.trim().toLowerCase(),e=S.audit.filter(s=>!a||(s.action+" "+s.summary+" "+s.actor).toLowerCase().includes(a)).slice(0,300);return`<div class="card"><h3>${ICON_TRASH}রিসাইকেল বিন (বাতিল লেনদেন)</h3>${t.length?`<table class="plain"><tbody>${t.map(s=>`<tr><td>#${D(s.seq)}</td><td>${dLong(s.date)}</td><td>${esc(s.desc)||"—"}</td><td class="num">${fmtAbs(s.lines.reduce((n,i)=>n+i.dr,0))}</td><td><button class="btn sm" data-act="unvoid" data-id="${s.id}">পুনরুদ্ধার</button></td></tr>`).join("")}</tbody></table>`:'<div class="muted">বিন খালি।</div>'}</div>
+  <div class="card"><h3>অডিট ট্রেইল</h3><p class="muted" style="font-size:.85rem">শুধু যোগ হয়; সম্পাদনা/মোছা যায় না। সর্বশেষ ${D(e.length)} টি দেখানো হচ্ছে।</p><input data-q="aud" value="${esc(AUDQ)}" placeholder="খুঁজুন…" style="width:100%;margin-bottom:8px">
+  ${e.map(s=>`<details style="border-bottom:1px solid var(--line);padding:6px 0"><summary><span class="tag">${esc(s.action)}</span> ${esc(s.summary)} <span class="muted" style="font-size:.8rem">· ${esc(new Date(s.ts).toLocaleString("bn-BD"))} · ${esc(s.actor)}</span></summary>${s.before?`<div>আগে:</div><pre class="json">${esc(JSON.stringify(s.before,null,1))}</pre>`:""}${s.after?`<div>পরে:</div><pre class="json">${esc(JSON.stringify(s.after,null,1))}</pre>`:""}</details>`).join("")||'<div class="muted">কোনো রেকর্ড নেই।</div>'}</div>`}function viewSettings(){const t=S.settings,a=store.mode==="supabase";return`<div class="card"><h3>প্রতিষ্ঠান ও প্রদর্শন</h3><div class="row"><p class="muted grow" style="font-size:.85rem;margin:0">শিরোনাম ও উপশিরোনাম বদলাতে <code>index.html</code>-এর শুরুতে <code>PAGE_TITLE</code> ও <code>SUBTITLE</code> বদলান।</p>
+   <label>সংখ্যা<select data-s="digits"><option value="bn" ${t.digits==="bn"?"selected":""}>বাংলা (১২৩)</option><option value="en" ${t.digits==="en"?"selected":""}>English (123)</option></select></label></div></div>
   <div class="card"><h3>ব্যাকআপ ও রিস্টোর</h3><div class="row"><button class="btn primary" data-act="backup">⬇ JSON ব্যাকআপ</button><label class="btn" style="cursor:pointer">⬆ JSON রিস্টোর<input type="file" accept="application/json,.json" data-act-change="restoreFile" hidden></label><button class="btn" data-act="csvJ">CSV জাবেদা</button><button class="btn" data-act="csvEq">CSV সমীকরণ</button></div>
    <p class="muted" style="font-size:.85rem">ব্যাকআপে সব হিসাব, লেনদেন (বাতিলসহ), সেটিংস ও অডিট ট্রেইল এবং SHA-256 চেকসাম থাকে। রিস্টোরের আগে ডেটা যাচাই হয় ও বর্তমান ডেটার স্ন্যাপশট রাখা হয়।</p></div>
-  <div class="card"><h3>ডেটা সংরক্ষণ</h3>${isSb ? `<p class="ok">✓ Supabase সংযুক্ত — ${esc(USER)}</p><div class="row"><button class="btn" data-act="signout">সাইন আউট</button><button class="btn" data-act="uploadLocal">স্থানীয় ডেটা ক্লাউডে পাঠান (বর্তমান ক্লাউড ডেটা প্রতিস্থাপিত হবে)</button></div>` : `<p class="bad"><b>সীমিত মোড:</b> ডেটা শুধু এই ব্রাউজারে (localStorage) আছে। ব্রাউজার ডেটা মুছলে বা অন্য ডিভাইসে গেলে হারাবে। নিয়মিত JSON ব্যাকআপ নিন বা Supabase সংযুক্ত করুন।</p>`}
-   ${isSb ? "" : `<p class="muted" style="font-size:.85rem">Supabase সংযোগ করতে <code>config.js</code> ফাইলে URL ও anon/publishable key দিন (প্রথমে SQL.sql চালিয়ে নিন)।</p>`}</div>
-  ${isSb ? "" : `<div class="card"><h3>বিপজ্জনক</h3><button class="btn danger" data-act="wipe">স্থানীয় সব ডেটা মুছুন</button></div>`}`;
-}
-function render() {
-  document.body.classList.toggle("v-eq", view === "eq");
-  $("#btnBack").style.display = view === "eq" ? "none" : "";
-  $("#btnUndo").disabled = !UNDO.length; $("#btnRedo").disabled = !REDO.length;
-  const f = { eq: viewEq, journal: viewJournal, accounts: viewAccounts, reports: viewReports, audit: viewAudit, settings: viewSettings }[view];
-  const keep = document.activeElement && document.activeElement.dataset ? { k: ["s", "j", "q", "c"].map(x => document.activeElement.dataset[x] ? x + ":" + document.activeElement.dataset[x] : "").join(""), pos: document.activeElement.selectionStart } : null;
-  render.busy = true; try { $("#main").innerHTML = `<div class="view printing" data-view="${view}">${f()}</div>`; } finally { render.busy = false; }
-  if (render.focusKey) { const el = $(`[data-k="${render.focusKey}"]`); render.focusKey = null; if (el) { el.focus(); } }
-  else if (keep && keep.k) { const [x, nm] = keep.k.split(":"); const el = $(`[data-${x}="${nm}"]`); if (el && el.tagName !== "SELECT") { el.focus(); try { el.setSelectionRange(keep.pos, keep.pos); } catch (e) { } } }
-}
-
-/* ---------------- CSV / backup ---------------- */
-function download(name, mime, text) { const b = new Blob(["﻿" === text[0] ? text : (mime.includes("csv") ? "﻿" : "") + text], { type: mime + ";charset=utf-8" }); const a = document.createElement("a"); a.href = URL.createObjectURL(b); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
-const csvCell = v => { v = String(v ?? ""); return /[",\n\r]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; };
-const csv = rows => rows.map(r => r.map(csvCell).join(",")).join("\r\n");
-const taka = p => (p / 100).toFixed(2);
-const stamp = () => new Date().toISOString().slice(0, 10);
-function csvJournal() {
-  const am = amap(), rows = [["ক্রমিক", "তারিখ", "বিবরণ", "ধরন", "অবস্থা", "হিসাব কোড", "হিসাব", "ডেবিট", "ক্রেডিট"]];
-  S.entries.slice().sort(cmpE).forEach(e => e.lines.forEach(l => rows.push([e.seq, e.date, e.desc, tplLabel(e.tpl), e.status, (am[l.acc] || {}).code, (am[l.acc] || {}).name, l.dr ? taka(l.dr) : "", l.cr ? taka(l.cr) : ""])));
-  download(`journal-${stamp()}.csv`, "text/csv", csv(rows));
-}
-function csvEq() {
-  const m = buildModel(), cA = m.assets, cL = m.liabs, rows = [[PAGE_TITLE], [subtitleText()], [], ["তারিখ", "লাইন", ...cA.map(a => "সম্পদ: " + a.name), ...cL.map(a => "দায়: " + a.name), "মালিকানা স্বত্ব", "মন্তব্য"]];
-  const bal = (b, tb) => [...cA.map(a => b[a.id] ? taka(b[a.id]) : ""), ...cL.map(a => b[a.id] ? taka(b[a.id]) : ""), tb.OE ? taka(tb.OE) : ""];
-  m.rows.forEach(r => { if (!Object.values(r.before).every(v => v === 0)) rows.push(["", "উদ্বৃত্ত", ...bal(r.before, r.tb), ""]); rows.push([r.e.date, "লেনদেন", ...cA.map(a => r.delta[a.id] ? taka(r.delta[a.id]) : ""), ...cL.map(a => r.delta[a.id] ? taka(r.delta[a.id]) : ""), (r.ta.OE - r.tb.OE) ? taka(r.ta.OE - r.tb.OE) : "", r.e.desc]); });
-  rows.push(["", "সমাপনী উদ্বৃত্ত", ...bal(m.closing, m.tot), ""]); rows.push(["", "মোট সম্পদ", taka(m.tot.A), "মোট দায় + মালিকানা স্বত্ব", taka(m.tot.L + m.tot.OE)]);
-  download(`equation-${stamp()}.csv`, "text/csv", csv(rows));
-}
-function csvReport(r) {
-  let rows = [];
-  if (r === "tb") { const t = trialBalance(); rows = [["কোড", "হিসাব", "ডেবিট", "ক্রেডিট"], ...t.rows.map(x => [x.a.code, x.a.name, x.dr ? taka(x.dr) : "", x.cr ? taka(x.cr) : ""]), ["", "মোট", taka(t.tdr), taka(t.tcr)]]; }
-  if (r === "is") { const i = incomeStmt(); rows = [["বিবরণ", "টাকা"], ...i.rev.map(x => [x[0].name, taka(x[1])]), ["মোট আয়", taka(i.R)], ...i.exp.map(x => [x[0].name, taka(x[1])]), ["মোট ব্যয়", taka(i.X)], ["নিট ফলাফল", taka(i.net)]]; }
-  if (r === "bs") { const b = balanceSheet(); rows = [["বিবরণ", "টাকা"], ...b.A.map(x => [x[0].name, taka(x[1])]), ["মোট সম্পদ", taka(b.T.A)], ...b.L.map(x => [x[0].name, taka(x[1])]), ["মোট দায়", taka(b.T.L)], ["মূলধন", taka(b.oe.capital)], ["আয়", taka(b.oe.revenue)], ["ব্যয়", taka(b.oe.expense)], ["উত্তোলন", taka(b.oe.drawings)], ["মোট মালিকানা স্বত্ব", taka(b.T.OE)]]; }
-  if (r === "gl") { const g = ledgerData(RACC); if (!g) return toast("প্রথমে হিসাব নির্বাচন করুন"); rows = [["তারিখ", "বিবরণ", "ডেবিট", "ক্রেডিট", "ব্যালান্স"], ["", "প্রারম্ভিক", "", "", taka(g.open)], ...g.rows.map(x => [x.e.date, x.e.desc, x.dr ? taka(x.dr) : "", x.cr ? taka(x.cr) : "", taka(x.run)]), ["", "সমাপনী", "", "", taka(g.close)]]; }
-  download(`${r}-${stamp()}.csv`, "text/csv", csv(rows));
-}
-async function sha256(t) { try { const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(t)); return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, "0")).join(""); } catch (e) { return ""; } }
-const canon = d => JSON.stringify({ settings: d.settings, accounts: d.accounts, entries: d.entries, audit: d.audit });
-const exportData = () => ({ settings: S.settings, accounts: S.accounts, entries: S.entries.map(e => ({ ...e })), audit: S.audit });
-async function backup() {
-  const data = exportData(), obj = { app: APP, version: APP_VERSION, exportedAt: nowIso(), currency: "BDT", amountUnit: "paisa (১ টাকা = ১০০ পয়সা)", checksum: await sha256(canon(data)), ...data };
-  download(`hisab-backup-${stamp()}.json`, "application/json", JSON.stringify(obj, null, 1)); await audit("backup", "backup", "", "JSON ব্যাকআপ ডাউনলোড"); toast("ব্যাকআপ ডাউনলোড শুরু হয়েছে");
-}
-function validateBackup(o) {
-  const er = [];
-  if (!o || o.app !== APP) return ["এটি এই অ্যাপের ব্যাকআপ ফাইল নয়"];
-  if (!Array.isArray(o.accounts) || !Array.isArray(o.entries)) return ["accounts/entries অনুপস্থিত"];
-  const ids = new Set(), codes = new Set();
-  o.accounts.forEach(a => { if (!a.id || !a.name || !a.code || !TYPE_BN[a.type]) er.push("অবৈধ হিসাব: " + (a.name || a.id)); if (ids.has(a.id)) er.push("ডুপ্লিকেট হিসাব আইডি"); if (codes.has(a.code)) er.push("ডুপ্লিকেট হিসাব কোড " + a.code); ids.add(a.id); codes.add(a.code); });
-  const eids = new Set(), seqs = new Set(), amm = Object.fromEntries(o.accounts.map(a => [a.id, a]));
-  o.entries.forEach(e => {
-    if (!e.id || eids.has(e.id)) er.push("ডুপ্লিকেট/অনুপস্থিত লেনদেন আইডি"); eids.add(e.id); if (seqs.has(e.seq)) er.push("ডুপ্লিকেট ক্রমিক #" + e.seq); seqs.add(e.seq);
-    if (!["active", "void"].includes(e.status)) er.push("অবৈধ অবস্থা #" + e.seq);
-    if (!validDate(e.date) || !Array.isArray(e.lines) || e.lines.length < 2) { er.push("অবৈধ লেনদেন #" + e.seq); return; }
-    let dr = 0, cr = 0; e.lines.forEach(l => { if (!amm[l.acc]) er.push("অজানা হিসাব, লেনদেন #" + e.seq); if (!Number.isInteger(l.dr) || !Number.isInteger(l.cr) || l.dr < 0 || l.cr < 0 || (l.dr > 0) === (l.cr > 0)) er.push("অবৈধ লাইন, লেনদেন #" + e.seq); dr += l.dr; cr += l.cr; });
-    if (dr !== cr) er.push("ডেবিট≠ক্রেডিট, লেনদেন #" + e.seq);
-  });
-  return [...new Set(er)].slice(0, 12);
-}
-async function restoreFromObj(o, fileName) {
-  const er = validateBackup(o); if (er.length) return alert("রিস্টোর বাতিল — ব্যাকআপ অবৈধ:\n• " + er.join("\n• "));
-  const data = { settings: { ...defaultSettings(), ...(o.settings || {}) }, accounts: o.accounts, entries: o.entries.map(e => ({ ...e, version: e.version || 1 })), audit: o.audit || [] };
-  if (o.checksum) { const h = await sha256(canon({ settings: o.settings, accounts: o.accounts, entries: o.entries, audit: o.audit })); if (h && h !== o.checksum && !confirm("সতর্কতা: চেকসাম মেলেনি — ফাইলটি হাতে সম্পাদিত বা নষ্ট হতে পারে (লেনদেনগুলো ভ্যালিডেশনে ঠিক আছে)। তবুও রিস্টোর করবেন?")) return; }
-  if (!confirm(`রিস্টোর: ${data.accounts.length} হিসাব, ${data.entries.length} লেনদেন।\nবর্তমান ডেটা প্রতিস্থাপিত হবে। এগিয়ে যাবেন?`)) return;
-  try { localStorage.setItem(LS_SNAP, JSON.stringify({ at: nowIso(), ...exportData() })); } catch (e) { if (!confirm("বর্তমান ডেটার স্ন্যাপশট রাখা যায়নি। তবুও চালাবেন? (আগে ব্যাকআপ নিয়ে রাখুন)")) return; }
-  try {
-    const ent = { id: uuid(), ts: nowIso(), actor: USER, action: "restore", entity: "backup", entityId: "", summary: `ব্যাকআপ রিস্টোর (${fileName || "ফাইল"}): ${data.accounts.length} হিসাব, ${data.entries.length} লেনদেন`, before: null, after: null };
-    const st = { ...data, audit: [ent, ...data.audit] }; await store.restore(st); S = st; UNDO = []; REDO = []; toast("রিস্টোর সম্পন্ন"); render();
-  } catch (e) { alert("রিস্টোর ব্যর্থ: " + e.message); }
-}
-/* ---------------- Supabase connection ---------------- */
-function keyProblem(k) { if (/^sb_secret_/.test(k)) return "এটি secret কী — ফ্রন্টএন্ডে ব্যবহার নিষিদ্ধ"; try { const p = JSON.parse(atob(k.split(".")[1].replace(/-/g, "+").replace(/_/g, "/"))); if (p.role === "service_role") return "এটি service_role কী — ফ্রন্টএন্ডে ব্যবহার নিষিদ্ধ"; } catch (e) { } return ""; }
-function loadSdk() { return new Promise((res, rej) => { if (window.supabase) return res(); const s = document.createElement("script"); s.src = SDK_URL; s.onload = res; s.onerror = () => rej(new Error("Supabase SDK লোড হয়নি (ইন্টারনেট/CDN)")); document.head.appendChild(s); }); }
-const ALLOW_SIGNUP = !(CFG.auth && CFG.auth.allowSignUp === false);
-let SBC = null;
-function lockScreen(title, msg, btn) { // blocking screen: app stays hidden, boot never continues
-  document.body.classList.add("locked"); const L = $("#lock");
-  L.innerHTML = `<div class="lbox"><h2>${esc(title)}</h2><p>${msg}</p>${btn ? `<button class="btn primary" id="lockBtn">${esc(btn[0])}</button>` : ""}</div>`; L.hidden = false;
-  if (btn) $("#lockBtn").onclick = btn[1];
-  return new Promise(() => { });
-}
-async function logout() { try { if (SBC) await SBC.auth.signOut(); } catch (e) { } location.reload(); }
-function denyScreen(sb) {
-  return sb.auth.signOut().catch(() => { }).then(() => lockScreen("Access Denied", "You do not have permission to use this application.", ["Sign in with another account", () => location.reload()]));
-}
-async function connectSupabase() {
-  if (!SB.url || !SB.anonKey) return lockScreen("লগইন সংযোগ নেই", "লগইন ছাড়া অ্যাপ ব্যবহার করা যায় না। config.js-এ Supabase <b>url</b> ও <b>anonKey</b> দিন।");
-  if (!/^[a-z_][a-z0-9_]{0,40}$/.test(TABLE) || TABLE === "ENTER_YOUR_TABLE_NAME") return lockScreen("কনফিগারেশন ত্রুটি", "config.js-এ <b>table</b>-এর নাম দিন (SQL.sql-এর নামের সাথে হুবহু এক)।");
-  const kp = keyProblem(SB.anonKey); if (kp) return lockScreen("নিরাপত্তা ত্রুটি", esc(kp));
-  try { await loadSdk(); } catch (e) { return lockScreen("সংযোগ ব্যর্থ", esc(e.message), ["আবার চেষ্টা করুন", () => location.reload()]); }
-  const sb = SBC = window.supabase.createClient(SB.url, SB.anonKey, { auth: { persistSession: true, autoRefreshToken: true } });
-  const { data } = await sb.auth.getSession(); let user = data.session && data.session.user;
-  if (!user) user = await authDialog(sb);
-  let ok = false; try { const r = await sb.rpc(TABLE + "_allowed"); ok = !r.error && r.data === true; } catch (e) { }
-  if (!ok) return denyScreen(sb);
-  USER = user.email; document.body.classList.remove("locked"); $("#lock").hidden = true; $("#btnLogout").hidden = false;
-  return SupaStore(sb);
-}
-function authErr(m) { m = String(m || ""); return /invalid login/i.test(m) ? "ইমেইল বা পাসওয়ার্ড ভুল" : /email not confirmed/i.test(m) ? "ইমেইল এখনো নিশ্চিত করা হয়নি" : /rate limit|too many/i.test(m) ? "অনেকবার চেষ্টা হয়েছে, কিছুক্ষণ পরে আবার চেষ্টা করুন" : /network|fetch/i.test(m) ? "ইন্টারনেট সংযোগ সমস্যা" : m; }
-function authDialog(sb) {
-  document.body.classList.add("locked"); const L = $("#lock");
-  L.innerHTML = `<form class="lbox" id="aForm" autocomplete="on"><div class="lbrand">${esc(PAGE_TITLE)}</div><h2>লগইন</h2><p class="lsub">চালিয়ে যেতে আপনার ইমেইল ও পাসওয়ার্ড দিন</p>
-    <label>ইমেইল<input id="aEmail" type="email" autocomplete="username" placeholder="you@example.com" required></label>
-    <label>পাসওয়ার্ড<span class="pw"><input id="aPass" type="password" autocomplete="current-password" required><button type="button" class="btn sm" id="aEye" aria-label="পাসওয়ার্ড দেখান">দেখান</button></span></label>
-    <div id="aMsg" class="errs" role="alert"></div>
-    <div class="lbtns">${ALLOW_SIGNUP ? '<button type="button" class="btn" id="aUp">সাইন আপ</button>' : ""}<button type="submit" class="btn primary" id="aIn">সাইন ইন</button></div></form>`; L.hidden = false;
-  setTimeout(() => $("#aEmail").focus(), 0);
-  return new Promise(resolve => {
-    const msg = t => $("#aMsg").textContent = t, cred = () => ({ email: $("#aEmail").value.trim(), password: $("#aPass").value });
-    const busy = on => { $("#aIn").disabled = on; if ($("#aUp")) $("#aUp").disabled = on; $("#aIn").textContent = on ? "অপেক্ষা করুন…" : "সাইন ইন"; };
-    $("#aEye").onclick = () => { const p = $("#aPass"), h = p.type === "password"; p.type = h ? "text" : "password"; $("#aEye").textContent = h ? "লুকান" : "দেখান"; };
-    $("#aForm").onsubmit = async ev => { ev.preventDefault(); msg(""); busy(true); try { const { data, error } = await sb.auth.signInWithPassword(cred()); busy(false); if (error) return msg(authErr(error.message)); resolve(data.user); } catch (e) { busy(false); msg(authErr(e.message)); } };
-    if (ALLOW_SIGNUP) $("#aUp").onclick = async () => { msg(""); busy(true); try { const { data, error } = await sb.auth.signUp(cred()); busy(false); if (error) return msg(authErr(error.message)); if (data.session) resolve(data.user); else msg("সাইন-আপ হয়েছে। ইমেইল নিশ্চিত করে (প্রয়োজন হলে) সাইন ইন করুন।"); } catch (e) { busy(false); msg(authErr(e.message)); } };
-  });
-}
-
-/* ---------------- events ---------------- */
-const ACT = {
-  logout: () => logout(),
-  toggleEdit: () => { const m = $("#editMenu"); m.hidden = !m.hidden; },
-  addCol: t => { $("#editMenu").hidden = true; return addField(t.dataset.t); },
-  rmRow: () => {
-    $("#editMenu").hidden = true; const m = buildModel(), items = [], acts = [];
-    if (PEND.new) { items.push({ label: "নতুন (অসংরক্ষিত) সারি", sub: "বাতিল হবে" }); acts.push({ nw: true }); }
-    m.rows.forEach(r => { const e = r.e; items.push({ label: "#" + D(e.seq) + " · " + dLong(e.date), sub: (e.desc || "") + (e.desc ? " · " : "") + fmtAbs(e.lines.reduce((t, l) => t + l.dr, 0)) }); acts.push({ e }); });
-    pickDialog("যে সারিগুলো মুছবেন বেছে নিন", items, "এই সময়কালে কোনো সারি নেই।", "মোছা সারি রিসাইকেল বিনে যায় ও পরে পুনরুদ্ধার করা যায়।", async idx => {
-      const list = idx.map(i => acts[i]), ents = list.filter(a => a.e).map(a => a.e);
-      if (ents.length && !confirm(D(ents.length) + " টি সারি রিসাইকেল বিনে পাঠানো হবে। নিশ্চিত?")) return;
-      try { if (list.some(a => a.nw)) delete PEND.new; for (const e of ents) await voidEntry(e.id, "ব্যবহারকারী মুছেছেন"); SEL.id = ""; toast(D(list.length) + " টি সারি মুছে ফেলা হয়েছে", ents.length ? { act: "undo", label: "আনডু" } : null); render(); } catch (er) { toast(er.message); render(); }
-    });
-  },
-  rmCol: t => {
-    $("#editMenu").hidden = true; const type = t.dataset.t, m = buildModel(), cols = type === "asset" ? m.assets : m.liabs, act = activeEntries();
-    const cnt = a => act.filter(e => e.lines.some(l => l.acc === a.id)).length;
-    pickDialog(type === "asset" ? "যে সম্পদ-কলামগুলো সরাবেন বেছে নিন" : "যে দায়-কলামগুলো সরাবেন বেছে নিন", cols.map(a => ({ label: a.name, sub: cnt(a) ? "এই কলামে " + D(cnt(a)) + " টি লেনদেন আছে — সেগুলোও রিসাইকেল বিনে যাবে" : "কোনো লেনদেন নেই" })), "কোনো কলাম নেই।", "সরানো কলামের হিসাব মুছে যায় না; লেনদেনগুলো রিসাইকেল বিন থেকে ফেরালে কলাম আবার আসে।", idx => removeColumns(idx.map(i => cols[i].id)));
-  },
-  pickGo: () => { const dlg = $("#dlg"), idx = [...dlg.querySelectorAll("[data-pk]:checked")].map(x => +x.dataset.pk); dlg.close(); if (idx.length && dlg._multi) return dlg._multi(idx); },
-  goEq: () => { location.hash = ""; view = "eq"; render(); window.scrollTo(0, 0); },
-  undo: doUndo, redo: doRedo,
-  newEntry: () => { $("#editMenu").hidden = true; if (PEND.new) return; const d = newDraft(); PEND.new = { id: d.id, isNew: true, date: d.date, desc: "", delta: {}, oe: 0, base: null, err: "" }; view = "eq"; render.focusKey = "cell:" + d.id + ":" + ((buildModel().assets[0] || {}).id || "OE"); render(); window.scrollTo(0, document.body.scrollHeight); },
-  editEntry: t => { const e = S.entries.find(x => x.id === t.dataset.id); if (e) { DR = draftFromEntry(e); entryModal(); } },
-  delEntry: async t => { const e = S.entries.find(x => x.id === t.dataset.id); if (!e || !confirm("লেনদেন #" + e.seq + " রিসাইকেল বিনে পাঠানো হবে (পরে পুনরুদ্ধার করা যাবে)। নিশ্চিত?")) return; try { await voidEntry(e.id, "ব্যবহারকারী মুছেছেন"); toast("মুছে ফেলা হয়েছে", { act: "undo", label: "আনডু" }); render(); } catch (er) { toast(er.message); } },
-  unvoid: async t => { try { await restoreEntry(t.dataset.id); toast("পুনরুদ্ধার হয়েছে"); render(); } catch (er) { toast(er.message); } },
-  delFromModal: () => { const id = DR.id; $("#dlg").close(); return ACT.delEntry({ dataset: { id } }); },
-  closeDlg: () => $("#dlg").close(), saveEntry: saveDraft,
-  toLines: ev => { const d = DR, e = draftToEntry(d); d.mode = "lines"; d.lines = e.lines.map(l => ({ acc: l.acc, dr: l.dr ? String(l.dr / 100) : "", cr: l.cr ? String(l.cr / 100) : "" })); entryModal(); },
-  addLine: () => { DR.lines.push({ acc: "", dr: "", cr: "" }); entryModal(); }, rmLine: t => { DR.lines.splice(+t.dataset.i, 1); entryModal(); },
-  csvEq, csvJ: csvJournal, csvR: t => csvReport(t.dataset.r), rsub: t => { RSUB = t.dataset.r; render(); },
-  sortJ: () => { JSORT = JSORT === "asc" ? "desc" : "asc"; render(); }, clearJ: () => { JF = { q: "", from: "", to: "", acc: "", tpl: "" }; render(); }, moreJ: () => { JSHOW += 50; render(); },
-  newAcc: () => accModal(), editAcc: t => accModal(t.dataset.id),
-  saveAcc: async () => {
-    const dlg = $("#dlg"), a = { ...dlg._acc }, isNew = a.isNew; delete a.isNew; a.code = a.code.trim(); a.name = a.name.trim(); const err = [];
-    if (!a.code) err.push("কোড দিন"); if (!a.name) err.push("নাম দিন"); if (S.accounts.some(x => x.id !== a.id && x.code === a.code)) err.push("কোডটি আগে থেকেই আছে"); if (S.accounts.some(x => x.id !== a.id && x.name === a.name)) err.push("নামটি আগে থেকেই আছে");
-    if (err.length) return $("#accErr").innerHTML = err.map(x => `<li>${esc(x)}</li>`).join("");
-    const old = S.accounts.find(x => x.id === a.id);
-    try { await store.saveAccount(a); S.accounts = old ? S.accounts.map(x => x.id === a.id ? a : x) : [...S.accounts, a]; await audit(isNew ? "account_create" : "account_update", "account", a.id, (isNew ? "নতুন হিসাব: " : "হিসাব পরিবর্তন: ") + a.name, old || null, a); dlg.close(); render(); } catch (e) { $("#accErr").textContent = e.message; }
-  },
-  delAcc: async t => { const a = S.accounts.find(x => x.id === t.dataset.id); if (S.entries.some(e => e.lines.some(l => l.acc === a.id))) return toast("এই হিসাবে লেনদেন আছে — মোছা যাবে না, নিষ্ক্রিয় করুন"); if (!confirm("হিসাব “" + a.name + "” মুছবেন?")) return; try { await store.deleteAccount(a.id); S.accounts = S.accounts.filter(x => x.id !== a.id); await audit("account_delete", "account", a.id, "হিসাব মুছে ফেলা: " + a.name, a, null); render(); } catch (e) { toast(e.message); } },
-  backup,
-  signout: async () => { await store.sb.auth.signOut(); location.reload(); },
-  uploadLocal: async () => { const raw = await LocalStore.load(); if (!raw) return toast("স্থানীয় ডেটা নেই"); if (!confirm("ক্লাউডের বর্তমান ডেটা মুছে স্থানীয় ডেটা (" + raw.entries.length + " লেনদেন) পাঠানো হবে। নিশ্চিত?")) return; await restoreFromObj({ app: APP, ...raw }, "স্থানীয় ডেটা"); },
-  wipe: async () => { if (prompt("সব স্থানীয় ডেটা মুছে যাবে। আগে JSON ব্যাকআপ নিন। নিশ্চিত হলে লিখুন: মুছুন") !== "মুছুন") return; try { localStorage.removeItem(LS_DATA); } catch (e) { } location.reload(); }
-};
-document.addEventListener("click", ev => { const em = $("#editMenu"); if (em && !em.hidden && !ev.target.closest("#editMenu,#btnEdit")) em.hidden = true; const t = ev.target.closest("[data-act]"); if (!t) return; ev.preventDefault(); const f = ACT[t.dataset.act]; if (f) Promise.resolve(f(t, ev)).catch(e => toast(e.message)); });
-document.addEventListener("change", ev => {
-  const t = ev.target;
-  if (t.dataset.actChange === "restoreFile") { const f = t.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => { let o; try { o = JSON.parse(r.result); } catch (e) { return alert("ফাইলটি বৈধ JSON নয়"); } restoreFromObj(o, f.name); t.value = ""; }; r.readAsText(f); }
-  if (t.dataset.j !== undefined) { JF[t.dataset.j] = t.value; JSHOW = 50; render(); }
-  if (t.dataset.r === "acc") { RACC = t.value; render(); }
-  if (t.dataset.s && t.tagName === "SELECT") { const k = t.dataset.s; saveSettings({ [k]: ["month", "year"].includes(k) ? +t.value : t.value }).then(render); }
-  if (t.dataset.s && t.type === "date") saveSettings({ [t.dataset.s]: t.value }).then(render);
-  if (t.dataset.s === "year") { const y = Math.max(1900, Math.min(2200, parseInt(t.value) || S.settings.year)); saveSettings({ year: y }).then(render); }
-});
-document.addEventListener("input", ev => {
-  const t = ev.target, f = t.dataset.f;
-  if (f && DR) {
-    const i = +t.dataset.i;
-    if (f === "date") DR.date = t.value; else if (f === "desc") { DR.desc = t.value; DR.dirty = true; } else if (f === "amt") DR.amt = t.value;
-    else if (f === "tpl") { DR.tpl = t.value; DR.dirty = DR.dirty && !DR.isNew ? true : false; applyTpl(DR); entryModal(); return; }
-    else if (f === "dr" || f === "cr") { DR[f] = t.value; if (!DR.dirty && (TPL[DR.tpl].dr === "expense" || TPL[DR.tpl].cr === "revenue")) { const a = amap()[t.value]; if (a && (a.type === "expense" || a.type === "revenue")) { DR.desc = a.name; const d = $('[data-f="desc"]'); if (d) d.value = a.name; } } }
-    else if (f === "l.acc") DR.lines[i].acc = t.value; else if (f === "l.dr") { DR.lines[i].dr = t.value; if (parseAmt(t.value) > 0) { DR.lines[i].cr = ""; const o = $(`[data-f="l.cr"][data-i="${i}"]`); if (o) o.value = ""; } }
-    else if (f === "l.cr") { DR.lines[i].cr = t.value; if (parseAmt(t.value) > 0) { DR.lines[i].dr = ""; const o = $(`[data-f="l.dr"][data-i="${i}"]`); if (o) o.value = ""; } }
-    entryStatus();
-  }
-  const dlg = $("#dlg"); if (t.dataset.a && dlg._acc) { const k = t.dataset.a; dlg._acc[k] = t.type === "checkbox" ? t.checked : t.value; }
-  if (t.dataset.j === "q") { JF.q = t.value; JSHOW = 50; render(); }
-  if (t.dataset.q === "aud") { AUDQ = t.value; render(); }
-  if (t.dataset.s === "note") { clearTimeout(input._t); input._t = setTimeout(() => saveSettings({ note: t.value }), 600); }
-});
-function input() { }
-document.addEventListener("change", ev => { const t = ev.target; if (t.dataset.a && $("#dlg")._acc) $("#dlg")._acc[t.dataset.a] = t.type === "checkbox" ? t.checked : t.value; });
-window.addEventListener("storage", e => { if (e.key === LS_DATA && store && store.mode === "local") toast("অন্য ট্যাবে ডেটা পরিবর্তিত হয়েছে — পাতা রিলোড করুন"); });
-window.addEventListener("beforeprint", () => { document.body.dataset.printing = view; });
-
-
-/* ---------------- inline (text) editing of the statement ---------------- */
-const isEqSide = a => a && (a.type === "equity" || a.type === "revenue" || a.type === "expense");
-function parseSigned(t) {
-  let x = String(t).trim().replace(/[−–—]/g, "-").replace(/[০-৯]/g, c => BN.indexOf(c)).replace(/[,\s৳+]/g, "");
-  if (x === "") return 0; if (!/^-?\d+(\.\d{1,2})?$/.test(x)) return NaN;
-  const neg = x[0] === "-"; if (neg) x = x.slice(1); const v = parseAmt(x); return isNaN(v) ? NaN : (neg ? -v : v);
-}
-function parseDateInput(t, base) {
-  let x = String(t).trim().replace(/[০-৯]/g, c => BN.indexOf(c)).replace(/\s/g, ""), m;
-  if ((m = x.match(/^(\d{1,2})$/))) { const [y, mo] = ymd(base); x = `${y}-${pad(mo)}-${pad(+m[1])}`; }
-  else if ((m = x.match(/^(\d{2})(\d{2})(\d{4})$/))) x = `${m[3]}-${m[2]}-${m[1]}`
-  else if ((m = x.match(/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{4})$/))) x = `${m[3]}-${pad(+m[2])}-${pad(+m[1])}`;
-  else if ((m = x.match(/^(\d{4})[\/.\-](\d{1,2})[\/.\-](\d{1,2})$/))) x = `${m[1]}-${pad(+m[2])}-${pad(+m[3])}`;
-  return validDate(x) ? x : null;
-}
-function pendFrom(e) {
-  const am = amap(), d = entryDelta(e, am), delta = {}; let oe = 0;
-  for (const id in d) { const a = am[id]; if (!a) continue; if (isEqSide(a)) oe += d[id]; else delta[id] = d[id]; }
-  return { id: e.id, isNew: false, base: e, date: e.date, desc: e.desc, delta, oe, err: "" };
-}
-function hintAcc(desc, oe) {
-  const am = S.accounts.filter(a => a.active), t = (desc || "").trim();
-  const hasCap = S.entries.some(e => e.status === "active" && e.lines.some(l => (S.accounts.find(a => a.id === l.acc) || {}).kind === "capital"));
-  if (oe > 0 && (/মূলধন/.test(t) || !hasCap)) return am.find(a => a.kind === "capital");
-  if (oe < 0 && /উত্তোলন/.test(t)) return am.find(a => a.kind === "drawings");
-  const type = oe > 0 ? "revenue" : "expense", list = am.filter(a => a.type === type);
-  return (t && list.find(a => t.includes(a.name) || a.name.includes(t))) || (oe > 0 ? list.find(a => a.name === "সেবা আয়") : list.find(a => a.name === "অন্যান্য খরচ")) || list[0];
-}
-function buildLines(P) {
-  const am = amap(), lines = []; let note = "";
-  for (const c in P.delta) { const a = am[c], v = P.delta[c]; if (!a || !v) continue; const dr = a.type === "asset" ? v > 0 : v < 0; lines.push({ acc: c, dr: dr ? Math.abs(v) : 0, cr: dr ? 0 : Math.abs(v) }); }
-  if (P.oe) {
-    const orig = P.base ? P.base.lines.filter(l => isEqSide(am[l.acc])) : [], origOE = orig.reduce((t, l) => t + colSign(am[l.acc], l.dr, l.cr), 0);
-    if (P.base && orig.length && P.oe === origOE) orig.forEach(l => lines.push({ ...l }));
-    else { const ids = [...new Set(orig.map(l => l.acc))]; const acc = ids.length === 1 ? am[ids[0]] : hintAcc(P.desc, P.oe);
-      if (acc) { lines.push({ acc: acc.id, dr: P.oe < 0 ? -P.oe : 0, cr: P.oe > 0 ? P.oe : 0 }); if (!ids.length) note = "মালিকানা স্বত্বের পরিবর্তন “" + acc.name + "” হিসাবে ধরা হয়েছে"; } }
-  }
-  return { lines, note };
-}
-const sig = ls => JSON.stringify(Object.entries(ls.reduce((o, l) => { const k = l.acc; o[k] = o[k] || [0, 0]; o[k][0] += l.dr; o[k][1] += l.cr; return o; }, {})).sort());
-async function tryCommit(P) {
-  const am = amap(); P.err = ""; let A = 0, L = 0;
-  for (const c in P.delta) { const a = am[c]; if (!a) continue; if (a.type === "asset") A += P.delta[c]; else L += P.delta[c]; }
-  const OE = P.oe || 0, { lines, note } = buildLines(P);
-  if (!lines.length) { P.err = "অন্তত একটি ঘরে পরিমাণ লিখুন"; return false; }
-  if (A !== L + OE) { P.err = `অমিল: সম্পদ ${fmt(A)} ≠ দায় ${fmt(L)} + মালিকানা ${fmt(OE)} (পার্থক্য ${fmt(A - L - OE)}) — বাকি ঘর ঠিক করুন`; return false; }
-  if (!P.isNew && P.date === P.base.date && P.desc === P.base.desc && sig(lines) === sig(P.base.lines)) { delete PEND[P.id]; return true; }
-  const ent = { id: P.id, date: P.date, desc: P.desc.trim(), tpl: P.base ? P.base.tpl : "custom", status: "active", voidReason: "", lines };
-  const er = validateEntry(ent, { checkActive: P.isNew }); if (er.length) { P.err = er[0]; return false; }
-  const base = S.entries.filter(x => x.status === "active" && x.id !== ent.id), b0 = negativeAccounts(base), a1 = negativeAccounts([...base, ent]), nw = [...a1].filter(id => !b0.has(id));
-  if (nw.length && !confirm("সতর্কতা: এর ফলে ব্যালান্স ঋণাত্মক (মাইনাস) হবে:\n• " + nw.map(id => am[id].name).join("\n• ") + "\n\nতবুও সংরক্ষণ করবেন?")) { P.err = "ঋণাত্মক ব্যালান্স — সংরক্ষণ হয়নি"; return false; }
-  try { await commitEntry(ent, P.isNew ? "create" : "update", (P.isNew ? "নতুন লেনদেন: " : "লেনদেন সম্পাদনা: ") + ent.desc); }
-  catch (e) { P.err = e.message; return false; }
-  if (P.isNew) delete PEND.new; else delete PEND[P.id]; const p = period();
-  toast(note || "সংরক্ষিত হয়েছে", { act: "undo", label: "আনডু" });
-  if (ent.date < p.from || ent.date > p.to) toast("তারিখ বর্তমান সময়কালের বাইরে — অন্য মাস/বছর বেছে দেখুন");
-  return true;
-}
-async function onCellEdit(el, nextKey) {
-  const kind = el.dataset.ed, id = el.dataset.id, col = el.dataset.col, txt = el.textContent.replace(/ /g, " ").trim();
-  render.focusKey = nextKey || null;
-  try {
-    if (kind === "acc") {
-      const a = S.accounts.find(x => x.id === col);
-      if (a && txt !== a.name) { if (!txt) toast("হিসাবের নাম খালি রাখা যায় না"); else if (S.accounts.some(x => x.id !== a.id && x.name === txt)) toast("এই নামে আরেকটি হিসাব আছে"); else { const n = { ...a, name: txt }; await store.saveAccount(n); S.accounts = S.accounts.map(x => x.id === a.id ? n : x); await audit("account_update", "account", a.id, "হিসাবের নাম পরিবর্তন: " + a.name + " → " + txt, a, n); } }
-    } else {
-      let P = PEND[id] || (PEND.new && PEND.new.id === id ? PEND.new : null), changed = false;
-      if (!P) { const e = S.entries.find(x => x.id === id); if (!e) return render(); P = pendFrom(e); PEND[id] = P; }
-      if (kind === "date") { const nd = parseDateInput(txt, P.date); if (!nd) toast("তারিখ বোঝা যায়নি (যেমন: ২৯ বা ২৯/০১/২০১৭)"); else if (nd !== P.date) { P.date = nd; changed = true; } }
-      else if (kind === "cell") { const v = parseSigned(txt); if (isNaN(v)) toast("সংখ্যা সঠিক নয় (যেমন: ৫০,০০০ বা −৩,০০০)"); else { const cur = col === "OE" ? P.oe : (P.delta[col] || 0); if (v !== cur) { if (col === "OE") P.oe = v; else P.delta[col] = v; changed = true; } } }
-      if (changed || P.err || P.isNew) { if (changed || !P.isNew) await tryCommit(P); }
-      if (!P.isNew && !changed && !P.err) delete PEND[id];
-    }
-  } catch (e) { toast(e.message); }
-  render();
-}
-document.addEventListener("focusout", ev => { if (render.busy) return; const el = ev.target; if (el.matches && el.matches(".ce[data-ed]")) { if (el.dataset.cancel) { delete el.dataset.cancel; render.focusKey = null; return render(); } const n = ev.relatedTarget; onCellEdit(el, n && n.dataset && n.dataset.k); } });
-document.addEventListener("focusin", ev => {
-  const el = ev.target; if (!(el.matches && el.matches(".ce[data-ed]"))) return;
-  SEL.id = el.dataset.id || SEL.id; if (el.dataset.col && el.dataset.col !== "OE") SEL.col = el.dataset.col;
-  document.querySelectorAll("tr.sel").forEach(t => t.classList.remove("sel"));
-  if (el.dataset.id) document.querySelectorAll(`tr[data-id="${el.dataset.id}"]`).forEach(t => t.classList.add("sel"));
-  if (el.dataset.ed === "date") { const P = PEND[el.dataset.id] || (PEND.new && PEND.new.id === el.dataset.id ? PEND.new : null), e = S.entries.find(x => x.id === el.dataset.id), d = P ? P.date : e && e.date; if (d) { const [y, m, dd] = ymd(d); el.textContent = D(pad(dd) + "/" + pad(m) + "/" + y); } }
-  const r = document.createRange(); r.selectNodeContents(el); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
-});
-document.addEventListener("keydown", ev => { const el = ev.target; if (!(el.matches && el.matches(".ce[data-ed]"))) return;
-  if (ev.key === "Enter") { ev.preventDefault(); el.blur(); } if (ev.key === "Escape") { el.dataset.cancel = "1"; el.blur(); } });
-document.addEventListener("input", ev => {
-  const el = ev.target; if (!(el.matches && el.matches('.ce[data-ed="date"]'))) return;
-  const d = el.textContent.replace(/[০-৯]/g, c => BN.indexOf(c)).replace(/\D/g, "").slice(0, 8);
-  const out = d.length > 4 ? d.slice(0, 2) + "/" + d.slice(2, 4) + "/" + d.slice(4) : d.length > 2 ? d.slice(0, 2) + "/" + d.slice(2) : d;
-  el.textContent = D(out); const r = document.createRange(); r.selectNodeContents(el); r.collapse(false); const sl = getSelection(); sl.removeAllRanges(); sl.addRange(r);
-});
-document.addEventListener("paste", ev => { const el = ev.target; if (!(el.matches && el.matches(".ce[data-ed]"))) return; ev.preventDefault(); document.execCommand("insertText", false, (ev.clipboardData.getData("text") || "").replace(/[\r\n]+/g, " ")); });
-function pickDialog(title, items, emptyMsg, foot, onConfirm) {
-  const dlg = $("#dlg"); dlg._multi = onConfirm;
-  dlg.innerHTML = `<div class="hd"><span>${esc(title)}</span><button class="btn sm" data-act="closeDlg">✕</button></div><div class="bd">${items.length ? `<label style="display:flex;gap:10px;align-items:center;padding:6px 4px;font-weight:600"><input type="checkbox" id="pkAll" style="width:20px;height:20px;min-height:0"> সব নির্বাচন করুন</label>` + items.map((x, i) => `<label style="display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin-bottom:8px;cursor:pointer"><input type="checkbox" data-pk="${i}" style="width:20px;height:20px;min-height:0;margin-top:3px"><span><b>${esc(x.label)}</b><br><span class="muted" style="font-size:.85rem">${esc(x.sub || "")}</span></span></label>`).join("") : `<div class="empty">${esc(emptyMsg)}</div>`}<p class="muted" style="font-size:.82rem">${esc(foot || "")}</p></div><div class="ft"><button class="btn" data-act="closeDlg">বন্ধ করুন</button><button class="btn danger" data-act="pickGo" id="pkGo" disabled>${ICON_TRASH}নির্বাচিতগুলো মুছুন (০)</button></div>`;
-  const upd = () => { const n = dlg.querySelectorAll("[data-pk]:checked").length, all = dlg.querySelectorAll("[data-pk]").length; $("#pkGo").disabled = !n; $("#pkGo").innerHTML = ICON_TRASH + "নির্বাচিতগুলো মুছুন (" + D(n) + ")"; const a = $("#pkAll"); if (a) a.checked = n === all && all > 0; };
-  dlg.onchange = ev => { if (ev.target.id === "pkAll") dlg.querySelectorAll("[data-pk]").forEach(x => x.checked = ev.target.checked); upd(); };
-  dlg.showModal();
-}
-async function removeColumns(ids) {
-  if (!ids.length) return; const am = amap(), act = activeEntries().filter(e => e.lines.some(l => ids.includes(l.acc)));
-  if (!confirm(D(ids.length) + " টি কলাম সরানো হবে।" + (act.length ? "\nএগুলো ব্যবহার করে এমন " + D(act.length) + " টি লেনদেন রিসাইকেল বিনে যাবে (পরে পুনরুদ্ধার করা যাবে)।" : "") + "\nনিশ্চিত?")) return;
-  try {
-    for (const e of act) await voidEntry(e.id, "কলাম সরানো হয়েছে");
-    for (const id of ids) { const a = S.accounts.find(x => x.id === id), n = { ...a, showCol: false }; await store.saveAccount(n); S.accounts = S.accounts.map(x => x.id === id ? n : x); await audit("account_update", "account", id, "কলাম সরানো: " + a.name, a, n); }
-    for (const k in PEND) ids.forEach(id => delete PEND[k].delta[id]);
-    toast(D(ids.length) + " টি কলাম সরানো হয়েছে", act.length ? { act: "undo", label: "আনডু" } : null);
-  } catch (e) { toast(e.message); }
-  render();
-}
-async function addField(type) {
-  const base = type === "asset" ? "নতুন সম্পদ" : "নতুন দায়"; let name = base, n = 1; while (S.accounts.some(a => a.name === name)) name = base + " " + D(++n);
-  const lo = type === "asset" ? 1000 : 2000, codes = S.accounts.filter(a => a.type === type).map(a => parseInt(a.code, 10) || lo);
-  let code = Math.max(lo, ...codes) + 10; while (S.accounts.some(a => a.code === String(code))) code += 10;
-  const a = { id: uuid(), code: String(code), name, type, kind: "other", showCol: true, active: true, sort: Math.max(0, ...S.accounts.map(x => x.sort)) + 10 };
-  try { await store.saveAccount(a); S.accounts = [...S.accounts, a]; await audit("account_create", "account", a.id, "নতুন ফিল্ড (কলাম): " + name, null, a); render.focusKey = "acc::" + a.id; render(); }
-  catch (e) { toast(e.message); }
-}
-async function hideField(id) {
-  const a = S.accounts.find(x => x.id === id); if (!a || S.entries.some(e => e.lines.some(l => l.acc === id))) return toast("এই ফিল্ডে লেনদেন আছে — সরানো যাবে না");
-  const n = { ...a, showCol: false }; try { await store.saveAccount(n); S.accounts = S.accounts.map(x => x.id === id ? n : x); await audit("account_update", "account", id, "ফিল্ড (কলাম) সরানো: " + a.name, a, n); render(); } catch (e) { toast(e.message); }
-}
-document.addEventListener("pointerdown", async ev => {
-  const af = ev.target.closest && ev.target.closest("[data-rmf]"); if (af) { ev.preventDefault(); return hideField(af.dataset.rmf); }
-});
-
-/* ---------------- boot ---------------- */
-(async function boot() {
-  store = LocalStore; let loaded = null;
-  try { const sb = await connectSupabase(); if (sb) store = sb; } catch (e) { await lockScreen("সংযোগ ব্যর্থ", esc(e.message), ["আবার চেষ্টা করুন", () => location.reload()]); }
-  try { loaded = await store.load(); } catch (e) { toast("ডেটা লোড ব্যর্থ: " + e.message); if (store.mode === "supabase") { await lockScreen("ডেটা লোড ব্যর্থ", esc(e.message) + "<br>SQL.sql রান করা হয়েছে ও আপনার UID তালিকায় আছে কি না দেখুন।", ["আবার চেষ্টা করুন", () => location.reload()]); } }
-  if (loaded) { S = loaded; if (!S.accounts.length) S.accounts = defaultAccounts(); }
-  else { // first run: persist defaults so account ids stay stable
-    try { if (store.mode === "local") LocalStore.write(S); else { await store.restore(S); } } catch (e) { toast(e.message); }
-  }
-  const hv = location.hash.slice(1); if (VIEWS.some(v => v[0] === hv)) view = hv;
-  window.addEventListener("hashchange", () => { const h = location.hash.slice(1); view = VIEWS.some(v => v[0] === h) ? h : "eq"; render(); window.scrollTo(0, 0); });
-  render();
-  window.HisabApp = { get S() { return S; }, validateEntry, buildModel, integrity, parseAmt, fmt, validateBackup, commitEntry, amap, doUndo, doRedo, restoreFromObj, voidEntry, restoreEntry, trialBalance, incomeStmt, balanceSheet, exportData, saveSettings, render, setView: v => { view = v; render(); } };
-})();
-</script>
+  <div class="card"><h3>ডেটা সংরক্ষণ</h3>${a?`<p class="ok">✓ Supabase সংযুক্ত — ${esc(USER)}</p><div class="row"><button class="btn" data-act="signout">সাইন আউট</button><button class="btn" data-act="uploadLocal">স্থানীয় ডেটা ক্লাউডে পাঠান (বর্তমান ক্লাউড ডেটা প্রতিস্থাপিত হবে)</button></div>`:'<p class="bad"><b>সীমিত মোড:</b> ডেটা শুধু এই ব্রাউজারে (localStorage) আছে। ব্রাউজার ডেটা মুছলে বা অন্য ডিভাইসে গেলে হারাবে। নিয়মিত JSON ব্যাকআপ নিন বা Supabase সংযুক্ত করুন।</p>'}
+   ${a?"":'<p class="muted" style="font-size:.85rem">Supabase সংযোগ করতে <code>config.js</code> ফাইলে URL ও anon/publishable key দিন (প্রথমে SQL.sql চালিয়ে নিন)।</p>'}</div>
+  ${a?"":'<div class="card"><h3>বিপজ্জনক</h3><button class="btn danger" data-act="wipe">স্থানীয় সব ডেটা মুছুন</button></div>'}`}function render(){document.body.classList.toggle("v-eq",view==="eq"),$("#btnBack").style.display=view==="eq"?"none":"",$("#btnUndo").disabled=!UNDO.length,$("#btnRedo").disabled=!REDO.length;const t={eq:viewEq,journal:viewJournal,accounts:viewAccounts,reports:viewReports,audit:viewAudit,settings:viewSettings}[view],a=document.activeElement&&document.activeElement.dataset?{k:["s","j","q","c"].map(e=>document.activeElement.dataset[e]?e+":"+document.activeElement.dataset[e]:"").join(""),pos:document.activeElement.selectionStart}:null;render.busy=!0;try{$("#main").innerHTML=`<div class="view printing" data-view="${view}">${t()}</div>`}finally{render.busy=!1}if(render.focusKey){const e=$(`[data-k="${render.focusKey}"]`);render.focusKey=null,e&&e.focus()}else if(a&&a.k){const[e,s]=a.k.split(":"),n=$(`[data-${e}="${s}"]`);if(n&&n.tagName!=="SELECT"){n.focus();try{n.setSelectionRange(a.pos,a.pos)}catch{}}}}function download(t,a,e){const s=new Blob([e[0]==="\uFEFF"?e:(a.includes("csv")?"\uFEFF":"")+e],{type:a+";charset=utf-8"}),n=document.createElement("a");n.href=URL.createObjectURL(s),n.download=t,document.body.appendChild(n),n.click(),setTimeout(()=>{URL.revokeObjectURL(n.href),n.remove()},500)}const csvCell=t=>(t=String(t??""),/[",\n\r]/.test(t)?'"'+t.replace(/"/g,'""')+'"':t),csv=t=>t.map(a=>a.map(csvCell).join(",")).join(`\r
+`),taka=t=>(t/100).toFixed(2),stamp=()=>new Date().toISOString().slice(0,10);function csvJournal(){const t=amap(),a=[["ক্রমিক","তারিখ","বিবরণ","ধরন","অবস্থা","হিসাব কোড","হিসাব","ডেবিট","ক্রেডিট"]];S.entries.slice().sort(cmpE).forEach(e=>e.lines.forEach(s=>a.push([e.seq,e.date,e.desc,tplLabel(e.tpl),e.status,(t[s.acc]||{}).code,(t[s.acc]||{}).name,s.dr?taka(s.dr):"",s.cr?taka(s.cr):""]))),download(`journal-${stamp()}.csv`,"text/csv",csv(a))}function csvEq(){const t=buildModel(),a=t.assets,e=t.liabs,s=[[PAGE_TITLE],[subtitleText()],[],["তারিখ","লাইন",...a.map(i=>"সম্পদ: "+i.name),...e.map(i=>"দায়: "+i.name),"মালিকানা স্বত্ব","মন্তব্য"]],n=(i,c)=>[...a.map(r=>i[r.id]?taka(i[r.id]):""),...e.map(r=>i[r.id]?taka(i[r.id]):""),c.OE?taka(c.OE):""];t.rows.forEach(i=>{Object.values(i.before).every(c=>c===0)||s.push(["","উদ্বৃত্ত",...n(i.before,i.tb),""]),s.push([i.e.date,"লেনদেন",...a.map(c=>i.delta[c.id]?taka(i.delta[c.id]):""),...e.map(c=>i.delta[c.id]?taka(i.delta[c.id]):""),i.ta.OE-i.tb.OE?taka(i.ta.OE-i.tb.OE):"",i.e.desc])}),s.push(["","সমাপনী উদ্বৃত্ত",...n(t.closing,t.tot),""]),s.push(["","মোট সম্পদ",taka(t.tot.A),"মোট দায় + মালিকানা স্বত্ব",taka(t.tot.L+t.tot.OE)]),download(`equation-${stamp()}.csv`,"text/csv",csv(s))}function csvReport(t){let a=[];if(t==="tb"){const e=trialBalance();a=[["কোড","হিসাব","ডেবিট","ক্রেডিট"],...e.rows.map(s=>[s.a.code,s.a.name,s.dr?taka(s.dr):"",s.cr?taka(s.cr):""]),["","মোট",taka(e.tdr),taka(e.tcr)]]}if(t==="is"){const e=incomeStmt();a=[["বিবরণ","টাকা"],...e.rev.map(s=>[s[0].name,taka(s[1])]),["মোট আয়",taka(e.R)],...e.exp.map(s=>[s[0].name,taka(s[1])]),["মোট ব্যয়",taka(e.X)],["নিট ফলাফল",taka(e.net)]]}if(t==="bs"){const e=balanceSheet();a=[["বিবরণ","টাকা"],...e.A.map(s=>[s[0].name,taka(s[1])]),["মোট সম্পদ",taka(e.T.A)],...e.L.map(s=>[s[0].name,taka(s[1])]),["মোট দায়",taka(e.T.L)],["মূলধন",taka(e.oe.capital)],["আয়",taka(e.oe.revenue)],["ব্যয়",taka(e.oe.expense)],["উত্তোলন",taka(e.oe.drawings)],["মোট মালিকানা স্বত্ব",taka(e.T.OE)]]}if(t==="gl"){const e=ledgerData(RACC);if(!e)return toast("প্রথমে হিসাব নির্বাচন করুন");a=[["তারিখ","বিবরণ","ডেবিট","ক্রেডিট","ব্যালান্স"],["","প্রারম্ভিক","","",taka(e.open)],...e.rows.map(s=>[s.e.date,s.e.desc,s.dr?taka(s.dr):"",s.cr?taka(s.cr):"",taka(s.run)]),["","সমাপনী","","",taka(e.close)]]}download(`${t}-${stamp()}.csv`,"text/csv",csv(a))}async function sha256(t){try{const a=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(t));return[...new Uint8Array(a)].map(e=>e.toString(16).padStart(2,"0")).join("")}catch{return""}}const canon=t=>JSON.stringify({settings:t.settings,accounts:t.accounts,entries:t.entries,audit:t.audit}),exportData=()=>({settings:S.settings,accounts:S.accounts,entries:S.entries.map(t=>({...t})),audit:S.audit});async function backup(){const t=exportData(),a={app:APP,version:APP_VERSION,exportedAt:nowIso(),currency:"BDT",amountUnit:"paisa (১ টাকা = ১০০ পয়সা)",checksum:await sha256(canon(t)),...t};download(`hisab-backup-${stamp()}.json`,"application/json",JSON.stringify(a,null,1)),await audit("backup","backup","","JSON ব্যাকআপ ডাউনলোড"),toast("ব্যাকআপ ডাউনলোড শুরু হয়েছে")}function validateBackup(t){const a=[];if(!t||t.app!==APP)return["এটি এই অ্যাপের ব্যাকআপ ফাইল নয়"];if(!Array.isArray(t.accounts)||!Array.isArray(t.entries))return["accounts/entries অনুপস্থিত"];const e=new Set,s=new Set;t.accounts.forEach(r=>{(!r.id||!r.name||!r.code||!TYPE_BN[r.type])&&a.push("অবৈধ হিসাব: "+(r.name||r.id)),e.has(r.id)&&a.push("ডুপ্লিকেট হিসাব আইডি"),s.has(r.code)&&a.push("ডুপ্লিকেট হিসাব কোড "+r.code),e.add(r.id),s.add(r.code)});const n=new Set,i=new Set,c=Object.fromEntries(t.accounts.map(r=>[r.id,r]));return t.entries.forEach(r=>{if((!r.id||n.has(r.id))&&a.push("ডুপ্লিকেট/অনুপস্থিত লেনদেন আইডি"),n.add(r.id),i.has(r.seq)&&a.push("ডুপ্লিকেট ক্রমিক #"+r.seq),i.add(r.seq),["active","void"].includes(r.status)||a.push("অবৈধ অবস্থা #"+r.seq),!validDate(r.date)||!Array.isArray(r.lines)||r.lines.length<2){a.push("অবৈধ লেনদেন #"+r.seq);return}let o=0,d=0;r.lines.forEach(u=>{c[u.acc]||a.push("অজানা হিসাব, লেনদেন #"+r.seq),(!Number.isInteger(u.dr)||!Number.isInteger(u.cr)||u.dr<0||u.cr<0||u.dr>0==u.cr>0)&&a.push("অবৈধ লাইন, লেনদেন #"+r.seq),o+=u.dr,d+=u.cr}),o!==d&&a.push("ডেবিট≠ক্রেডিট, লেনদেন #"+r.seq)}),[...new Set(a)].slice(0,12)}async function restoreFromObj(t,a){const e=validateBackup(t);if(e.length)return alert(`রিস্টোর বাতিল — ব্যাকআপ অবৈধ:
+• `+e.join(`
+• `));const s={settings:{...defaultSettings(),...t.settings||{}},accounts:t.accounts,entries:t.entries.map(n=>({...n,version:n.version||1})),audit:t.audit||[]};if(t.checksum){const n=await sha256(canon({settings:t.settings,accounts:t.accounts,entries:t.entries,audit:t.audit}));if(n&&n!==t.checksum&&!confirm("সতর্কতা: চেকসাম মেলেনি — ফাইলটি হাতে সম্পাদিত বা নষ্ট হতে পারে (লেনদেনগুলো ভ্যালিডেশনে ঠিক আছে)। তবুও রিস্টোর করবেন?"))return}if(confirm(`রিস্টোর: ${s.accounts.length} হিসাব, ${s.entries.length} লেনদেন।
+বর্তমান ডেটা প্রতিস্থাপিত হবে। এগিয়ে যাবেন?`)){try{localStorage.setItem(LS_SNAP,JSON.stringify({at:nowIso(),...exportData()}))}catch{if(!confirm("বর্তমান ডেটার স্ন্যাপশট রাখা যায়নি। তবুও চালাবেন? (আগে ব্যাকআপ নিয়ে রাখুন)"))return}try{const n={id:uuid(),ts:nowIso(),actor:USER,action:"restore",entity:"backup",entityId:"",summary:`ব্যাকআপ রিস্টোর (${a||"ফাইল"}): ${s.accounts.length} হিসাব, ${s.entries.length} লেনদেন`,before:null,after:null},i={...s,audit:[n,...s.audit]};await store.restore(i),S=i,UNDO=[],REDO=[],toast("রিস্টোর সম্পন্ন"),render()}catch(n){alert("রিস্টোর ব্যর্থ: "+n.message)}}}function keyProblem(t){if(/^sb_secret_/.test(t))return"এটি secret কী — ফ্রন্টএন্ডে ব্যবহার নিষিদ্ধ";try{if(JSON.parse(atob(t.split(".")[1].replace(/-/g,"+").replace(/_/g,"/"))).role==="service_role")return"এটি service_role কী — ফ্রন্টএন্ডে ব্যবহার নিষিদ্ধ"}catch{}return""}function loadSdk(){return new Promise((t,a)=>{if(window.supabase)return t();const e=document.createElement("script");e.src=SDK_URL,e.onload=t,e.onerror=()=>a(new Error("Supabase SDK লোড হয়নি (ইন্টারনেট/CDN)")),document.head.appendChild(e)})}let SBC=null;function lockScreen(t,a,e){document.body.classList.add("locked");const s=$("#lock");return s.innerHTML=`<div class="lbox"><h2>${esc(t)}</h2><p>${a}</p>${e?`<button class="btn primary" id="lockBtn">${esc(e[0])}</button>`:""}</div>`,s.hidden=!1,e&&($("#lockBtn").onclick=e[1]),new Promise(()=>{})}async function logout(){try{SBC&&await SBC.auth.signOut()}catch{}location.reload()}function offlineLogin(t){return authDialog({auth:{signInWithPassword:async()=>({error:{message:"❌ "+t}}),signOut:async()=>({})}},async()=>!1,!1).then(()=>new Promise(()=>{}))}async function connectSupabase(){if(!SB.url||!SB.anonKey)return offlineLogin("Supabase is not configured (config.js: url / anonKey). Please contact the admin.");if(!/^[a-z_][a-z0-9_]{0,40}$/.test(TABLE)||TABLE==="ENTER_YOUR_TABLE_NAME")return offlineLogin("Table name is not set in config.js. Please contact the admin.");if(keyProblem(SB.anonKey))return offlineLogin("Unsafe API key in config.js (only anon / publishable keys are allowed).");try{await loadSdk()}catch{return lockScreen("Connection failed","Could not load the login service. Check your internet connection.",["Try again",()=>location.reload()])}const a=SBC=window.supabase.createClient(SB.url,SB.anonKey,{auth:{persistSession:!0,autoRefreshToken:!0}}),{data:e}=await a.auth.getSession();let s=e.session&&e.session.user;const n=async()=>{try{const c=await a.rpc(TABLE+"_allowed");return!c.error&&c.data===!0}catch{return!1}};let i=!1;return s&&!await n()&&(await a.auth.signOut().catch(()=>{}),s=null,i=!0),s||(s=await authDialog(a,n,i)),USER=s.email,document.body.classList.remove("locked"),$("#lock").hidden=!0,$("#btnLogout").hidden=!1,SupaStore(a)}function authErr(t){return t=String(t||""),/invalid login/i.test(t)?"❌ Incorrect email or password!":/email not confirmed/i.test(t)?"❌ Email not verified. Please check your inbox!":/rate limit|too many/i.test(t)?"⚠️ Too many attempts. Please try again later!":/network|fetch/i.test(t)?"❌ Network error! Please check your connection.":t}const NO_ACCESS="THIS USER IS CURRENTLY UNDER CONSTRUCTION,<br>PLEASE TRY AGAIN LATER AND<br>CONTACT THE ADMIN.";function authDialog(t,a,e){document.body.classList.add("locked");const s=$("#lock");return s.innerHTML=`<form class="lbox" id="aForm" autocomplete="on" novalidate><h2>🔐 Admin Login</h2>
+    <div class="input-group"><label for="aEmail">Email Address</label><input type="email" id="aEmail" placeholder="admin@example.com" autocomplete="email"><div class="validation-error" id="aEmailErr"></div></div>
+    <div class="input-group"><label for="aPass">Password</label><div class="password-wrapper"><input type="password" id="aPass" placeholder="••••••••" autocomplete="current-password"><i class="fa-regular fa-eye eye-btn" id="aEye" role="button" aria-label="Show password"></i></div><div class="validation-error" id="aPassErr"></div></div>
+    <button type="submit" class="btn-login" id="aIn">LOGIN</button><div id="aMsg" class="status" role="alert"></div></form>`,s.hidden=!1,new Promise(n=>{const i=(m,p)=>{const l=$("#aMsg");l.innerHTML=m,l.className="status"+(p?" status-"+p:"")},c=$("#aIn"),r=$("#aEmail"),o=$("#aPass"),d=()=>{c.disabled=!1,c.textContent="LOGIN"};e&&i(NO_ACCESS,"warning"),$("#aEye").onclick=m=>{const p=o.type==="password";o.type=p?"text":"password",m.target.classList.toggle("fa-eye",!p),m.target.classList.toggle("fa-eye-slash",p)};const u=(m,p)=>m.addEventListener("focus",()=>{m.classList.remove("error"),$(p).classList.remove("show")});u(r,"#aEmailErr"),u(o,"#aPassErr");const f=(m,p,l)=>($(p).textContent="⚠️ "+l,$(p).classList.add("show"),m.classList.add("error"),!1),g=(m,p)=>{let l=!0;return m?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)||(l=f(r,"#aEmailErr","Please enter a valid email address!")):l=f(r,"#aEmailErr","Email address is required!"),p.trim()?p.length<6&&(l=f(o,"#aPassErr","Password must be at least 6 characters!")):l=f(o,"#aPassErr","Password is required!"),l};$("#aForm").onsubmit=async m=>{m.preventDefault();const p=r.value.trim(),l=o.value;if(!g(p,l))return i("❌ Please fill in all required fields correctly!","error");c.disabled=!0,c.innerHTML='<span class="spinner"></span> Checking...',i("");try{const{data:y,error:h}=await t.auth.signInWithPassword({email:p,password:l});if(h)return d(),i(authErr(h.message),"error");if(!y||!y.user)return d(),i("❌ Login failed! Please try again.","error");if(!await a())return await t.auth.signOut().catch(()=>{}),d(),i(NO_ACCESS,"warning");i("✅ Login successful! Redirecting...","success"),n(y.user)}catch{d(),i("❌ Network error! Please check your connection.","error")}}})}const ACT={logout:()=>logout(),toggleEdit:()=>{const t=$("#editMenu");t.hidden=!t.hidden},addCol:t=>($("#editMenu").hidden=!0,addField(t.dataset.t)),rmRow:()=>{$("#editMenu").hidden=!0;const t=buildModel(),a=[],e=[];PEND.new&&(a.push({label:"নতুন (অসংরক্ষিত) সারি",sub:"বাতিল হবে"}),e.push({nw:!0})),t.rows.forEach(s=>{const n=s.e;a.push({label:"#"+D(n.seq)+" · "+dLong(n.date),sub:(n.desc||"")+(n.desc?" · ":"")+fmtAbs(n.lines.reduce((i,c)=>i+c.dr,0))}),e.push({e:n})}),pickDialog("যে সারিগুলো মুছবেন বেছে নিন",a,"এই সময়কালে কোনো সারি নেই।","মোছা সারি রিসাইকেল বিনে যায় ও পরে পুনরুদ্ধার করা যায়।",async s=>{const n=s.map(c=>e[c]),i=n.filter(c=>c.e).map(c=>c.e);if(!(i.length&&!confirm(D(i.length)+" টি সারি রিসাইকেল বিনে পাঠানো হবে। নিশ্চিত?")))try{n.some(c=>c.nw)&&delete PEND.new;for(const c of i)await voidEntry(c.id,"ব্যবহারকারী মুছেছেন");SEL.id="",toast(D(n.length)+" টি সারি মুছে ফেলা হয়েছে",i.length?{act:"undo",label:"আনডু"}:null),render()}catch(c){toast(c.message),render()}})},rmCol:t=>{$("#editMenu").hidden=!0;const a=t.dataset.t,e=buildModel(),s=a==="asset"?e.assets:e.liabs,n=activeEntries(),i=c=>n.filter(r=>r.lines.some(o=>o.acc===c.id)).length;pickDialog(a==="asset"?"যে সম্পদ-কলামগুলো সরাবেন বেছে নিন":"যে দায়-কলামগুলো সরাবেন বেছে নিন",s.map(c=>({label:c.name,sub:i(c)?"এই কলামে "+D(i(c))+" টি লেনদেন আছে — সেগুলোও রিসাইকেল বিনে যাবে":"কোনো লেনদেন নেই"})),"কোনো কলাম নেই।","সরানো কলামের হিসাব মুছে যায় না; লেনদেনগুলো রিসাইকেল বিন থেকে ফেরালে কলাম আবার আসে।",c=>removeColumns(c.map(r=>s[r].id)))},pickGo:()=>{const t=$("#dlg"),a=[...t.querySelectorAll("[data-pk]:checked")].map(e=>+e.dataset.pk);if(t.close(),a.length&&t._multi)return t._multi(a)},goEq:()=>{location.hash="",view="eq",render(),window.scrollTo(0,0)},undo:doUndo,redo:doRedo,newEntry:()=>{if($("#editMenu").hidden=!0,PEND.new)return;const t=newDraft();PEND.new={id:t.id,isNew:!0,date:t.date,desc:"",delta:{},oe:0,base:null,err:""},view="eq",render.focusKey="cell:"+t.id+":"+((buildModel().assets[0]||{}).id||"OE"),render(),window.scrollTo(0,document.body.scrollHeight)},editEntry:t=>{const a=S.entries.find(e=>e.id===t.dataset.id);a&&(DR=draftFromEntry(a),entryModal())},delEntry:async t=>{const a=S.entries.find(e=>e.id===t.dataset.id);if(!(!a||!confirm("লেনদেন #"+a.seq+" রিসাইকেল বিনে পাঠানো হবে (পরে পুনরুদ্ধার করা যাবে)। নিশ্চিত?")))try{await voidEntry(a.id,"ব্যবহারকারী মুছেছেন"),toast("মুছে ফেলা হয়েছে",{act:"undo",label:"আনডু"}),render()}catch(e){toast(e.message)}},unvoid:async t=>{try{await restoreEntry(t.dataset.id),toast("পুনরুদ্ধার হয়েছে"),render()}catch(a){toast(a.message)}},delFromModal:()=>{const t=DR.id;return $("#dlg").close(),ACT.delEntry({dataset:{id:t}})},closeDlg:()=>$("#dlg").close(),saveEntry:saveDraft,toLines:t=>{const a=DR,e=draftToEntry(a);a.mode="lines",a.lines=e.lines.map(s=>({acc:s.acc,dr:s.dr?String(s.dr/100):"",cr:s.cr?String(s.cr/100):""})),entryModal()},addLine:()=>{DR.lines.push({acc:"",dr:"",cr:""}),entryModal()},rmLine:t=>{DR.lines.splice(+t.dataset.i,1),entryModal()},csvEq,csvJ:csvJournal,csvR:t=>csvReport(t.dataset.r),rsub:t=>{RSUB=t.dataset.r,render()},sortJ:()=>{JSORT=JSORT==="asc"?"desc":"asc",render()},clearJ:()=>{JF={q:"",from:"",to:"",acc:"",tpl:""},render()},moreJ:()=>{JSHOW+=50,render()},newAcc:()=>accModal(),editAcc:t=>accModal(t.dataset.id),saveAcc:async()=>{const t=$("#dlg"),a={...t._acc},e=a.isNew;delete a.isNew,a.code=a.code.trim(),a.name=a.name.trim();const s=[];if(a.code||s.push("কোড দিন"),a.name||s.push("নাম দিন"),S.accounts.some(i=>i.id!==a.id&&i.code===a.code)&&s.push("কোডটি আগে থেকেই আছে"),S.accounts.some(i=>i.id!==a.id&&i.name===a.name)&&s.push("নামটি আগে থেকেই আছে"),s.length)return $("#accErr").innerHTML=s.map(i=>`<li>${esc(i)}</li>`).join("");const n=S.accounts.find(i=>i.id===a.id);try{await store.saveAccount(a),S.accounts=n?S.accounts.map(i=>i.id===a.id?a:i):[...S.accounts,a],await audit(e?"account_create":"account_update","account",a.id,(e?"নতুন হিসাব: ":"হিসাব পরিবর্তন: ")+a.name,n||null,a),t.close(),render()}catch(i){$("#accErr").textContent=i.message}},delAcc:async t=>{const a=S.accounts.find(e=>e.id===t.dataset.id);if(S.entries.some(e=>e.lines.some(s=>s.acc===a.id)))return toast("এই হিসাবে লেনদেন আছে — মোছা যাবে না, নিষ্ক্রিয় করুন");if(confirm("হিসাব “"+a.name+"” মুছবেন?"))try{await store.deleteAccount(a.id),S.accounts=S.accounts.filter(e=>e.id!==a.id),await audit("account_delete","account",a.id,"হিসাব মুছে ফেলা: "+a.name,a,null),render()}catch(e){toast(e.message)}},backup,signout:async()=>{await store.sb.auth.signOut(),location.reload()},uploadLocal:async()=>{const t=await LocalStore.load();if(!t)return toast("স্থানীয় ডেটা নেই");confirm("ক্লাউডের বর্তমান ডেটা মুছে স্থানীয় ডেটা ("+t.entries.length+" লেনদেন) পাঠানো হবে। নিশ্চিত?")&&await restoreFromObj({app:APP,...t},"স্থানীয় ডেটা")},wipe:async()=>{if(prompt("সব স্থানীয় ডেটা মুছে যাবে। আগে JSON ব্যাকআপ নিন। নিশ্চিত হলে লিখুন: মুছুন")==="মুছুন"){try{localStorage.removeItem(LS_DATA)}catch{}location.reload()}}};document.addEventListener("click",t=>{const a=$("#editMenu");a&&!a.hidden&&!t.target.closest("#editMenu,#btnEdit")&&(a.hidden=!0);const e=t.target.closest("[data-act]");if(!e)return;t.preventDefault();const s=ACT[e.dataset.act];s&&Promise.resolve(s(e,t)).catch(n=>toast(n.message))}),document.addEventListener("change",t=>{const a=t.target;if(a.dataset.actChange==="restoreFile"){const e=a.files[0];if(!e)return;const s=new FileReader;s.onload=()=>{let n;try{n=JSON.parse(s.result)}catch{return alert("ফাইলটি বৈধ JSON নয়")}restoreFromObj(n,e.name),a.value=""},s.readAsText(e)}if(a.dataset.j!==void 0&&(JF[a.dataset.j]=a.value,JSHOW=50,render()),a.dataset.r==="acc"&&(RACC=a.value,render()),a.dataset.s&&a.tagName==="SELECT"){const e=a.dataset.s;saveSettings({[e]:["month","year"].includes(e)?+a.value:a.value}).then(render)}if(a.dataset.s&&a.type==="date"&&saveSettings({[a.dataset.s]:a.value}).then(render),a.dataset.s==="year"){const e=Math.max(1900,Math.min(2200,parseInt(a.value)||S.settings.year));saveSettings({year:e}).then(render)}}),document.addEventListener("input",t=>{const a=t.target,e=a.dataset.f;if(e&&DR){const n=+a.dataset.i;if(e==="date")DR.date=a.value;else if(e==="desc")DR.desc=a.value,DR.dirty=!0;else if(e==="amt")DR.amt=a.value;else if(e==="tpl"){DR.tpl=a.value,DR.dirty=!!(DR.dirty&&!DR.isNew),applyTpl(DR),entryModal();return}else if(e==="dr"||e==="cr"){if(DR[e]=a.value,!DR.dirty&&(TPL[DR.tpl].dr==="expense"||TPL[DR.tpl].cr==="revenue")){const i=amap()[a.value];if(i&&(i.type==="expense"||i.type==="revenue")){DR.desc=i.name;const c=$('[data-f="desc"]');c&&(c.value=i.name)}}}else if(e==="l.acc")DR.lines[n].acc=a.value;else if(e==="l.dr"){if(DR.lines[n].dr=a.value,parseAmt(a.value)>0){DR.lines[n].cr="";const i=$(`[data-f="l.cr"][data-i="${n}"]`);i&&(i.value="")}}else if(e==="l.cr"&&(DR.lines[n].cr=a.value,parseAmt(a.value)>0)){DR.lines[n].dr="";const i=$(`[data-f="l.dr"][data-i="${n}"]`);i&&(i.value="")}entryStatus()}const s=$("#dlg");if(a.dataset.a&&s._acc){const n=a.dataset.a;s._acc[n]=a.type==="checkbox"?a.checked:a.value}a.dataset.j==="q"&&(JF.q=a.value,JSHOW=50,render()),a.dataset.q==="aud"&&(AUDQ=a.value,render()),a.dataset.s==="note"&&(clearTimeout(input._t),input._t=setTimeout(()=>saveSettings({note:a.value}),600))});function input(){}document.addEventListener("change",t=>{const a=t.target;a.dataset.a&&$("#dlg")._acc&&($("#dlg")._acc[a.dataset.a]=a.type==="checkbox"?a.checked:a.value)}),window.addEventListener("storage",t=>{t.key===LS_DATA&&store&&store.mode==="local"&&toast("অন্য ট্যাবে ডেটা পরিবর্তিত হয়েছে — পাতা রিলোড করুন")}),window.addEventListener("beforeprint",()=>{document.body.dataset.printing=view});const isEqSide=t=>t&&(t.type==="equity"||t.type==="revenue"||t.type==="expense");function parseSigned(t){let a=String(t).trim().replace(/[−–—]/g,"-").replace(/[০-৯]/g,n=>BN.indexOf(n)).replace(/[,\s৳+]/g,"");if(a==="")return 0;if(!/^-?\d+(\.\d{1,2})?$/.test(a))return NaN;const e=a[0]==="-";e&&(a=a.slice(1));const s=parseAmt(a);return isNaN(s)?NaN:e?-s:s}function parseDateInput(t,a){let e=String(t).trim().replace(/[০-৯]/g,n=>BN.indexOf(n)).replace(/\s/g,""),s;if(s=e.match(/^(\d{1,2})$/)){const[n,i]=ymd(a);e=`${n}-${pad(i)}-${pad(+s[1])}`}else(s=e.match(/^(\d{2})(\d{2})(\d{4})$/))?e=`${s[3]}-${s[2]}-${s[1]}`:(s=e.match(/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{4})$/))?e=`${s[3]}-${pad(+s[2])}-${pad(+s[1])}`:(s=e.match(/^(\d{4})[\/.\-](\d{1,2})[\/.\-](\d{1,2})$/))&&(e=`${s[1]}-${pad(+s[2])}-${pad(+s[3])}`);return validDate(e)?e:null}function pendFrom(t){const a=amap(),e=entryDelta(t,a),s={};let n=0;for(const i in e){const c=a[i];c&&(isEqSide(c)?n+=e[i]:s[i]=e[i])}return{id:t.id,isNew:!1,base:t,date:t.date,desc:t.desc,delta:s,oe:n,err:""}}function hintAcc(t,a){const e=S.accounts.filter(r=>r.active),s=(t||"").trim(),n=S.entries.some(r=>r.status==="active"&&r.lines.some(o=>(S.accounts.find(d=>d.id===o.acc)||{}).kind==="capital"));if(a>0&&(/মূলধন/.test(s)||!n))return e.find(r=>r.kind==="capital");if(a<0&&/উত্তোলন/.test(s))return e.find(r=>r.kind==="drawings");const i=a>0?"revenue":"expense",c=e.filter(r=>r.type===i);return s&&c.find(r=>s.includes(r.name)||r.name.includes(s))||(a>0?c.find(r=>r.name==="সেবা আয়"):c.find(r=>r.name==="অন্যান্য খরচ"))||c[0]}function buildLines(t){const a=amap(),e=[];let s="";for(const n in t.delta){const i=a[n],c=t.delta[n];if(!i||!c)continue;const r=i.type==="asset"?c>0:c<0;e.push({acc:n,dr:r?Math.abs(c):0,cr:r?0:Math.abs(c)})}if(t.oe){const n=t.base?t.base.lines.filter(c=>isEqSide(a[c.acc])):[],i=n.reduce((c,r)=>c+colSign(a[r.acc],r.dr,r.cr),0);if(t.base&&n.length&&t.oe===i)n.forEach(c=>e.push({...c}));else{const c=[...new Set(n.map(o=>o.acc))],r=c.length===1?a[c[0]]:hintAcc(t.desc,t.oe);r&&(e.push({acc:r.id,dr:t.oe<0?-t.oe:0,cr:t.oe>0?t.oe:0}),c.length||(s="মালিকানা স্বত্বের পরিবর্তন “"+r.name+"” হিসাবে ধরা হয়েছে"))}}return{lines:e,note:s}}const sig=t=>JSON.stringify(Object.entries(t.reduce((a,e)=>{const s=e.acc;return a[s]=a[s]||[0,0],a[s][0]+=e.dr,a[s][1]+=e.cr,a},{})).sort());async function tryCommit(t){const a=amap();t.err="";let e=0,s=0;for(const p in t.delta){const l=a[p];l&&(l.type==="asset"?e+=t.delta[p]:s+=t.delta[p])}const n=t.oe||0,{lines:i,note:c}=buildLines(t);if(!i.length)return t.err="অন্তত একটি ঘরে পরিমাণ লিখুন",!1;if(e!==s+n)return t.err=`অমিল: সম্পদ ${fmt(e)} ≠ দায় ${fmt(s)} + মালিকানা ${fmt(n)} (পার্থক্য ${fmt(e-s-n)}) — বাকি ঘর ঠিক করুন`,!1;if(!t.isNew&&t.date===t.base.date&&t.desc===t.base.desc&&sig(i)===sig(t.base.lines))return delete PEND[t.id],!0;const r={id:t.id,date:t.date,desc:t.desc.trim(),tpl:t.base?t.base.tpl:"custom",status:"active",voidReason:"",lines:i},o=validateEntry(r,{checkActive:t.isNew});if(o.length)return t.err=o[0],!1;const d=S.entries.filter(p=>p.status==="active"&&p.id!==r.id),u=negativeAccounts(d),f=negativeAccounts([...d,r]),g=[...f].filter(p=>!u.has(p));if(g.length&&!confirm(`সতর্কতা: এর ফলে ব্যালান্স ঋণাত্মক (মাইনাস) হবে:
+• `+g.map(p=>a[p].name).join(`
+• `)+`
+তবুও সংরক্ষণ করবেন?`))return t.err="ঋণাত্মক ব্যালান্স — সংরক্ষণ হয়নি",!1;try{await commitEntry(r,t.isNew?"create":"update",(t.isNew?"নতুন লেনদেন: ":"লেনদেন সম্পাদনা: ")+r.desc)}catch(p){return t.err=p.message,!1}t.isNew?delete PEND.new:delete PEND[t.id];const m=period();return toast(c||"সংরক্ষিত হয়েছে",{act:"undo",label:"আনডু"}),(r.date<m.from||r.date>m.to)&&toast("তারিখ বর্তমান সময়কালের বাইরে — অন্য মাস/বছর বেছে দেখুন"),!0}async function onCellEdit(t,a){const e=t.dataset.ed,s=t.dataset.id,n=t.dataset.col,i=t.textContent.replace(/ /g," ").trim();render.focusKey=a||null;try{if(e==="acc"){const c=S.accounts.find(r=>r.id===n);if(c&&i!==c.name)if(!i)toast("হিসাবের নাম খালি রাখা যায় না");else if(S.accounts.some(r=>r.id!==c.id&&r.name===i))toast("এই নামে আরেকটি হিসাব আছে");else{const r={...c,name:i};await store.saveAccount(r),S.accounts=S.accounts.map(o=>o.id===c.id?r:o),await audit("account_update","account",c.id,"হিসাবের নাম পরিবর্তন: "+c.name+" → "+i,c,r)}}else{let c=PEND[s]||(PEND.new&&PEND.new.id===s?PEND.new:null),r=!1;if(!c){const o=S.entries.find(d=>d.id===s);if(!o)return render();c=pendFrom(o),PEND[s]=c}if(e==="date"){const o=parseDateInput(i,c.date);o?o!==c.date&&(c.date=o,r=!0):toast("তারিখ বোঝা যায়নি (যেমন: ২৯ বা ২৯/০১/২০১৭)")}else if(e==="cell"){const o=parseSigned(i);if(isNaN(o))toast("সংখ্যা সঠিক নয় (যেমন: ৫০,০০০ বা −৩,০০০)");else{const d=n==="OE"?c.oe:c.delta[n]||0;o!==d&&(n==="OE"?c.oe=o:c.delta[n]=o,r=!0)}}(r||c.err||c.isNew)&&(r||!c.isNew)&&await tryCommit(c),!c.isNew&&!r&&!c.err&&delete PEND[s]}}catch(c){toast(c.message)}render()}document.addEventListener("focusout",t=>{if(render.busy)return;const a=t.target;if(a.matches&&a.matches(".ce[data-ed]")){if(a.dataset.cancel)return delete a.dataset.cancel,render.focusKey=null,render();const e=t.relatedTarget;onCellEdit(a,e&&e.dataset&&e.dataset.k)}}),document.addEventListener("focusin",t=>{const a=t.target;if(!(a.matches&&a.matches(".ce[data-ed]")))return;if(SEL.id=a.dataset.id||SEL.id,a.dataset.col&&a.dataset.col!=="OE"&&(SEL.col=a.dataset.col),document.querySelectorAll("tr.sel").forEach(n=>n.classList.remove("sel")),a.dataset.id&&document.querySelectorAll(`tr[data-id="${a.dataset.id}"]`).forEach(n=>n.classList.add("sel")),a.dataset.ed==="date"){const n=PEND[a.dataset.id]||(PEND.new&&PEND.new.id===a.dataset.id?PEND.new:null),i=S.entries.find(r=>r.id===a.dataset.id),c=n?n.date:i&&i.date;if(c){const[r,o,d]=ymd(c);a.textContent=D(pad(d)+"/"+pad(o)+"/"+r)}}const e=document.createRange();e.selectNodeContents(a);const s=getSelection();s.removeAllRanges(),s.addRange(e)}),document.addEventListener("keydown",t=>{const a=t.target;a.matches&&a.matches(".ce[data-ed]")&&(t.key==="Enter"&&(t.preventDefault(),a.blur()),t.key==="Escape"&&(a.dataset.cancel="1",a.blur()))}),document.addEventListener("input",t=>{const a=t.target;if(!(a.matches&&a.matches('.ce[data-ed="date"]')))return;const e=a.textContent.replace(/[০-৯]/g,c=>BN.indexOf(c)).replace(/\D/g,"").slice(0,8),s=e.length>4?e.slice(0,2)+"/"+e.slice(2,4)+"/"+e.slice(4):e.length>2?e.slice(0,2)+"/"+e.slice(2):e;a.textContent=D(s);const n=document.createRange();n.selectNodeContents(a),n.collapse(!1);const i=getSelection();i.removeAllRanges(),i.addRange(n)}),document.addEventListener("paste",t=>{const a=t.target;a.matches&&a.matches(".ce[data-ed]")&&(t.preventDefault(),document.execCommand("insertText",!1,(t.clipboardData.getData("text")||"").replace(/[\r\n]+/g," ")))});function pickDialog(t,a,e,s,n){const i=$("#dlg");i._multi=n,i.innerHTML=`<div class="hd"><span>${esc(t)}</span><button class="btn sm" data-act="closeDlg">✕</button></div><div class="bd">${a.length?'<label style="display:flex;gap:10px;align-items:center;padding:6px 4px;font-weight:600"><input type="checkbox" id="pkAll" style="width:20px;height:20px;min-height:0"> সব নির্বাচন করুন</label>'+a.map((r,o)=>`<label style="display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin-bottom:8px;cursor:pointer"><input type="checkbox" data-pk="${o}" style="width:20px;height:20px;min-height:0;margin-top:3px"><span><b>${esc(r.label)}</b><br><span class="muted" style="font-size:.85rem">${esc(r.sub||"")}</span></span></label>`).join(""):`<div class="empty">${esc(e)}</div>`}<p class="muted" style="font-size:.82rem">${esc(s||"")}</p></div><div class="ft"><button class="btn" data-act="closeDlg">বন্ধ করুন</button><button class="btn danger" data-act="pickGo" id="pkGo" disabled>${ICON_TRASH}নির্বাচিতগুলো মুছুন (০)</button></div>`;const c=()=>{const r=i.querySelectorAll("[data-pk]:checked").length,o=i.querySelectorAll("[data-pk]").length;$("#pkGo").disabled=!r,$("#pkGo").innerHTML=ICON_TRASH+"নির্বাচিতগুলো মুছুন ("+D(r)+")";const d=$("#pkAll");d&&(d.checked=r===o&&o>0)};i.onchange=r=>{r.target.id==="pkAll"&&i.querySelectorAll("[data-pk]").forEach(o=>o.checked=r.target.checked),c()},i.showModal()}async function removeColumns(t){if(!t.length)return;const a=amap(),e=activeEntries().filter(s=>s.lines.some(n=>t.includes(n.acc)));if(confirm(D(t.length)+" টি কলাম সরানো হবে।"+(e.length?`
+এগুলো ব্যবহার করে এমন `+D(e.length)+" টি লেনদেন রিসাইকেল বিনে যাবে (পরে পুনরুদ্ধার করা যাবে)।":"")+`
+নিশ্চিত?`)){try{for(const s of e)await voidEntry(s.id,"কলাম সরানো হয়েছে");for(const s of t){const n=S.accounts.find(c=>c.id===s),i={...n,showCol:!1};await store.saveAccount(i),S.accounts=S.accounts.map(c=>c.id===s?i:c),await audit("account_update","account",s,"কলাম সরানো: "+n.name,n,i)}for(const s in PEND)t.forEach(n=>delete PEND[s].delta[n]);toast(D(t.length)+" টি কলাম সরানো হয়েছে",e.length?{act:"undo",label:"আনডু"}:null)}catch(s){toast(s.message)}render()}}async function addField(t){const a=t==="asset"?"নতুন সম্পদ":"নতুন দায়";let e=a,s=1;for(;S.accounts.some(o=>o.name===e);)e=a+" "+D(++s);const n=t==="asset"?1e3:2e3,i=S.accounts.filter(o=>o.type===t).map(o=>parseInt(o.code,10)||n);let c=Math.max(n,...i)+10;for(;S.accounts.some(o=>o.code===String(c));)c+=10;const r={id:uuid(),code:String(c),name:e,type:t,kind:"other",showCol:!0,active:!0,sort:Math.max(0,...S.accounts.map(o=>o.sort))+10};try{await store.saveAccount(r),S.accounts=[...S.accounts,r],await audit("account_create","account",r.id,"নতুন ফিল্ড (কলাম): "+e,null,r),render.focusKey="acc::"+r.id,render()}catch(o){toast(o.message)}}async function hideField(t){const a=S.accounts.find(s=>s.id===t);if(!a||S.entries.some(s=>s.lines.some(n=>n.acc===t)))return toast("এই ফিল্ডে লেনদেন আছে — সরানো যাবে না");const e={...a,showCol:!1};try{await store.saveAccount(e),S.accounts=S.accounts.map(s=>s.id===t?e:s),await audit("account_update","account",t,"ফিল্ড (কলাম) সরানো: "+a.name,a,e),render()}catch(s){toast(s.message)}}document.addEventListener("pointerdown",async t=>{const a=t.target.closest&&t.target.closest("[data-rmf]");if(a)return t.preventDefault(),hideField(a.dataset.rmf)}),(async function(){store=LocalStore;let a=null;try{const s=await connectSupabase();s&&(store=s)}catch(s){await lockScreen("সংযোগ ব্যর্থ",esc(s.message),["আবার চেষ্টা করুন",()=>location.reload()])}try{a=await store.load()}catch(s){toast("ডেটা লোড ব্যর্থ: "+s.message),store.mode==="supabase"&&await lockScreen("ডেটা লোড ব্যর্থ",esc(s.message)+"<br>SQL.sql রান করা হয়েছে ও আপনার UID তালিকায় আছে কি না দেখুন।",["আবার চেষ্টা করুন",()=>location.reload()])}if(a)S=a,S.accounts.length||(S.accounts=defaultAccounts());else try{store.mode==="local"?LocalStore.write(S):await store.restore(S)}catch(s){toast(s.message)}const e=location.hash.slice(1);VIEWS.some(s=>s[0]===e)&&(view=e),window.addEventListener("hashchange",()=>{const s=location.hash.slice(1);view=VIEWS.some(n=>n[0]===s)?s:"eq",render(),window.scrollTo(0,0)}),render(),window.HisabApp={get S(){return S},validateEntry,buildModel,integrity,parseAmt,fmt,validateBackup,commitEntry,amap,doUndo,doRedo,restoreFromObj,voidEntry,restoreEntry,trialBalance,incomeStmt,balanceSheet,exportData,saveSettings,render,setView:s=>{view=s,render()}}})();</script>
 </body>
 </html>
