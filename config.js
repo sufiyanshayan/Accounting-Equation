@@ -18,9 +18,4 @@ window.APP_CONFIG = {
      সব তথ্য (হিসাব, লেনদেন, অডিট, সেটিংস) এই একটি টেবিলে আলাদা আলাদা সারিতে থাকে।
      SQL.sql-এর ENTER YOUR TABLE NAME লাইনে যে নাম দেবেন, এখানেও ঠিক সেই নাম দিন (ছোট হাতের অক্ষর)। */
   table: "equation",   // ENTER YOUR TABLE NAME : SQL.sql-এ যে নাম দিয়েছেন ঠিক সেটি
-
-  /* ---------- লগইন ----------
-     allowSignUp: false দিলে অ্যাপে "সাইন আপ" বোতাম থাকবে না
-     (Supabase Dashboard → Authentication → Sign In / Providers-এ নতুন সাইন-আপও বন্ধ রাখুন)। */
-  auth: { allowSignUp: false }
 };
