@@ -11,6 +11,105 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>.ic{width:1.15em;height:1.15em;vertical-align:-.2em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-right:4px}:root{--bg:#eef0f3;--panel:#fff;--ink:#111;--muted:#5b6470;--line:#c9ced6;--accent:#1f4e79;--accent-ink:#fff;--ok:#0a7a3c;--bad:#b3261e;--warn:#8a5a00;--paper:#fff;--paper-ink:#111;--paper-line:#444;--font:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Bengali","Kalpurush","SolaimanLipi","Siyam Rupali","Nirmala UI",system-ui,sans-serif}@media(prefers-color-scheme:dark){:root{--bg:#14171b;--panel:#1d2127;--ink:#e8eaed;--muted:#9aa3ad;--line:#38404a;--accent:#7fb2e5;--accent-ink:#0c1b2b;--ok:#4cc38a;--bad:#ff8a80;--warn:#e0b050}}*{box-sizing:border-box}html,body{margin:0}body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;padding-bottom:20px}button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}#lock{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:16px}#lock[hidden]{display:none}#lock{background:#f4f6f9;color:#333;font-family:"Noto Serif Bengali",serif;overflow:auto;align-items:flex-start}#lock *{box-sizing:border-box}.lbox{margin:auto;background:#fff;border-radius:24px;padding:2rem;box-shadow:0 10px 25px #0000000d;width:100%;max-width:500px}.lbox h2{text-align:center;margin-bottom:1.5rem;font-size:1.5rem}.lbox p{text-align:center;margin-bottom:1rem}.lbox .btn-login{width:100%;padding:14px;border:none;border-radius:12px;background:#000;color:#fff;font-weight:700;cursor:pointer;font-size:1rem;margin-top:10px;transition:.3s;font-family:inherit}.lbox .btn-login:hover{background:#222}.lbox .btn-login:disabled{background:#999;cursor:not-allowed}.lbox .input-group{margin-bottom:1.2rem;text-align:left}.lbox label{font-size:.75rem;font-weight:700;display:flex;align-items:center;gap:6px;margin-bottom:6px;color:#555;text-transform:uppercase}.lbox input{width:100%;padding:12px 15px;border-radius:12px;border:1px solid #ddd;outline:none;font-size:.9rem;font-family:inherit;transition:.3s;background:#fff;color:#333}.lbox input:focus{border-color:#000;box-shadow:0 0 0 3px #0000000d}.lbox input.error{border-color:#c00;background:#fff5f5}.password-wrapper{position:relative;display:flex;align-items:center}.password-wrapper input{padding-right:44px}.eye-btn{position:absolute;right:15px;cursor:pointer;color:#888;font-size:1.1rem;z-index:10;padding:5px;background:none;border:0}.status{margin-top:15px;padding:12px;border-radius:12px;font-size:.85rem;text-align:center;display:none}.status-error{display:block;background:#fee2e2;color:#b91c1c;border:1px solid #fecaca}.status-success{display:block;background:#dcfce7;color:#15803d;border:1px solid #bbf7d0}.status-warning{display:block;background:#dbeafe;color:#1e40af;border:1px solid #bfdbfe}.spinner{display:inline-block;width:16px;height:16px;border:2px solid #fff;border-top:2px solid transparent;border-radius:50%;animation:spin .8s linear infinite;margin-right:8px;vertical-align:middle}@keyframes spin{to{transform:rotate(360deg)}}.validation-error{color:#c00;font-size:.7rem;margin-top:4px;display:none}.validation-error.show{display:block}.lbox .btn.primary{width:100%;padding:12px;border-radius:12px;background:#000;color:#fff;border:0;font-family:inherit}body.locked .topbar,body.locked main{display:none}.topbar{position:sticky;top:0;z-index:20;background:var(--panel);border-bottom:1px solid var(--line);padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}.brand{font-weight:700;font-size:1.05rem;margin-right:auto}.badge.ok{color:var(--ok);border-color:var(--ok)}.btn{border:1px solid var(--line);background:var(--panel);padding:8px 14px;border-radius:8px;min-height:40px}.btn:hover{border-color:var(--accent)}.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}.btn.danger{color:var(--bad);border-color:var(--bad)}.btn.sm{padding:3px 9px;min-height:30px;font-size:.85rem}.btn:disabled{opacity:.45;cursor:not-allowed}nav.tabs button.on{color:var(--accent);border-top-color:var(--accent);font-weight:700}main{max-width:1280px;margin:0 auto;padding:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px}.card h2,.card h3{margin:0 0 10px}.row{display:flex;flex-wrap:wrap;gap:10px;align-items:end}.row>label{display:flex;flex-direction:column;gap:2px;font-size:.82rem;color:var(--muted)}input,select,textarea{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-height:40px;max-width:100%}textarea{width:100%;min-height:70px}.grow{flex:1;min-width:140px}.muted{color:var(--muted)}.ok{color:var(--ok)}.bad{color:var(--bad)}.num{text-align:right;font-variant-numeric:tabular-nums}.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}table.plain{border-collapse:collapse;width:100%}table.plain th,table.plain td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}table.plain th{font-size:.82rem;color:var(--muted);white-space:nowrap}.paper{background:var(--paper);color:var(--paper-ink);padding:18px 14px;border:1px solid var(--line);border-radius:6px}.paper h1{font-size:1.25rem;text-align:center;margin:4px 0;font-weight:700}.paper h2.sub{font-size:1.1rem;text-align:center;margin:6px 0 16px;font-weight:400}table.eq{border-collapse:collapse;width:100%;min-width:900px;font-size:.98rem;color:var(--paper-ink)}table.eq th,table.eq td{border:1px solid var(--paper-line);padding:3px 8px;text-align:center;vertical-align:middle;font-variant-numeric:tabular-nums;white-space:nowrap}table.eq thead th{font-weight:500;background:var(--paper)}table.eq td.sym{width:28px;padding:0 2px}table.eq td.dt{text-align:left;vertical-align:bottom;white-space:nowrap;min-width:92px}table.eq td.lab{white-space:nowrap}table.eq td.cm{text-align:center;min-width:120px}table.eq tr.top td{border-bottom:0}table.eq tr.bot td,table.eq tr.top td.sym,table.eq tr.bot td.sym{border-top:0}table.eq tr.tot td{font-weight:700;font-size:1.05rem}table.eq .acts button{border:1px solid #999;background:#fff;color:#111;border-radius:6px;padding:1px 7px;font-size:.78rem;margin:0 2px}.check{padding:10px 14px;border-radius:8px;margin-top:14px;border:1px solid var(--line);font-weight:600}.check.good{border-color:var(--ok);color:var(--ok)}.check.fail{border-color:var(--bad);color:var(--bad);background:#b3261e14}.empty{text-align:center;padding:36px 12px;color:var(--muted)}dialog{border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--ink);padding:0;width:min(720px,96vw);max-height:92vh}dialog::backdrop{background:#00000080}dialog .hd{padding:14px 16px;border-bottom:1px solid var(--line);font-weight:700;display:flex;justify-content:space-between}dialog .bd{padding:16px;overflow:auto;max-height:68vh}dialog .ft{padding:12px 16px;border-top:1px solid var(--line);display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}.errs{color:var(--bad);font-size:.9rem;margin:8px 0;padding-left:18px}.lines td{padding:4px}.lines input,.lines select{width:100%}#toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%);background:#222;color:#fff;padding:10px 16px;border-radius:10px;z-index:99;display:none;max-width:92vw;gap:12px;align-items:center}#toast button{background:none;border:1px solid #fff;color:#fff;border-radius:6px;padding:2px 10px;margin-left:10px}.tag{display:inline-block;font-size:.72rem;border:1px solid var(--line);border-radius:6px;padding:0 6px;color:var(--muted)}.void{opacity:.6;text-decoration:line-through}pre.json{white-space:pre-wrap;word-break:break-all;font-size:.76rem;background:var(--bg);padding:8px;border-radius:8px;max-height:220px;overflow:auto}.subtabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}.subtabs button.on{background:var(--accent);color:var(--accent-ink)}body.v-eq,body.v-eq .topbar{background:#fff}body.v-eq .card.eqcard{background:none;border:0;padding:0;margin:0}body.v-eq .paper{border:0;padding:8px 0}table.eq tr[data-id]:hover td{background:#f4f8fc}.ce{display:block;min-height:1.6em;min-width:1.5em;padding:2px 4px;outline:none;cursor:text;border-radius:3px;white-space:nowrap;word-break:keep-all}.ce:focus{background:#fff8d6;box-shadow:inset 0 0 0 2px #1f4e79}h1 .ce,h2 .ce{display:inline-block;min-width:8em}table.eq tr.pend td{background:#fff3f0}.emenu{position:fixed;right:8px;top:56px;max-width:calc(100vw - 16px);z-index:40;background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:0 6px 20px #00000040;min-width:230px;padding:4px}.emenu button{display:block;width:100%;text-align:left;border:0;background:none;padding:10px 12px;border-radius:8px;font-size:.95rem}.emenu button:hover{background:var(--bg)}.rmf{display:none;margin-left:4px;color:#b3261e;cursor:pointer;font-size:.9rem}th:hover .rmf{display:inline}.perr-row{color:#b3261e;font-size:.85rem;text-align:left!important;background:#fff3f0}@media(max-width:700px){main{padding:10px}.brand{font-size:.95rem}}@media print{@page{size:A4 landscape;margin:10mm}body{background:#fff;padding:0;color:#000}.topbar,nav.tabs,.fab,.noprint,#toast,dialog{display:none!important}main{max-width:none;padding:0}.card{border:0;padding:0;margin:0}.paper{border:0;padding:0}.notebox{border:1px solid #000;resize:none}.scroll{overflow:visible}table.eq{min-width:0;font-size:11pt}.paper table.eq,.paper .scroll.tblwrap{display:table!important}.perr,.rmf{display:none!important}.ce:focus{background:none;box-shadow:none}.view{display:none}.view.printing{display:block!important}}</style>
+<!-- Responsive fixes (additive; placed after the original styles) -->
+<style>
+/* =====================================================================
+   responsive.css  -  ADDITIVE responsive fixes for index.html
+   - Loaded AFTER the original <style> block; nothing in index.html is removed.
+   - Every rule is limited to @media screen, so printing is untouched.
+   - Rules that affect desktop widths only matter when content would overflow
+     or on devices that report a notch / safe-area (env() = 0 elsewhere).
+   ===================================================================== */
+
+/* ---- 1. Safe areas (notched phones; viewport-fit=cover is already set) ----
+   env() is 0 on desktop, so the values equal the original 16px / 20px. */
+@media screen {
+  main, .card, .paper { min-width: 0; }
+
+  .topbar {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+  main {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+  body { padding-bottom: calc(20px + env(safe-area-inset-bottom)); }
+  #toast { bottom: calc(20px + env(safe-area-inset-bottom)); }
+}
+
+/* ---- 2. Tablet / large phone (<= 768px) ---- */
+@media screen and (max-width: 768px) {
+  /* long unbroken words in tables, headings and settings text */
+  table.plain td, table.plain th { overflow-wrap: break-word; }
+  .paper h1, .paper h2.sub, .card h2, .card h3 { overflow-wrap: anywhere; }
+  code { overflow-wrap: anywhere; }
+  .tblwrap { max-width: 100%; }
+}
+
+/* ---- 3. Phones (<= 700px; matches the original breakpoint) ---- */
+@media screen and (max-width: 700px) {
+  /* original rule sets main padding to 10px; keep that, add safe-area */
+  main {
+    padding-left: max(10px, env(safe-area-inset-left));
+    padding-right: max(10px, env(safe-area-inset-right));
+  }
+}
+
+/* ---- 4. Top bar wraps onto two lines (<= 560px) ---- */
+@media screen and (max-width: 560px) {
+  /* The Edit menu is position:fixed with top:56px, which lands on top of the
+     wrapped second row. top:auto keeps it directly under the Edit button. */
+  .emenu { top: auto; }
+}
+
+/* ---- 5. Small phones (<= 480px) ---- */
+@media screen and (max-width: 480px) {
+  .topbar {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: max(10px, env(safe-area-inset-left));
+    padding-right: max(10px, env(safe-area-inset-right));
+    gap: 6px;
+  }
+  .row > label { min-width: 0; }
+  input[type="date"] { min-width: 0; }
+  #toast { max-width: calc(100vw - 24px); }
+}
+
+/* ---- 6. Very small phones (<= 360px, down to 320px) ---- */
+@media screen and (max-width: 360px) {
+  #lock { padding: 10px; }
+  .lbox { padding: 1.25rem; border-radius: 18px; }
+  .lbox h2 { font-size: 1.3rem; }
+  .brand { font-size: .9rem; }
+}
+
+/* ---- 7. Short screens, e.g. phones in landscape (height <= 520px) ----
+   Dialog body was capped at 68vh + header + footer, which is taller than the
+   dialog's own 92vh cap on short screens, so the Save button fell off-screen.
+   Make the dialog a column so the body scrolls and header/footer stay visible. */
+@media screen and (max-height: 520px) {
+  dialog[open] { display: flex; flex-direction: column; max-height: 96vh; }
+  dialog .hd, dialog .ft { flex: none; }
+  dialog .bd { flex: 1 1 auto; min-height: 0; max-height: none; }
+}
+@supports (height: 1dvh) {
+  @media screen and (max-height: 520px) {
+    dialog[open] { max-height: 96dvh; }
+  }
+}
+
+/* ---- OPTIONAL (disabled): stop iOS Safari auto-zooming on the login fields ----
+   Login inputs are .9rem (14.4px); iOS zooms the page on focus below 16px.
+   This is a small visible change on phones, so it is left commented out.
+   Remove the comment markers if you want it.
+
+@media screen and (max-width: 700px) {
+  .lbox input { font-size: 16px; }
+}
+*/
+</style>
 </head>
 <body>
 <header class="topbar noprint">
