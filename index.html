@@ -109,6 +109,22 @@
   .lbox input { font-size: 16px; }
 }
 */
+/* ---- 8. Fit tables to the screen on phones/tablets: no sideways scrolling ----
+   Desktop (> 900px) is untouched. Cells are tightened here; the small script
+   at the end of <body> then scales whatever is still wider than the screen. */
+@media screen and (max-width: 900px) {
+  table.eq { min-width: 0; font-size: .8rem; }
+  table.eq th, table.eq td { padding: 2px 3px; }
+  table.eq td.dt, table.eq td.cm { min-width: 0; }
+  table.eq td.sym { width: auto; padding: 0 1px; }
+  table.eq th { white-space: normal; overflow-wrap: anywhere; }
+  .paper { padding-left: 4px; padding-right: 4px; }
+  #main .scroll { overflow-x: hidden; }
+}
+@media screen and (max-width: 480px) {
+  table.eq { font-size: .72rem; }
+  table.eq th, table.eq td { padding: 2px 2px; }
+}
 </style>
 </head>
 <body>
@@ -215,5 +231,38 @@ Type RESET to confirm:`);if(a!==null){if(a.trim()!=="RESET")return toast("Reset 
 Save anyway?`))return t.err="Negative balance — not saved",!1;try{await commitEntry(o,t.isNew?"create":"update",(t.isNew?"New entry: ":"Edit entry: ")+o.desc)}catch(p){return t.err=p.message,!1}t.isNew?delete PEND.new:delete PEND[t.id];const m=period();return toast(i||"Saved",{act:"undo",label:"Undo"}),(o.date<m.from||o.date>m.to)&&toast("The date is outside the current period — choose another month/year to see it"),!0}async function onCellEdit(t,a){const e=t.dataset.ed,n=t.dataset.id,s=t.dataset.col,c=t.textContent.replace(/ /g," ").trim();render.focusKey=a||null;try{if(e==="acc"){const i=S.accounts.find(o=>o.id===s);if(i&&c!==i.name)if(!c)toast("Account name cannot be empty");else if(S.accounts.some(o=>o.id!==i.id&&o.type===i.type&&o.name===c))toast("Another account already has this name");else{const o={...i,name:c};await store.saveAccount(o),S.accounts=S.accounts.map(r=>r.id===i.id?o:r),await audit("account_update","account",i.id,"Account renamed: "+i.name+" → "+c,i,o)}}else{let i=PEND[n]||(PEND.new&&PEND.new.id===n?PEND.new:null),o=!1;if(!i){const r=S.entries.find(d=>d.id===n);if(!r)return render();i=pendFrom(r),PEND[n]=i}if(e==="date"){const r=parseDateInput(c,i.date);r?r!==i.date&&(i.date=r,o=!0):toast("Could not understand the date (e.g. 29 or 29/01/2017)")}else if(e==="cell"){const r=parseSigned(c);if(isNaN(r))toast("Invalid number (e.g. 50,000 or −3,000)");else{const d=s==="OE"?i.oe:i.delta[s]||0;r!==d&&(s==="OE"?i.oe=r:i.delta[s]=r,o=!0)}}(o||i.err||i.isNew)&&(o||!i.isNew)&&await tryCommit(i),!i.isNew&&!o&&!i.err&&delete PEND[n]}}catch(i){toast(i.message)}render()}document.addEventListener("focusout",t=>{if(render.busy)return;const a=t.target;if(a.matches&&a.matches(".ce[data-ed]")){if(a.dataset.cancel)return delete a.dataset.cancel,render.focusKey=null,render();const e=t.relatedTarget;onCellEdit(a,e&&e.dataset&&e.dataset.k)}}),document.addEventListener("focusin",t=>{const a=t.target;if(!(a.matches&&a.matches(".ce[data-ed]")))return;if(SEL.id=a.dataset.id||SEL.id,a.dataset.col&&a.dataset.col!=="OE"&&(SEL.col=a.dataset.col),document.querySelectorAll("tr.sel").forEach(s=>s.classList.remove("sel")),a.dataset.id&&document.querySelectorAll(`tr[data-id="${a.dataset.id}"]`).forEach(s=>s.classList.add("sel")),a.dataset.ed==="date"){const s=PEND[a.dataset.id]||(PEND.new&&PEND.new.id===a.dataset.id?PEND.new:null),c=S.entries.find(o=>o.id===a.dataset.id),i=s?s.date:c&&c.date;if(i){const[o,r,d]=ymd(i);a.textContent=D(pad(d)+"/"+pad(r)+"/"+o)}}const e=document.createRange();e.selectNodeContents(a);const n=getSelection();n.removeAllRanges(),n.addRange(e)}),document.addEventListener("keydown",t=>{const a=t.target;a.matches&&a.matches(".ce[data-ed]")&&(t.key==="Enter"&&(t.preventDefault(),a.blur()),t.key==="Escape"&&(a.dataset.cancel="1",a.blur()))}),document.addEventListener("input",t=>{const a=t.target;if(!(a.matches&&a.matches('.ce[data-ed="date"]')))return;const e=a.textContent.replace(/[০-৯]/g,i=>BN.indexOf(i)).replace(/\D/g,"").slice(0,8),n=e.length>4?e.slice(0,2)+"/"+e.slice(2,4)+"/"+e.slice(4):e.length>2?e.slice(0,2)+"/"+e.slice(2):e;a.textContent=D(n);const s=document.createRange();s.selectNodeContents(a),s.collapse(!1);const c=getSelection();c.removeAllRanges(),c.addRange(s)}),document.addEventListener("paste",t=>{const a=t.target;a.matches&&a.matches(".ce[data-ed]")&&(t.preventDefault(),document.execCommand("insertText",!1,(t.clipboardData.getData("text")||"").replace(/[\r\n]+/g," ")))});function pickDialog(t,a,e,n,s){const c=$("#dlg");c._multi=s,c.innerHTML=`<div class="hd"><span>${esc(t)}</span><button class="btn sm" data-act="closeDlg">✕</button></div><div class="bd">${a.length?'<label style="display:flex;gap:10px;align-items:center;padding:6px 4px;font-weight:600"><input type="checkbox" id="pkAll" style="width:20px;height:20px;min-height:0"> Select all</label>'+a.map((o,r)=>`<label style="display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin-bottom:8px;cursor:pointer"><input type="checkbox" data-pk="${r}" style="width:20px;height:20px;min-height:0;margin-top:3px"><span><b>${esc(o.label)}</b><br><span class="muted" style="font-size:.85rem">${esc(o.sub||"")}</span></span></label>`).join(""):`<div class="empty">${esc(e)}</div>`}<p class="muted" style="font-size:.82rem">${esc(n||"")}</p></div><div class="ft"><button class="btn" data-act="closeDlg">Close</button><button class="btn danger" data-act="pickGo" id="pkGo" disabled>${ICON_TRASH}Delete selected (0)</button></div>`;const i=()=>{const o=c.querySelectorAll("[data-pk]:checked").length,r=c.querySelectorAll("[data-pk]").length;$("#pkGo").disabled=!o,$("#pkGo").innerHTML=ICON_TRASH+"Delete selected ("+D(o)+")";const d=$("#pkAll");d&&(d.checked=o===r&&r>0)};c.onchange=o=>{o.target.id==="pkAll"&&c.querySelectorAll("[data-pk]").forEach(r=>r.checked=o.target.checked),i()},c.showModal()}async function removeColumns(t){if(!t.length)return;const a=amap(),e=activeEntries().filter(n=>n.lines.some(s=>t.includes(s.acc)));if(confirm(D(t.length)+" column(s) will be removed."+(e.length?`
 `+D(e.length)+" entries that use them will go to the Recycle Bin (they can be restored later).":"")+`
 Continue?`)){try{for(const n of e)await voidEntry(n.id,"Column removed");for(const n of t){const s=S.accounts.find(i=>i.id===n),c={...s,showCol:!1};await store.saveAccount(c),S.accounts=S.accounts.map(i=>i.id===n?c:i),await audit("account_update","account",n,"Column removed: "+s.name,s,c)}for(const n in PEND)t.forEach(s=>delete PEND[n].delta[s]);toast(D(t.length)+" columns removed",e.length?{act:"undo",label:"Undo"}:null)}catch(n){toast(n.message)}render()}}async function addField(t){const a=t==="asset"?"নতুন সম্পদ":"নতুন দায়";let e=a,n=1;for(;S.accounts.some(r=>r.type===t&&r.name===e);)e=a+" "+D(++n);const s=t==="asset"?1e3:2e3,c=S.accounts.filter(r=>r.type===t).map(r=>parseInt(r.code,10)||s);let i=Math.max(s,...c)+10;for(;S.accounts.some(r=>r.code===String(i));)i+=10;const o={id:uuid(),code:String(i),name:e,type:t,kind:"other",showCol:!0,active:!0,sort:Math.max(0,...S.accounts.map(r=>r.sort))+10};try{await store.saveAccount(o),S.accounts=[...S.accounts,o],await audit("account_create","account",o.id,"New field (column): "+e,null,o),render.focusKey="acc::"+o.id,render()}catch(r){toast(r.message)}}async function hideField(t){const a=S.accounts.find(n=>n.id===t);if(!a||S.entries.some(n=>n.lines.some(s=>s.acc===t)))return toast("This field has entries — it cannot be removed");const e={...a,showCol:!1};try{await store.saveAccount(e),S.accounts=S.accounts.map(n=>n.id===t?e:n),await audit("account_update","account",t,"Field (column) removed: "+a.name,a,e),render()}catch(n){toast(n.message)}}document.addEventListener("pointerdown",async t=>{const a=t.target.closest&&t.target.closest("[data-rmf]");if(a)return t.preventDefault(),hideField(a.dataset.rmf)}),(async function(){store=LocalStore;let a=null;try{const n=await connectSupabase();n&&(store=n)}catch(n){await lockScreen("Connection failed",esc(n.message),["Try again",()=>location.reload()])}try{a=await store.load()}catch(n){toast("Failed to load data: "+n.message),store.mode==="supabase"&&await lockScreen("Failed to load data",esc(n.message)+"<br>Check that SQL.sql has been run and your account is on the allowed list.",["Try again",()=>location.reload()])}if(a)S=a,S.accounts.length||(S.accounts=defaultAccounts());else try{store.mode==="local"?LocalStore.write(S):await store.restore(S)}catch(n){toast(n.message)}const e=location.hash.slice(1);VIEWS.some(n=>n[0]===e)&&(view=e),window.addEventListener("hashchange",()=>{const n=location.hash.slice(1);view=VIEWS.some(s=>s[0]===n)?n:"eq",render(),window.scrollTo(0,0)}),render(),window.HisabApp={get S(){return S},validateEntry,buildModel,integrity,parseAmt,fmt,validateBackup,commitEntry,amap,doUndo,doRedo,restoreFromObj,voidEntry,restoreEntry,trialBalance,incomeStmt,balanceSheet,exportData,saveSettings,render,setView:n=>{view=n,render()}}})();</script>
+<script>
+/* Fit-to-screen for tables on phones/tablets (<= 900px). Desktop is untouched. */
+(function(){
+  var MAXW=900;
+  function fit(){
+    var tabs=document.querySelectorAll('#main .scroll > table');
+    for(var i=0;i<tabs.length;i++){
+      var t=tabs[i],w=t.parentNode;
+      t.style.zoom='';
+      if(window.innerWidth>MAXW) continue;
+      var avail=w.clientWidth,nat=t.scrollWidth;
+      if(avail>0&&nat>avail){
+        var z=Math.floor(avail/nat*1000)/1000;
+        t.style.zoom=z;
+        for(var k=0;k<6&&w.scrollWidth>w.clientWidth+0.5&&z>0.1;k++){
+          z=Math.floor(z*(w.clientWidth/w.scrollWidth)*990)/1000;
+          t.style.zoom=z;
+        }
+      }
+    }
+  }
+  window.__fitTables=fit;
+  var main=document.getElementById('main');
+  if(main&&window.MutationObserver) new MutationObserver(fit).observe(main,{childList:true});
+  window.addEventListener('resize',fit);
+  window.addEventListener('orientationchange',fit);
+  window.addEventListener('load',fit);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
+  window.addEventListener('beforeprint',function(){var t=document.querySelectorAll('#main .scroll > table');for(var i=0;i<t.length;i++)t[i].style.zoom='';});
+  window.addEventListener('afterprint',fit);
+  fit();
+})();
+</script>
 </body>
 </html>
